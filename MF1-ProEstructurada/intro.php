@@ -4,12 +4,27 @@
     $decimal = 2.2;
     $boolean = true;
 
-    if($entero = 2){
+    if(!$entero = 2){
         echo("lol xD");
     }else{
         echo("lul xd");
     }
 
+    $array = ["hola","perro"];
+    var_dump($array);
+
     echo("<br>");
-    echo($texto." mmgv");
+
+    foreach ($array as $key => $value) {
+       echo($value);
+    }
+
+  
+    function hacer_café($tipo)
+    {
+    return "Hacer una taza de $tipo.\n";
+    }
+    echo hacer_café("capuccino");
+    echo hacer_café(null);
+    echo hacer_café("espresso");
 ?>
