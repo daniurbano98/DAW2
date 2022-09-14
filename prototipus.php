@@ -6,14 +6,31 @@
  * @retval int La diferencia entre los valores máximo y mínimo
  */
 function recorrido($datos) {
-  $masGrande = 0;
-  $masPequeño = 0;
+  $max = $datos[0];
+  $min = $datos[0];
 
-  
   for ($i=0; $i <sizeof($datos) ; $i++) { 
-    if()
-  }
-  return -1;
+      if(!is_int($datos[$i])){
+        $datos[++$i];
+      }
+      else if($datos[$i]<$min){
+        $min = $datos[$i];
+      }
+    }
+
+    for ($i=0; $i <sizeof($datos) ; $i++) {
+        if(!is_int($datos[$i])){
+          $datos[++$i];
+        }
+        else if($datos[$i]<$max){
+          $max = $datos[$i];
+        }
+      }
+
+    
+      $diferencia = $max - $min;
+      
+      return $diferencia;
 }
 
 /**
