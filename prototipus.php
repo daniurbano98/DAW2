@@ -106,7 +106,7 @@ function limpieza($datos, $noNegativos = false) {
       }
     }
     array_unique($array);
-    
+
   return $array;
 }
 
