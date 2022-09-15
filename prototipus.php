@@ -6,31 +6,25 @@
  * @retval int La diferencia entre los valores máximo y mínimo
  */
 function recorrido($datos) {
-  $max = $datos[0];
-  $min = $datos[0];
+  $max=0;
+  $min=0;
 
-  for ($i=0; $i <sizeof($datos) ; $i++) { 
-      if(!is_int($datos[$i])){
-        $datos[++$i];
-      }
-      else if($datos[$i]<$min){
-        $min = $datos[$i];
+  if(!empty($datos)){
+    $array = [];
+
+    for ($i=0; $i < sizeof($datos) ; $i++) { 
+      if(is_int($datos[$i])){
+        $array[$i] = $datos[$i];
       }
     }
-
-    for ($i=0; $i <sizeof($datos) ; $i++) {
-        if(!is_int($datos[$i])){
-          $datos[++$i];
-        }
-        else if($datos[$i]<$max){
-          $max = $datos[$i];
-        }
-      }
+   $max = max($array);
+   $min = min($array);
+  }
 
     
-      $diferencia = $max - $min;
+  $diferencia = $max - $min;
       
-      return $diferencia;
+  return $diferencia;
 }
 
 /**
@@ -40,8 +34,20 @@ function recorrido($datos) {
  * @retval array La serie numérica resultante.
  */
 function noNegativos($datos) {
-  // TODO
-  return [];
+  $array=[];
+
+    for ($i=0; $i <sizeof($datos) ; $i++) { 
+      if($datos[$i]<0){
+        unset($datos[$i]);
+      }
+      else if(!is_int($datos[$i])){
+        unset($datos[$i]);
+      }
+      else{
+        $array[$i] = $datos[$i];
+      }
+    }
+  return $array;
 }
 
 /**
@@ -52,7 +58,11 @@ function noNegativos($datos) {
  * @retval boolean Se ha encontrado o no el valor.
  */
 function buscar($datos, $valor) {
-  // TODO
+    for ($i=0; $i <sizeof($datos) ; $i++) { 
+        if($datos[$i]==$valor){
+          return true;
+        }
+    }
   return false;
 }
 
@@ -83,7 +93,18 @@ function simetricos($datos) {
  */
 
 function limpieza($datos, $noNegativos = false) {
-  // TODO
+    $array = [];
+
+    for ($i=0; $i <sizeof($datos) ; $i++) { 
+      if($datos[$i]<0){
+        unset($datos[$i]);
+      }
+      else if(!is_int($datos[$i])){
+        unset($datos[$i]);
+      }else{
+        $array[$i] = $datos[$i];
+      }
+    }
   return [];
 }
 
