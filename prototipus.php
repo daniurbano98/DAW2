@@ -105,6 +105,8 @@ function limpieza($datos, $noNegativos = false) {
         $array[$i] = $datos[$i];
       }
     }
-  return [];
+    array_unique($array);
+    
+  return $array;
 }
 
