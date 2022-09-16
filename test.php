@@ -48,7 +48,7 @@ function test($nombre, $serie) {
   echo "RECORRIDO  = " . recorrido($serie). "\n";
   echo "NO-NEGATIVOS = [ " . implode(", ", noNegativos($serie)) . " ]\n";
   echo "REC. NO-NEGATIVOS " . recorrido(noNegativos($serie)) . "\n";
-  //echo "SIMÉTRICOS   = [ " . implode(", ", simetricos($serie)) . " ]\n";
-  //echo "LIMPIEZA      = [ " . implode(", ", limpieza($serie)) . " ]\n";
+  echo "SIMÉTRICOS   = [ " . implode(", ", simetricos($serie)) . " ]\n";
+   echo "LIMPIEZA      = [ " . implode(", ", limpieza($serie)) . " ]\n";
 }
 
