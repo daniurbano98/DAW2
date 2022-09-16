@@ -27,6 +27,8 @@ function recorrido($datos)
     $diferencia = $max - $min;
 
     return $diferencia;
+  }else{
+    return 0;
   }
 
 
