@@ -8,8 +8,6 @@
  */
 function recorrido($datos)
 {
-  $max = 0;
-  $min = 0;
 
   if (!empty($datos)) {
     $array = [];
@@ -23,16 +21,13 @@ function recorrido($datos)
 
     $max = max($array);
     $min = min($array);
-    
+
     $diferencia = $max - $min;
 
     return $diferencia;
-  }else{
+  } else {
     return 0;
   }
-
-
-  
 }
 
 /**
@@ -46,17 +41,24 @@ function noNegativos($datos)
 
   if (!empty($datos)) {
 
-   $array=[];
+    $array = [];
 
     foreach ($datos as $key => $value) {
-      if ($value>=0) {
-        array_push($array,$value);   
+      if (is_int($value)) {
+        array_push($array, $value);
+      }
     }
+    $noNegativos = [];
+
+    foreach ($array as $key => $value) {
+      if ($value >= 0) {
+        array_push($noNegativos, $value);
+      }
+    }
+    return $noNegativos;
+  } else {
+    return [];
   }
-  return $array;  
-}
-
-
 }
 
 /**
@@ -68,7 +70,19 @@ function noNegativos($datos)
  */
 function buscar($datos, $valor)
 {
-  
+  if (!empty($datos)) {
+    foreach ($datos as $key => $value) {
+      if ($value == $valor && !is_int($value)) {
+        return false;
+      } else {
+        if ($value == $valor) {
+          return true;
+        }
+      }
+    }
+  } else {
+    return [];
+  }
 }
 
 /**
@@ -82,8 +96,34 @@ function buscar($datos, $valor)
  */
 function simetricos($datos)
 {
-  
-  return [];
+  if (!empty($datos)) {
+
+    $arrayPositivos = [];
+    $arrayNegativos = [];
+    $arrayCoincidencias = [];
+
+
+
+
+    foreach ($datos as $key => $value) {
+      if (is_int($value) && $value >= 0) {
+        array_push($arrayPositivos, $value);
+      } else if (is_int($value) && $value < 0) {
+        array_push($arrayNegativos, $value);
+      }
+    }
+
+    foreach ($arrayPositivos as $key => $value) {
+      if (in_array($value * (-1), $arrayNegativos)) {
+        array_push($arrayCoincidencias, $value);
+      }
+    }
+
+    $arrayLimpio = array_unique($arrayCoincidencias, SORT_NUMERIC);
+    return $arrayLimpio;
+  } else {
+    return [];
+  }
 }
 
 /**
@@ -100,26 +140,38 @@ function simetricos($datos)
 
 function limpieza($datos, $noNegativos = false)
 {
-  $array = [];
 
-  if ($noNegativos = true) {
-    foreach ($datos as  $value) {
-      if ($value >= 0 && !is_string($value)) {
-        array_push($array, $value);
+  if (!empty($datos)) {
+    $array = [];
+    $arrayFinal = [];
+
+    if ($noNegativos = true) {
+      foreach ($datos as $key =>  $value) {
+        if (is_int($value)) {
+          array_push($array, $value);
+        }
       }
-      array_unique($array);
-      sort($array);
-      return $array;
-    }
-  }
 
-  foreach ($datos as  $value) {
-    if (!is_string($value)) {
-      array_push($array, $value);
+      foreach ($array as $key => $value) {
+        if ($value < 0) {
+          unset($array[$value]);
+        }
+      }
+      $arrayFinal = array_unique($array);
+      sort($arrayFinal);
+      return $arrayFinal;
+    } else {
+
+      foreach ($datos as $key => $value) {
+        if (is_int($value)) {
+          array_push($array, $value);
+        }
+        $arrayFinal = array_unique($array);
+        sort($arrayFinal);
+        return $arrayFinal;
+      }
     }
+  } else {
+    return [];
   }
-  array_unique($array);
-  sort($array);
-  return $array;
 }
-?>
