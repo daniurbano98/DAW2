@@ -1,30 +1,36 @@
 <?php
+
 /**
  * Método para calcular el recorrido de una serie numérica
  * El valor devuelto es la diferencia entre el valor más grande y más chico.
  * @param array $datos La serie numérica de datos.
  * @retval int La diferencia entre los valores máximo y mínimo
  */
-function recorrido($datos) {
-  $max=0;
-  $min=0;
+function recorrido($datos)
+{
+  $max = 0;
+  $min = 0;
 
-  if(!empty($datos)){
+  if (!empty($datos)) {
     $array = [];
 
-    for ($i=0; $i < sizeof($datos) ; $i++) { 
-      if(is_int($datos[$i])){
-        $array[$i] = $datos[$i];
+    foreach ($datos as $key => $value) {
+      if (is_int($value)) {
+        array_push($array, $value);
       }
     }
-   $max = max($array);
-   $min = min($array);
+
+
+    $max = max($array);
+    $min = min($array);
+    
+    $diferencia = $max - $min;
+
+    return $diferencia;
   }
 
-    
-  $diferencia = $max - $min;
-      
-  return $diferencia;
+
+  
 }
 
 /**
@@ -33,21 +39,22 @@ function recorrido($datos) {
  * @param array $datos La serie numérica de datos de entrada 
  * @retval array La serie numérica resultante.
  */
-function noNegativos($datos) {
-  $array=[];
+function noNegativos($datos)
+{
 
-    for ($i=0; $i <sizeof($datos) ; $i++) { 
-      if($datos[$i]<0){
-        unset($datos[$i]);
-      }
-      else if(!is_int($datos[$i])){
-        unset($datos[$i]);
-      }
-      else{
-        $array[$i] = $datos[$i];
-      }
+  if (!empty($datos)) {
+
+   $array=[];
+
+    foreach ($datos as $key => $value) {
+      if ($value>=0) {
+        array_push($array,$value);   
     }
-  return $array;
+  }
+  return $array;  
+}
+
+
 }
 
 /**
@@ -57,13 +64,9 @@ function noNegativos($datos) {
  * @param int $valor El valor a buscar.
  * @retval boolean Se ha encontrado o no el valor.
  */
-function buscar($datos, $valor) {
-    for ($i=0; $i <sizeof($datos) ; $i++) { 
-        if($datos[$i]==$valor){
-          return true;
-        }
-    }
-  return false;
+function buscar($datos, $valor)
+{
+  
 }
 
 /**
@@ -75,8 +78,9 @@ function buscar($datos, $valor) {
  * @param array $datos La serie numérica de datos de entrada.
  * @retval array La serie numérica resultante.
  */
-function simetricos($datos) {
-  // TODO
+function simetricos($datos)
+{
+  
   return [];
 }
 
@@ -92,21 +96,28 @@ function simetricos($datos) {
  * @retval array La serie numérica resultante.
  */
 
-function limpieza($datos, $noNegativos = false) {
-    $array = [];
+function limpieza($datos, $noNegativos = false)
+{
+  $array = [];
 
-    for ($i=0; $i <sizeof($datos) ; $i++) { 
-      if($datos[$i]<0){
-        unset($datos[$i]);
+  if ($noNegativos = true) {
+    foreach ($datos as  $value) {
+      if ($value >= 0 && !is_string($value)) {
+        array_push($array, $value);
       }
-      else if(!is_int($datos[$i])){
-        unset($datos[$i]);
-      }else{
-        $array[$i] = $datos[$i];
-      }
+      array_unique($array);
+      sort($array);
+      return $array;
     }
-    array_unique($array);
+  }
 
+  foreach ($datos as  $value) {
+    if (!is_string($value)) {
+      array_push($array, $value);
+    }
+  }
+  array_unique($array);
+  sort($array);
   return $array;
 }
-
+?>
