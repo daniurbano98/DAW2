@@ -71,17 +71,18 @@ function noNegativos($datos)
 function buscar($datos, $valor)
 {
   if (!empty($datos)) {
-    foreach ($datos as $key => $value) {
-      if ($value == $valor && !is_int($value)) {
-        return false;
-      } else {
+    if (!is_int($valor)) {
+      return  "false";
+    } else {
+      foreach ($datos as $key => $value) {
         if ($value == $valor) {
-          return true;
-        }
+          return "true";
+        }       
       }
+      return "false";
     }
   } else {
-    return [];
+    return  "false";
   }
 }
 

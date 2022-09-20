@@ -50,5 +50,6 @@ function test($nombre, $serie) {
   echo "REC. NO-NEGATIVOS " . recorrido(noNegativos($serie)) . "\n";
   echo "SIMÉTRICOS   = [ " . implode(", ", simetricos($serie)) . " ]\n";
   echo "LIMPIEZA      = [ " . implode(", ", limpieza($serie)) . " ]\n";
+  echo "BUSCAR = " . buscar($serie,2);
 }
 
