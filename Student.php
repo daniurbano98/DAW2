@@ -6,8 +6,8 @@
         private $surname;
         private $avg_marks;
 
-                
-
+        
+        
 
         /**
          * Get the value of name
@@ -91,7 +91,7 @@
     }
 
 
-    $student = new student();
+    
 
 
 
