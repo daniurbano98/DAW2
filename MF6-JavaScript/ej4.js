@@ -28,9 +28,34 @@ function alarma(){
     var segundos = document.getElementById("segundos").value;
 
     if(hora == h && minutos == m && segundos == s){
-       document.getElementById("mensaje").innerText = "lol"; 
+       document.getElementById("mensaje").innerText = "lol";
+       var snd = new Audio("./musica/alarma.mp3");
+       snd.play(); 
     }
 
     setInterval(alarma,1000);
+
+}
+
+
+
+function cuentaAtras(){
+   var minutos = document.getElementById("minuto").value;
+   var segundos = document.getElementById("segundo").value;
+
+   
+    var time = minutos + ":" + segundos;
+    document.getElementById("time").innerText = time;
+    
+    -
+
+
+   setInterval(cuentaAtras,1000);
+ 
+}
+
+
+
+function pausar(){
 
 }
