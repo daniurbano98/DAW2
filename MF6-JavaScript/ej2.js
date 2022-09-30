@@ -7,7 +7,7 @@ function playEncerta(){
     }else{
         span.style.backgroundColor="green";
     }
-
+    
     refOpenWindow=window.open("encerta.html"," ","height=500,width=500");
     window.setTimeout(tancaEncerta  ,7000);
 }
