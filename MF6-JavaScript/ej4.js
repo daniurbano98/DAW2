@@ -103,7 +103,7 @@ function restart(){
     clearInterval(valorCuentaAtras);
 }
 
-//TODO: FALTA EL METODO PAUSAR, NO FUNCIONA
+//TODO: COMPLETAR METODO PAUSAR, NO FUNCIONA
 
 function pausar(){
     clearInterval(valorCuentaAtras);
