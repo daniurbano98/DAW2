@@ -7,7 +7,6 @@
     <title>ej4</title>
     <script src="ej4.js" defer></script>
 </head>
-<body>
 
     <div id="MyClockDisplay" onload="showTime()"></div>
 
@@ -18,12 +17,17 @@
         segundos <input type="number" id="segundos">
         <button onclick="alarma()">FIJAR ALARMA</button>
         <p id="mensaje"></p>
-
-        <h2>CUENTA ATRAS</h2>
-        minutos <input type="number" id="minuto">
-        segundos <input type="number" id="segundo">
-        <button onclick="cuentaAtras()" >iniciar</button>
-        <div id="time"></div>
     </div>
+
+        <h2>CUENTA ATRAS</h2>       
+        <input type="number" id="minuto"></input> 
+        <input type="number" id="segundo" ></input>
+        <button onclick="cuentaAtras()" >iniciar</button>
+        <button id="pausar"onclick="pausar()">pause</button>
+        <button onclick="restart()">restart</button>
+        <div id="contador-minutos">0</div>
+        <div id="contador-segundos">0</div>
+        <p id="notificacion"></p>
+    
 </body>
 </html>
