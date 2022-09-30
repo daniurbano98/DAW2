@@ -1,20 +1,17 @@
-let contador;
 
-function cuentaAtras(){
 
-    segundos = document.getElementById("contador").value;
+var timeLeft = 30;
+    var elem = document.getElementById('contador');
+    
+    
+    function countdown() {
+      if (timeLeft == -1) {
+        clearTimeout(timerId);
 
-        contador = setInterval(function(){
-            
-            if(segundos == 0){
-                clearInterval(contador);
-                mensaje.textContent = "se viene";
-            }else{
-                segundos--;
-                }
-        },1000);
-   
-   
-}
-
-cuentaAtras();
+        
+      } else {
+        elem.innerHTML = timeLeft;
+        timeLeft--;
+      }
+    }
+    var timerId = setInterval(countdown, 1000);
