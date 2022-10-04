@@ -1,4 +1,21 @@
+<?php 
+namespace app;
+require_once('../entity/Cuenta.php');
+
+
+
+ $cuenta1 = new Cuenta(1000,"dani","$");
+ $cuenta2 = new Cuenta(200,"afnan","$");
+
+ 
+ echo $cuenta1->__toString();
+ echo $cuenta2->__toString();
+?>
+
+
+
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -15,20 +32,3 @@
 
 
 
-<?php
-
-use GestionBanco\Cuenta;
-require __DIR__ . '/Cuenta.php';
-
-
- $cuenta1 = new Cuenta(1000,"dani","$");
- $cuenta2 = new Cuenta(200,"afnan","$");
-
- 
- echo $cuenta1->__toString();
- echo $cuenta2->__toString();
-
-
-
-
-?>

@@ -1,5 +1,5 @@
 <?php 
-namespace GestionBanco{
+namespace app{
     class Cuenta{
         static $id_cuenta = 0;
         public $saldo;
