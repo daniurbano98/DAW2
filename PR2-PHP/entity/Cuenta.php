@@ -1,10 +1,10 @@
 <?php 
 namespace app{
     class Cuenta{
-        static $id_cuenta = 0;
-        public $saldo;
-        public $nombre_titular;
-        public $tipo_moneda;
+        private $id_cuenta;
+        private $saldo;
+        private $nombre_titular;
+        private $tipo_moneda;
 
         /**
          * Get the value of id_cuenta
@@ -49,12 +49,11 @@ namespace app{
 
         public function __toString()
         {
-            return $this->nombre_titular. " del banco STUBanco con numero de cuenta".self::$id_cuenta." tiene ".$this->saldo." ".$this->tipo_moneda;
+            return "<br>".$this->nombre_titular. " del banco STUBanco <br>con numero de cuenta".$this->id_cuenta."<br> saldo: ".$this->saldo." ".$this->tipo_moneda."<br>-------------------";
         }
 
 
         public function __construct($saldo, $nombre_titular, $tipo_moneda){
-            self::$id_cuenta = self::$id_cuenta++;
             $this->saldo = $saldo;
             $this->nombre_titular = $nombre_titular;
             $this->tipo_moneda = $tipo_moneda;
