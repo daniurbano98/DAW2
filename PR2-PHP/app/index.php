@@ -29,43 +29,40 @@ session_start();
         Nombre<input type="text" name="nombre"></text>
         <input type="submit" name="register" value="Registar usuario"></input>
         <input type="submit" name="menuPrincipal" value="Menú principal"></input>
-        
+
 
         <?php
 
-        if(isset($_SESSION["clientes"])){
-            foreach ($_SESSION["clientes"] as $clientes ) {
+        if (isset($_SESSION["clientes"])) {
+            foreach ($_SESSION["clientes"] as $clientes) {
                 echo $clientes;
             }
         }
 
 
         if (isset($_POST['saldo']) && isset($_POST['nombre'])) {
-            if(empty($_POST['saldo']) || empty($_POST['nombre'])){
+            if (empty($_POST['saldo']) || empty($_POST['nombre'])) {
                 echo "no dejes campos vacios";
-            }
-
-            else if (preg_match('~[0-9]+~', $_POST['nombre'])) {
+            } else if (preg_match('~[0-9]+~', $_POST['nombre'])) {
                 echo 'Por favor no introduzcas numeros en tu nombre';
-            } 
-            else {
+            } else {
                 $new_account = new Cuenta($_POST['saldo'], $_POST['nombre'], "$");
                 $_SESSION["clientes"][] = $new_account;
-                echo $new_account;     
+                echo $new_account;
             }
         }
 
-        if(isset($_POST['menuPrincipal'])){
-            if(sizeof($_SESSION["clientes"])>2){
+        if (isset($_POST['menuPrincipal'])) {
+            if (sizeof($_SESSION["clientes"]) > 2) {
                 header('Location: menuCuenta.php');
-            }else{
+            } else {
                 echo "crea dos cuentas al menos";
             }
         }
 
-        
 
-        
+
+
 
 
 
