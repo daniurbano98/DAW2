@@ -49,16 +49,14 @@ session_start();
                 $new_account = new Cuenta($_POST['saldo'], $_POST['nombre'], "$");
                 $_SESSION["clientes"][] = $new_account;
                 echo $new_account;
+
+                if (sizeof($_SESSION["clientes"]) > 1) {
+                    header('Location: menuCuenta.php');
+                }
             }
         }
 
-        if (isset($_POST['menuPrincipal'])) {
-            if (sizeof($_SESSION["clientes"]) > 2) {
-                header('Location: menuCuenta.php');
-            } else {
-                echo "crea dos cuentas al menos";
-            }
-        }
+        
 
 
 

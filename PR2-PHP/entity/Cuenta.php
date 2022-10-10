@@ -1,5 +1,5 @@
 <?php 
-namespace app{
+namespace app;
     class Cuenta{
         private $id_cuenta;
         private $saldo;
@@ -59,6 +59,8 @@ namespace app{
             $this->tipo_moneda = $tipo_moneda;
         
     }
-    }
+
+    
+    
 }
 
