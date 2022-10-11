@@ -18,13 +18,7 @@ function backgroundColor() {
 }
 
 function select() {
-    arrayVentanas.push(window);
-    console.log(arrayVentanas);
-    
-    for (let index = 0; index < arrayVentanas.length; index++) {
-        console.log(index);
-        
-    }
 
+  
 
 }

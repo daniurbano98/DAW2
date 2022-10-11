@@ -27,7 +27,6 @@ var ventanas = setInterval(createWindow,1000);
 function firstWindow() {
   const windowFeatures = "left=700,top=100,width=320,height=320";
   let newWindow = window.open("ventana.html", "", windowFeatures);
-  arrayVentanas.push(newWindow);
   contadorVentanas++;
 }
 
@@ -49,9 +48,8 @@ function createWindow() {
         "," +
         "width=320,height=320";
       let newWindow = window.open("ventana.html", "", windowFeatures);
-      arrayVentanas.push(newWindow);
       contadorVentanas++;
-      console.log(arrayVentanas);
+      
     }
   }
 }
