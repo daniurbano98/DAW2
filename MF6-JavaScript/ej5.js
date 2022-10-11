@@ -1,50 +1,64 @@
-
-
 var timeLeft = 30;
-var elem = document.getElementById('contador');
-var contadorVentanas = 0;
+var elem = document.getElementById("contador");
 var timerId = setInterval(countdown, 1000);
-var arrayVentanas = [];
-var colors = ['red', 'green', 'pink', 'orange', 'yellow'];
+let arrayVentanas = [];
 
-// openBlueWindow();
+
+
 
 function countdown() {
-  createWindow();
-
   if (timeLeft == -1) {
     clearInterval(timerId);
   } else {
     elem.innerHTML = timeLeft;
     timeLeft--;
   }
-
 }
 
 
-function createWindow(){
-  while(contadorVentanas<3){
-    const windowFeatures = "left=100,top=100,width=320,height=320";
-    let newWindow = window.open('ventana.html','',windowFeatures);
-    // newWindow.document.body.style.backgroundColor = randomColor();
-    contadorVentanas++;
+
+
+
+var contadorVentanas = 0;
+var ventanas = setInterval(createWindow,1000);
+
+
+
+function firstWindow() {
+  const windowFeatures = "left=700,top=100,width=320,height=320";
+  let newWindow = window.open("ventana.html", "", windowFeatures);
+  arrayVentanas.push(newWindow);
+  contadorVentanas++;
+}
+
+
+
+function createWindow() {
+  if (contadorVentanas == 0) {
+    firstWindow();
+  } else {
+    if (contadorVentanas == 3) {
+      clearInterval(ventanas);
+    } else {
+      let windowFeatures =
+        "left=" +
+        randomUbication() +
+        "," +
+        "top=" +
+        randomUbication() +
+        "," +
+        "width=320,height=320";
+      let newWindow = window.open("ventana.html", "", windowFeatures);
+      arrayVentanas.push(newWindow);
+      contadorVentanas++;
+      console.log(arrayVentanas);
+    }
   }
 }
 
-
-
-
-function randomColor() {
-  let index = Math.floor(Math.random() * 4);
-  colors[index];
-  console.log(colors[index]);
-  return colors[index];
-
+function randomUbication() {
+  let ubication = Math.floor(Math.random() * 500);
+  return ubication;
 }
-
-
-
-
-
 
 
