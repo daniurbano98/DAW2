@@ -1,5 +1,4 @@
 let padre = window.opener;
-let contadorClicks = 0;
 
 
 
@@ -21,8 +20,7 @@ function backgroundColor() {
 
 function clicked(){
     padre.addWindow(window);
-    padre.comprobacionPantallas();
-    
+    padre.comprobacionPantallas();  
 }
 
 
