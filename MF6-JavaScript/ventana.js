@@ -1,14 +1,16 @@
+let padre = window.opener;
+let contadorClicks = 0;
 
 
 
 function randomColor() {
-    let index = Math.floor(Math.random() * 4);
+    let index = Math.floor(Math.random() * 3);
     colors[index];
     console.log(colors[index]);
     return colors[index];
 }
 
-var colors = ["red", "green", "pink", "orange", "yellow"];
+var colors = ["red", "green", "pink", "orange"];
 
 function backgroundColor() {
     let colorWindow = window.document.body.style.backgroundColor = randomColor();
@@ -17,8 +19,14 @@ function backgroundColor() {
 
 }
 
-function select() {
-
-  
-
+function clicked(){
+    padre.addWindow(window);
+    padre.comprobacionPantallas();
+    
 }
+
+
+
+
+
+
