@@ -1,0 +1,35 @@
+h1{
+    
+    text-align: center;
+}
+
+div{
+    margin-top: 3rem;
+    text-align: center;
+}
+
+p{
+    text-align: center;
+}
+
+#bloque-central{
+    margin-top: 5rem;
+}
+
+#contadorVentanas{
+    font-size: 50px;
+}
+
+#contador{
+    font-size: 50px;
+}
+
+#mensajeVictoria{
+    margin-top: 2rem;
+    font-size: 30px;
+} 
+
+#mensajeDerrota{
+    font-size: 30px;
+} 
+

@@ -1,0 +1,39 @@
+div{
+    text-align: center;
+    margin-top: 2rem;
+}
+
+#MyClockDisplay{
+    color: green;
+    font-weight: bold;
+    font-size: 50px;
+}
+
+#hora, #minutos, #segundos {
+    width: 30rem;
+    margin: 0 auto;
+}
+
+#botonAlarma{
+    margin-top: 2rem;
+}
+
+#minuto,#segundo{
+    width: 30rem;
+    margin: 0 auto;
+    margin-top: 1rem;
+}
+
+#iniciar,#pausar, #restart{
+    margin-top: 1rem;
+}
+
+#contador-minutos,#contador-segundos{
+    color: green;
+    font-weight: bold;
+    font-size: 50px;
+}
+
+#pauseButton{
+    background-color: red;
+}

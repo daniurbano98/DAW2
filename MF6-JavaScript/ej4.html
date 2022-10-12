@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css" crossorigin="anonymous">
+    <script src="bootstrap/bootstrap.min.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="CSS/ej4.css">
     <title>ej4</title>
     <script src="ej4.js" defer></script>
 </head>
@@ -11,23 +14,26 @@
     <div id="MyClockDisplay" onload="showTime()"></div>
 
     <div id="bloque-alarma">
-        <h2>ALARMA</h2>
-        horas<input type="number" id="hora">
-        minutos <input type="number" id="minutos">
-        segundos <input type="number" id="segundos">
-        <button onclick="alarma()">FIJAR ALARMA</button>
-        <p id="mensaje"></p>
+        <h1 class="h1">ALARMA</h1>
+        Horas<input type="number" id="hora"  class="form-control">
+        Minutos <input type="number" id="minutos"  class="form-control">
+        Segundos <input type="number" id="segundos"  class="form-control">
+        <button type="button" class="btn btn-success" onclick="alarma()" id="botonAlarma">FIJAR ALARMA</button>
+        <p id="mensaje" class="text-success"></p>
     </div>
 
-        <h2>CUENTA ATRAS</h2>       
-        <input type="number" id="minuto"></input> 
-        <input type="number" id="segundo" ></input>
-        <button onclick="cuentaAtras()" >iniciar</button>
-        <button id="pausar"onclick="pausar()">pause</button>
-        <button onclick="restart()">restart</button>
+    <div id="bloque-cuenta-atras">
+        <h1 class="h1">CUENTA ATRAS</h1>       
+        <input type="number" id="minuto"  class="form-control"></input> 
+        <input type="number" id="segundo"  class="form-control"></input>
+        <button type="button" class="btn btn-success" id="iniciar" onclick="cuentaAtras()" >iniciar</button>
+        <button type="button" class="btn btn-success" id="pausar" onclick="pausar()">pause</button>
+        <button type="button" class="btn btn-success" id="restart" onclick="restart()">restart</button>
         <div id="contador-minutos">0</div>
         <div id="contador-segundos">0</div>
-        <p id="notificacion"></p>
+        <p id="notificacion" class="text-success"></p>
+    </div>
+        
     
 </body>
 </html>

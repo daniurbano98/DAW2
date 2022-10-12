@@ -10,20 +10,20 @@ var contabilizadorVentanas = 0;
 function comprobacionContadorVentanas(contador){
   if(contador==0){
     clearInterval(timerId);
-    document.getElementById("mensaje").innerHTML="¡Felicidades, has ganado!";
+    document.getElementById("mensajeVictoria").innerHTML="¡Felicidades, has ganado!";
   }
 }
 
 
 function stopGame(){
   clearInterval(timerId);
-  document.getElementById("mensaje").innerHTML="Lo siento, has perdido. Sigue intentandolo";
+  document.getElementById("mensajeDerrota").innerHTML="Lo siento, has perdido. Sigue intentandolo";
 }
 
 function countdown() {
   if (timeLeft == -1) {
     clearInterval(timerId);
-    document.getElementById("mensaje").innerHTML="Lo siento, has perdido. Sigue intentandolo";
+    document.getElementById("mensajeDerrota").innerHTML="Lo siento, has perdido. Sigue intentandolo";
   } else {
     elem.innerHTML = timeLeft;
     timeLeft--;

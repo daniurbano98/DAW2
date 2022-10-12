@@ -5,15 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ej5</title>
+    <link rel="stylesheet" href="CSS/ej5.css">
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css" crossorigin="anonymous">
+    <script src="bootstrap/bootstrap.min.js" crossorigin="anonymous"></script>
     <script src="ej5.js" defer></script>
 </head>
 <body onload="createWindow()">
-<h1>COUNTDOWN</h1>
 
-<div id="contador" onload="countdown()" ></div>
-<div id="contadorVentanas">0</div>
- <p id="mensaje"></p>
- <button id="stop" onclick="stopGame()">Parar juego</button>   
+
+<div id="bloque-central">
+    <h1 class="h1">COUNTDOWN</h1>
+    <div id="contador" onload="countdown()" ></div>
+    <div id="contadorVentanas">0</div>
+    <p id="mensajeVictoria" class="text-success"></p>
+    <p id="mensajeDerrota" class="text-danger"></p>
+     <div>
+        <button class="btn btn-danger" id="stop" onclick="stopGame()">Parar juego</button>   
+     </div>
+
+</div>
+
+ 
  
 </body>
 </html>

@@ -28,7 +28,7 @@ function alarma() {
     var segundos = document.getElementById("segundos").value;
 
     if (hora == h && minutos == m && segundos == s) {
-        document.getElementById("mensaje").innerText = "lol";
+        document.getElementById("mensaje").innerText = "BON DIA";
         var sonido = new Audio("./musica/alarma.mp3");
         sonido.play();
     }
@@ -65,6 +65,7 @@ function cuentaAtras() {
                 var button = document.createElement('button');
                 button.type = 'button';
                 button.setAttribute('id', 'pauseButton');
+                button.className("btn btn-secondary");
                 button.innerText = 'pausar cancion';
                 document.body.appendChild(button);
                 button.addEventListener('click', () => {
