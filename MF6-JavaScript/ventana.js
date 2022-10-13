@@ -20,7 +20,7 @@ function backgroundColor() {
 
 function clicked(){
     padre.addWindow(window);
-    padre.comprobacionPantallas();  
+    padre.comprobacionPantallas(window);  
 }
 
 

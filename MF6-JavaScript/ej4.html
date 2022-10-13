@@ -26,9 +26,16 @@
         <h1 class="h1">CUENTA ATRAS</h1>       
         <input type="number" id="minuto"  class="form-control"></input> 
         <input type="number" id="segundo"  class="form-control"></input>
-        <button type="button" class="btn btn-success" id="iniciar" onclick="cuentaAtras()" >iniciar</button>
-        <button type="button" class="btn btn-success" id="pausar" onclick="pausar()">pause</button>
-        <button type="button" class="btn btn-success" id="restart" onclick="restart()">restart</button>
+        
+            <div id="bloque-botones">
+            <button type="button" class="btn btn-success" id="iniciar" onclick="cuentaAtras()" >iniciar</button>
+            <button type="button" class="btn btn-success" id="pausar" onclick="pausar()">pause</button>
+            <button type="button" class="btn btn-success" id="restart" onclick="restart()">restart</button>
+            <button type="button" class="btn btn-success" id="stopMusic" onclick="stopMusic()">stop music</button>
+             
+            </div>
+            
+        
         <div id="contador-minutos">0</div>
         <div id="contador-segundos">0</div>
         <p id="notificacion" class="text-success"></p>

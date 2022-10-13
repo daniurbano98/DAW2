@@ -24,7 +24,7 @@ div{
     margin-top: 1rem;
 }
 
-#iniciar,#pausar, #restart{
+#iniciar,#pausar, #restart ,#stopMusic{
     margin-top: 1rem;
 }
 
@@ -35,5 +35,10 @@ div{
 }
 
 #pauseButton{
-    background-color: red;
+    background-color: yellow;
+
 }
+
+
+
+

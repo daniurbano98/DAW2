@@ -38,9 +38,11 @@ function alarma() {
 }
 
 let valorCuentaAtras;
+var musica = new Audio("./musica/danzaKuduro.mp3");
 
 
 function cuentaAtras() {
+    document.getElementById("pausar").disabled=false;
     var minutos = document.getElementById("minuto").value;
     var segundos = document.getElementById("segundo").value;
 
@@ -58,20 +60,8 @@ function cuentaAtras() {
 
             if (segundos == 0 && minutos == 0) {
                 clearInterval(valorCuentaAtras);
-
                 notificacion.textContent = "Fin de la cuenta atrás";
-                var musica = new Audio("./musica/danzaKuduro.mp3");
                 musica.play();
-                var button = document.createElement('button');
-                button.type = 'button';
-                button.setAttribute('id', 'pauseButton');
-                button.className("btn btn-secondary");
-                button.innerText = 'pausar cancion';
-                document.body.appendChild(button);
-                button.addEventListener('click', () => {
-                    musica.pause()
-                }, false);
-
             }
             else if (segundos > 0) {
                 segundos--;
@@ -90,10 +80,6 @@ function cuentaAtras() {
 
 
 
-
-
-
-
 function restart() {
     document.getElementById("contador-minutos").textContent = 0;
     document.getElementById("contador-segundos").textContent = 0;
@@ -103,18 +89,13 @@ function restart() {
 
 
 function pausar() {
-    clearInterval(valorCuentaAtras);
+        document.getElementById("pausar").disabled=true;
+        clearInterval(valorCuentaAtras);
+    
+}
 
-
-    // var minutos = document.getElementById("contador-minutos").value;
-    // var segundos = document.getElementById("contador-segundos").value;
-
-    // document.getElementById("minuto").innerText = minutos;
-    // document.getElementById("segundo").innerText = segundos;
-
-    // document.getElementById("contador-minutos").textContent = minutos;
-    // document.getElementById("contador-segundos").textContent = segundos;
-    // clearInterval(valorCuentaAtras);
+function stopMusic(){
+    musica.pause()
 }
 
 

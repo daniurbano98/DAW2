@@ -2,7 +2,11 @@
 
 namespace app;
 
+use functions;
+
 require_once('../entity/Cuenta.php');
+require_once("functions.php");
+
 session_start();
 
 ?>
@@ -41,16 +45,12 @@ session_start();
 
     if (isset($_POST["consultarSaldoBoton"])) {
         if (isset($_POST["consultarSaldo"])) {
-            // consultarSaldo($_SESSION["clientes"],$_POST["consultarSaldo"]);
-            foreach ($_SESSION["clientes"] as $user) {
-                if ($user->getId_cuenta() == $_POST["consultarSaldo"]) {
-                    echo $user->getSaldo();
-                }
-            }
+            functions::consultarSaldo($_SESSION["clientes"],$_POST["consultarSaldo"]);
         } else {
             echo "escribe coño";
         }
     }
+    // }else if(isset ($_POST[]))
 
 
 

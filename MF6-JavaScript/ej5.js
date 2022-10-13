@@ -5,6 +5,9 @@ let arrayVentanas = new Array();
 var contadorVentanas = 0;
 var ventanas = setInterval(createWindow, 1000);
 var contabilizadorVentanas = 0;
+let resultadoPartida = false;
+
+
 
 
 function comprobacionContadorVentanas(contador){
@@ -81,7 +84,7 @@ function addWindow(window) {
   arrayVentanas.push(window);
 }
 
-function comprobacionPantallas() {
+function comprobacionPantallas(window) {
 
   if (arrayVentanas.length == 1) {
     console.log("una ventana");
@@ -89,6 +92,7 @@ function comprobacionPantallas() {
   if (arrayVentanas.length == 2) {
     console.log("dos ventanas");
     if (arrayVentanas[0] == arrayVentanas[1]) {
+      //  window.document.body.style.backgroundColor = randomColor();
       oneWindow();
     }
     else if (arrayVentanas[0] != arrayVentanas[1] &&
