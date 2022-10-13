@@ -1,0 +1,14 @@
+<?php 
+
+
+function consultarSaldo($array,$comparacion){
+    foreach ($array as $user) {
+        if ($user->getId_cuenta() == $comparacion) {
+            echo "comeme la pinga";
+        }
+    }
+}
+
+
+
+?>

@@ -48,7 +48,9 @@ session_start();
             } else {
                 $new_account = new Cuenta($_POST['saldo'], $_POST['nombre'], "$");
                 $_SESSION["clientes"][] = $new_account;
+                $new_account->setId_cuenta(sizeof($_SESSION["clientes"]));
                 echo $new_account;
+                echo $new_account->getId_cuenta();
 
                 if (sizeof($_SESSION["clientes"]) > 1) {
                     header('Location: menuCuenta.php');
