@@ -1,6 +1,7 @@
 h1{
     
     text-align: center;
+    
 }
 
 div{
@@ -10,6 +11,7 @@ div{
 
 p{
     text-align: center;
+    font-size: 30px;
 }
 
 #bloque-central{
@@ -17,11 +19,11 @@ p{
 }
 
 #contadorVentanas{
-    font-size: 50px;
+    font-size: 20px;
 }
 
 #contador{
-    font-size: 50px;
+    font-size: 20px;
 }
 
 #mensajeVictoria{
@@ -33,3 +35,6 @@ p{
     font-size: 30px;
 } 
 
+#totalWindows{
+    font-size: 20px;
+}

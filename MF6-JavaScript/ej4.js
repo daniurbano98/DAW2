@@ -16,6 +16,7 @@ function showTime() {
 showTime();
 
 
+let sonido = new Audio("./musica/alarma.mp3");
 
 function alarma() {
     var date = new Date();
@@ -26,15 +27,19 @@ function alarma() {
     var hora = document.getElementById("hora").value;
     var minutos = document.getElementById("minutos").value;
     var segundos = document.getElementById("segundos").value;
+    document.getElementById("alarmaFijada").innerHTML = "¡ALARMA FIJADA!"
 
     if (hora == h && minutos == m && segundos == s) {
-        document.getElementById("mensaje").innerText = "BON DIA";
-        var sonido = new Audio("./musica/alarma.mp3");
+        document.getElementById("mensaje").innerText = "BON DIA";    
         sonido.play();
     }
 
     setInterval(alarma, 1000);
 
+}
+
+function stopAlarma(){
+    sonido.pause();
 }
 
 let valorCuentaAtras;
@@ -46,8 +51,10 @@ function cuentaAtras() {
     var minutos = document.getElementById("minuto").value;
     var segundos = document.getElementById("segundo").value;
 
+    document.getElementById("contador-minutos").textContent = minutos;
+    document.getElementById("contador-segundos").textContent = segundos;
 
-
+    
     if (minutos <= 0 && segundos <= 0) {
         alert("Por favor introduce un contador positivo")
     } else if (segundos > 59) {

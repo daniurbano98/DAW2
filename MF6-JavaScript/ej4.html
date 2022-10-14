@@ -14,25 +14,27 @@
     <div id="MyClockDisplay" onload="showTime()"></div>
 
     <div id="bloque-alarma">
-        <h1 class="h1">ALARMA</h1>
-        Horas<input type="number" id="hora"  class="form-control">
-        Minutos <input type="number" id="minutos"  class="form-control">
-        Segundos <input type="number" id="segundos"  class="form-control">
-        <button type="button" class="btn btn-success" onclick="alarma()" id="botonAlarma">FIJAR ALARMA</button>
+        <h1 class="h1">ALARM</h1>
+        HOURS<input type="number" id="hora"  class="form-control">
+        MINUTES <input type="number" id="minutos"  class="form-control">
+        SECONDS <input type="number" id="segundos"  class="form-control">
+        <p id="alarmaFijada" class="text-success"></p>
         <p id="mensaje" class="text-success"></p>
+        <button type="button" class="btn btn-success" onclick="alarma()" id="botonAlarma">FIJAR ALARMA</button>
+        <button type="button" class="btn btn-success" onclick="stopAlarma()" id="botonStopAlarma">STOP ALARMA</button>
+        
     </div>
 
     <div id="bloque-cuenta-atras">
-        <h1 class="h1">CUENTA ATRAS</h1>       
+        <h1 class="h1">COUNTDOWN</h1>       
         <input type="number" id="minuto"  class="form-control"></input> 
         <input type="number" id="segundo"  class="form-control"></input>
         
             <div id="bloque-botones">
-            <button type="button" class="btn btn-success" id="iniciar" onclick="cuentaAtras()" >iniciar</button>
-            <button type="button" class="btn btn-success" id="pausar" onclick="pausar()">pause</button>
-            <button type="button" class="btn btn-success" id="restart" onclick="restart()">restart</button>
-            <button type="button" class="btn btn-success" id="stopMusic" onclick="stopMusic()">stop music</button>
-             
+                <button type="button" class="btn btn-success" id="iniciar" onclick="cuentaAtras()" >START</button>
+                <button type="button" class="btn btn-success" id="pausar" onclick="pausar()">PAUSE</button>
+                <button type="button" class="btn btn-success" id="restart" onclick="restart()">RESTART</button>
+                <button type="button" class="btn btn-success" id="stopMusic" onclick="stopMusic()">STOP MUSIC</button>    
             </div>
             
         

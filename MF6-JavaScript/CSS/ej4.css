@@ -14,7 +14,7 @@ div{
     margin: 0 auto;
 }
 
-#botonAlarma{
+#botonAlarma, #botonStopAlarma{
     margin-top: 2rem;
 }
 
@@ -34,10 +34,7 @@ div{
     font-size: 50px;
 }
 
-#pauseButton{
-    background-color: yellow;
 
-}
 
 
 
