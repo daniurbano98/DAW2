@@ -15,6 +15,7 @@ function comprobacionContadorVentanas(contador){
     clearInterval(timerId);
     document.getElementById("mensajeVictoria").innerHTML="¡Felicidades, has ganado!";
     document.getElementById("stop").disabled=true;
+    
   }
 }
 
@@ -122,6 +123,8 @@ function comprobacionPantallas(window) {
     arrayVentanas = [];
   }  
 }
+
+
 
 
 

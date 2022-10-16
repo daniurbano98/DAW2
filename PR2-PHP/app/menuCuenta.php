@@ -24,16 +24,21 @@ session_start();
 <body>
     <h1>Menú principal</h1>
     <form action="menuCuenta.php" method="POST">
-        Consultar saldo <input type="number" placeholder="introduce el id" name="consultarSaldo">
+        Consultar saldo <input type="number" placeholder="introduce el id" name="idUserSaldo">
         <input type="submit" name="consultarSaldoBoton"> <br> <br>
-        Ingresar dinero <input type="number" placeholder="introduce el id" name="ingresarDinero">
-        <input type="submit"> <br> <br>
-        Sacar dinero <input type="number" placeholder="introduce el id" name="retirarDinero">
-        <input type="submit"> <br> <br>
-        Realizar transferencia <input type="number" placeholder="id de origen">
+
+        Ingresar dinero <input type="number" placeholder="introduce el id" name="idIngreso">
+        <input type="number" placeholder="cantidad a ingresar" name="cantidadIngreso">
+        <input type="submit" name="ingresarDineroBoton"> <br> <br>
+
+        Sacar dinero <input type="number" placeholder="introduce el id" name="idRetirada">
+        <input type="number" placeholder="cantidad a retirar" name="cantidadRetiro">
+        <input type="submit" name="retirarDineroBoton"> <br> <br>
+
+        Realizar transferencia <input type="number" placeholder="id de origen" name="idOrigen">
         <input type="number" placeholder="cantidad" name="cantidad">
         <input type="number" placeholder="id de destino" name="idDestino">
-        <input type="submit" name="transferencia"> <br> <br>
+        <input type="submit" name="transferenciaBoton"> <br> <br>
     </form>
 
     <?php
@@ -41,16 +46,37 @@ session_start();
         echo $users;
     }
 
-
-
     if (isset($_POST["consultarSaldoBoton"])) {
-        if (isset($_POST["consultarSaldo"])) {
-            functions::consultarSaldo($_SESSION["clientes"],$_POST["consultarSaldo"]);
-        } else {
-            echo "escribe coño";
+        if (isset($_POST["idUserSaldo"])) {
+            functions::consultarSaldo($_SESSION["clientes"],$_POST["idUserSaldo"]);
+        } 
+    }
+
+    if(isset($_POST["ingresarDineroBoton"])){
+        if (isset($_POST["cantidadIngreso"]) && isset($_POST["idIngreso"])){
+            functions::comprobacionRetiradaIngreso($_POST["idIngreso"], $_POST["cantidadIngreso"], $_SESSION["clientes"]);
         }
     }
-    // }else if(isset ($_POST[]))
+
+    if(isset($_POST["retirarDineroBoton"])){
+        if (isset($_POST["cantidadRetiro"]) && isset($_POST["idRetirada"])){
+            functions::comprobacionRetiradaIngreso($_POST["idRetirada"], $_POST["cantidadRetiro"], $_SESSION["clientes"]);
+        }
+    }
+
+    if(isset($_POST["transferenciaBoton"])){
+        if(isset($_POST["idOrigen"]) && isset($_POST["cantidad"]) && isset($_POST["idDestino"])){
+            functions::transferencia($_POST["idOrigen"],$_POST["idDestino"],$_POST["cantidad"],$_SESSION["clientes"]);
+        }
+    }
+
+    
+    
+    
+    
+    
+
+
 
 
 
