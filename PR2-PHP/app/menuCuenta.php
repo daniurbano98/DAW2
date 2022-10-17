@@ -42,9 +42,11 @@ session_start();
     </form>
 
     <?php
-    foreach ($_SESSION["clientes"] as $users) {
+    foreach ($_SESSION["clientes"] as $users) { //imprimo el toString cada vez que se recarga la pagina para ir viendo los cambios que se producen
         echo $users;
     }
+
+    //compruebo que accion desea hacer el usuario y ejecuto el método correspondiente para cada caso
 
     if (isset($_POST["consultarSaldoBoton"])) {
         if (isset($_POST["idUserSaldo"])) {

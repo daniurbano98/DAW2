@@ -33,7 +33,7 @@ session_start();
 
         <?php
 
-        if (isset($_SESSION["clientes"])) {
+        if (isset($_SESSION["clientes"])) { // con esto printo por pantalla los registros de usuarios
             foreach ($_SESSION["clientes"] as $clientes) {
                 echo $clientes;
             }
@@ -41,18 +41,18 @@ session_start();
 
 
         if (isset($_POST['saldo']) && isset($_POST['nombre'])) {
-            if (empty($_POST['saldo']) || empty($_POST['nombre'])) {
+            if (empty($_POST['saldo']) || empty($_POST['nombre'])) { //compruebo que no deje campos vacios
                 echo "no dejes campos vacios";
-            } else if (preg_match('~[0-9]+~', $_POST['nombre'])) {
+            } else if (preg_match('~[0-9]+~', $_POST['nombre'])) { //compruebo que no introduzca numeros en el nombre
                 echo 'Por favor no introduzcas numeros en tu nombre';
             } else {
-                $new_account = new Cuenta($_POST['saldo'], $_POST['nombre'], "$");
-                $_SESSION["clientes"][] = $new_account;
-                $new_account->setId_cuenta(sizeof($_SESSION["clientes"]));
+                $new_account = new Cuenta($_POST['saldo'], $_POST['nombre'], "$"); //creo un objeto cuenta
+                $_SESSION["clientes"][] = $new_account; //lo añado al array de sesion
+                $new_account->setId_cuenta(sizeof($_SESSION["clientes"])); //con esto le añado un id que cada vez que cree una nueva cuenta se incrementa
                 echo $new_account;
                 echo $new_account->getId_cuenta();
 
-                if (sizeof($_SESSION["clientes"]) > 1) {
+                if (sizeof($_SESSION["clientes"]) > 1) { //cuando hay 2 cuentas creadas nos redirige al menú
                     header('Location: menuCuenta.php');
                 }
             }
