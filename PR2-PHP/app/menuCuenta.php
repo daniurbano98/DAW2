@@ -2,6 +2,7 @@
 
 namespace app;
 
+use Exception;
 use functions;
 
 require_once('../entity/Cuenta.php');
@@ -23,7 +24,7 @@ session_start();
 
 <body>
     <h1>Menú principal</h1>
-    <form action="menuCuenta.php" method="POST">
+    <form  method="POST">
         Consultar saldo <input type="number" placeholder="introduce el id" name="idUserSaldo">
         <input type="submit" name="consultarSaldoBoton"> <br> <br>
 
@@ -41,49 +42,49 @@ session_start();
         <input type="submit" name="transferenciaBoton"> <br> <br>
     </form>
 
-    <?php
-    foreach ($_SESSION["clientes"] as $users) { //imprimo el toString cada vez que se recarga la pagina para ir viendo los cambios que se producen
-        echo $users;
-    }
+</body>
+
+</html>
+
+<?php
+    // foreach ($_SESSION["clientes"] as $users) { //imprimo el toString cada vez que se recarga la pagina para ir viendo los cambios que se producen
+    //     echo $users;
+    // }
 
     //compruebo que accion desea hacer el usuario y ejecuto el método correspondiente para cada caso
 
     if (isset($_POST["consultarSaldoBoton"])) {
         if (isset($_POST["idUserSaldo"])) {
-            functions::consultarSaldo($_SESSION["clientes"],$_POST["idUserSaldo"]);
-        } 
+            functions::consultarSaldo($_SESSION["clientes"], $_POST["idUserSaldo"]);
+        }
     }
 
-    if(isset($_POST["ingresarDineroBoton"])){
-        if (isset($_POST["cantidadIngreso"]) && isset($_POST["idIngreso"])){
+    if (isset($_POST["ingresarDineroBoton"])) {
+        if (isset($_POST["cantidadIngreso"]) && isset($_POST["idIngreso"])) {
             functions::comprobacionRetiradaIngreso($_POST["idIngreso"], $_POST["cantidadIngreso"], $_SESSION["clientes"]);
         }
     }
 
-    if(isset($_POST["retirarDineroBoton"])){
-        if (isset($_POST["cantidadRetiro"]) && isset($_POST["idRetirada"])){
+    if (isset($_POST["retirarDineroBoton"])) {
+        if (isset($_POST["cantidadRetiro"]) && isset($_POST["idRetirada"])) {
             functions::comprobacionRetiradaIngreso($_POST["idRetirada"], $_POST["cantidadRetiro"], $_SESSION["clientes"]);
         }
     }
 
-    if(isset($_POST["transferenciaBoton"])){
-        if(isset($_POST["idOrigen"]) && isset($_POST["cantidad"]) && isset($_POST["idDestino"])){
-            functions::transferencia($_POST["idOrigen"],$_POST["idDestino"],$_POST["cantidad"],$_SESSION["clientes"]);
+    if (isset($_POST["transferenciaBoton"])) {
+        if (isset($_POST["idOrigen"]) && isset($_POST["cantidad"]) && isset($_POST["idDestino"]) && !empty($_POST["idOrigen"]) && !empty($_POST["cantidad"]) && !empty($_POST["idDestino"])) {
+            functions::transferencia($_POST["idOrigen"], $_POST["idDestino"], $_POST["cantidad"], $_SESSION["clientes"]);
         }
     }
 
-    
-    
-    
-    
-    
+
+
+
+
+
 
 
 
 
 
     ?>
-
-</body>
-
-</html>

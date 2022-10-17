@@ -42,7 +42,7 @@ class functions
         $saldoActualizadoReceptor = $userReceptor->getSaldo() + $cantidad; //al receptor le sumo la cantidad que le traspasa el receptor
         echo $userReceptor->setSaldo($saldoActualizadoReceptor);
 
-        echo "transferencia realizada con éxito";
+        echo "<br>"."transferencia realizada con éxito";
         
     }
 
