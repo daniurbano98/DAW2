@@ -27,6 +27,10 @@ namespace app;
             return $this;
         }
 
+        public function getNombre(){
+            return $this->nombre_titular;
+        }
+
         /**
          * Get the value of saldo
          */ 
@@ -49,7 +53,7 @@ namespace app;
 
         public function __toString()
         {
-            return "<br>".$this->nombre_titular. " del banco STUBanco <br>con numero de cuenta".$this->id_cuenta."<br> saldo: ".$this->saldo." ".$this->tipo_moneda."<br>-------------------";
+            return "<br>".$this->nombre_titular. " del banco STUBanco <br>con numero de cuenta ".$this->id_cuenta."<br> saldo: ".$this->saldo." ".$this->tipo_moneda."<br>-------------------";
         }
 
 

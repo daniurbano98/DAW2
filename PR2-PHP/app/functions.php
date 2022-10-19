@@ -36,13 +36,21 @@ class functions
                 $userReceptor = $user; //me guardo la referencia del idReceptor en una variable cuando lo encuentre en el array
             }
         }
-        $saldoActualizadoEmisor =  $userEmisor->getSaldo() - $cantidad; //al emisor le resto la cantidad que le traspasa al receptor
-        echo $userEmisor->setSaldo($saldoActualizadoEmisor);
 
-        $saldoActualizadoReceptor = $userReceptor->getSaldo() + $cantidad; //al receptor le sumo la cantidad que le traspasa el receptor
-        echo $userReceptor->setSaldo($saldoActualizadoReceptor);
+        if($userEmisor->getSaldo()<$cantidad){
+            echo "no puedes retirar más dinero del que tienes";
+        }else{
+            $saldoActualizadoEmisor =  $userEmisor->getSaldo() - $cantidad; //al emisor le resto la cantidad que le traspasa al receptor
+            echo $userEmisor->setSaldo($saldoActualizadoEmisor);
 
-        echo "<br>"."transferencia realizada con éxito";
+            $saldoActualizadoReceptor = $userReceptor->getSaldo() + $cantidad; //al receptor le sumo la cantidad que le traspasa el receptor
+            echo $userReceptor->setSaldo($saldoActualizadoReceptor);
+
+            echo "<br>"."transferencia realizada con éxito";
+
+        }
+
+        
         
     }
 
@@ -51,7 +59,7 @@ class functions
     {
         foreach ($array as $user) {
             if ($user->getId_cuenta() == $comparacion) {    //compruebo en el array que exista y si es asi imprimo el saldo por pantalla
-                echo "<br>".$user->getSaldo();
+                echo "<br>"."El saldo del usuario ".$user->getNombre()." es ".$user->getSaldo();
             }
         }
     }

@@ -47,9 +47,7 @@ session_start();
 </html>
 
 <?php
-    // foreach ($_SESSION["clientes"] as $users) { //imprimo el toString cada vez que se recarga la pagina para ir viendo los cambios que se producen
-    //     echo $users;
-    // }
+   
 
     //compruebo que accion desea hacer el usuario y ejecuto el método correspondiente para cada caso
 

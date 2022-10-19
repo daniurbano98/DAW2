@@ -22,13 +22,12 @@ session_start();
 </head>
 
 <body>
-    <form action="index.php" method="POST">
+    <form action="registroUsuario.php" method="POST">
         <h1>Bienvenido a StuBanco</h1>
         Saldo <input type="number" name="saldo"></input>
         <br>
         Nombre<input type="text" name="nombre"></text>
         <input type="submit" name="register" value="Registar usuario"></input>
-        <input type="submit" name="menuPrincipal" value="Menú principal"></input>
 
 
         <?php
@@ -50,7 +49,7 @@ session_start();
                 $_SESSION["clientes"][] = $new_account; //lo añado al array de sesion
                 $new_account->setId_cuenta(sizeof($_SESSION["clientes"])); //con esto le añado un id que cada vez que cree una nueva cuenta se incrementa
                 echo $new_account;
-                echo $new_account->getId_cuenta();
+                
 
                 if (sizeof($_SESSION["clientes"]) > 1) { //cuando hay 2 cuentas creadas nos redirige al menú
                     header('Location: menuCuenta.php');
