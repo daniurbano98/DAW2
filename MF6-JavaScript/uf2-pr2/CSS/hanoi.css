@@ -1,0 +1,25 @@
+
+h1 {
+    
+    color: red;
+}
+div{
+    text-align: center;
+}
+
+#madre{
+    display: inline-flex;
+    background-color: white; 
+}
+
+#padre{
+    width: 150px;
+    margin: 50px;
+}
+
+#piramide-1,#piramide-2,#piramide-3{
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+    background-color: grey;
+}
