@@ -1,6 +1,6 @@
 <?php
 
-// use Geometrico\Geometrico;
+
 use Circulo\Circulo;
 
 require_once("../entity/Circulo.php");
