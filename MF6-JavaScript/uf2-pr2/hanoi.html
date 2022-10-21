@@ -12,9 +12,9 @@
 <body>
     <h1>Torre de hanoi</h1>
     Num. discs <input type="number" id="numeroDiscos" >
-    <input type="submit" value="START" onclick="cantidadDiscos()">
-    <br> <br>
-<div id="madre">
+    <input type="submit" value="START" onclick="cantidadDiscos()" id="start">
+    <br> <br> <br>
+<div id="padre">
     <div id="bloque-1">
        <div id="piramide-1">
 
@@ -29,7 +29,7 @@
 
 
         </div>
-        <button>mou pila 1</button>
+        <button onclick="mouPila1()">mou pila 1</button>
        <button>mou pila 3</button>
     </div>
 

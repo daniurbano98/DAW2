@@ -7,19 +7,39 @@ div{
     text-align: center;
 }
 
-#madre{
+#padre{
     display: inline-flex;
     background-color: white; 
 }
 
-#padre{
-    width: 150px;
-    margin: 50px;
-}
+
 
 #piramide-1,#piramide-2,#piramide-3{
     width: 150px;
     height: 150px;
     margin: 10px;
-    background-color: grey;
+    background-color: white;
+    text-align:center;
+}
+
+#disco0,#disco1,#disco2,#disco3,#disco4{
+    height:30px;
+    width:50px;
+    margin:0px auto;
+}
+
+#disco0{
+    width:60px;
+}
+#disco1{
+    width:80px;
+}
+#disco2{
+    width:100px;
+}
+#disco3{
+    width:120px;
+}
+#disco4{
+    width:140px;
 }
