@@ -59,55 +59,117 @@ function color(div) {
 }
 
 function move_to_piramide2_from_piramide1(){
+    let piramide2=document.getElementById("piramide-2");
+    let divHijo = piramide2.firstElementChild;
     
-    document.getElementById("piramide-2").appendChild(arrayDiscos1[0]);
-    arrayDiscos2.push(arrayDiscos1[0]);
-    arrayDiscos1.splice(0,1); 
-    console.log(arrayDiscos1);
+
+    if(divHijo==null){
+        document.getElementById("piramide-2").prepend(arrayDiscos1[0]);
+        arrayDiscos2.push(arrayDiscos1[0]);
+        arrayDiscos1.splice(0,1);
+        console.log(arrayDiscos1); 
+        
+    }else if(divHijo.clientWidth > arrayDiscos1[0].clientWidth){
+        document.getElementById("piramide-2").prepend(arrayDiscos1[0]);
+        arrayDiscos2.push(arrayDiscos1[0]);
+        arrayDiscos1.splice(0,1); 
+    }
+    else{
+        alert("no puedes");
+    }
+   
 }
 
 function move_to_piramide3_from_piramide1(){
+    let piramide3=document.getElementById("piramide-3");
+    let divHijo = piramide3.firstElementChild;
 
-    document.getElementById("piramide-3").appendChild(arrayDiscos1[0]);
-    arrayDiscos3.push(arrayDiscos1[0]);
-    arrayDiscos1.splice(0,1); 
-    
+    if(divHijo==null ){
+        document.getElementById("piramide-3").prepend(arrayDiscos1[0]);
+        arrayDiscos3.push(arrayDiscos1[0]);
+        arrayDiscos1.splice(0,1); 
+    }else if( divHijo.clientWidth > arrayDiscos1[0].clientWidth){
+        document.getElementById("piramide-3").prepend(arrayDiscos1[0]);
+        arrayDiscos3.push(arrayDiscos1[0]);
+        arrayDiscos1.splice(0,1);
+    }
+    else{
+        alert("lets go");
+    }
 }
 
 function move_to_piramide1_from_piramide2(){
+    let piramide1=document.getElementById("piramide-1");
+    let divHijo = piramide1.firstElementChild;
 
-    document.getElementById("piramide-1").appendChild(arrayDiscos2[0]);
-    arrayDiscos1.push(arrayDiscos2[0]);
-    arrayDiscos2.splice(0,1); 
+    if(divHijo==null ){
+        document.getElementById("piramide-1").prepend(arrayDiscos2[0]);
+        arrayDiscos1.push(arrayDiscos2[0]);
+        arrayDiscos2.splice(0,1); 
+    }else if(divHijo.clientWidth > arrayDiscos2[0].clientWidth){
+        document.getElementById("piramide-1").prepend(arrayDiscos2[0]);
+        arrayDiscos1.push(arrayDiscos2[0]);
+        arrayDiscos2.splice(0,1); 
+    }
+    else{
+        alert("lets go");
+    }
 
 }
 
 function move_to_piramide3_from_piramide2(){
+    let piramide3=document.getElementById("piramide-3");
+    let divHijo = piramide3.firstElementChild;
 
-    document.getElementById("piramide-3").appendChild(arrayDiscos2[0]);
-    arrayDiscos3.push(arrayDiscos2[0]);
-    arrayDiscos2.splice(0,1); 
-
+    if(divHijo==null ){
+        document.getElementById("piramide-3").prepend(arrayDiscos2[0]);
+        arrayDiscos3.push(arrayDiscos2[0]);
+        arrayDiscos2.splice(0,1); 
+    }else if(divHijo.clientWidth > arrayDiscos2[0].clientWidth){
+        document.getElementById("piramide-3").prepend(arrayDiscos2[0]);
+        arrayDiscos3.push(arrayDiscos2[0]);
+        arrayDiscos2.splice(0,1); 
+    }
+    else{
+        alert("lets go");
+    }
 }
 
 function move_to_piramide1_from_piramide3(){
-    document.getElementById("piramide-1").appendChild(arrayDiscos3[0]);
-    arrayDiscos1.push(arrayDiscos3[0]);
-    arrayDiscos3.splice(0,1); 
+    let piramide1=document.getElementById("piramide-1");
+    let divHijo = piramide1.firstElementChild;
+
+    if(divHijo==null ){
+        document.getElementById("piramide-1").prepend(arrayDiscos3[0]);
+        arrayDiscos1.push(arrayDiscos3[0]);
+        arrayDiscos3.splice(0,1);
+    }else if(divHijo.clientWidth > arrayDiscos3[0].clientWidth){
+        document.getElementById("piramide-1").prepend(arrayDiscos3[0]);
+        arrayDiscos1.push(arrayDiscos3[0]);
+        arrayDiscos3.splice(0,1);
+    }
+    
+    
+    else{
+        alert("suuuu");
+    }  
 }
+
 function move_to_piramide2_from_piramide3(){
-    document.getElementById("piramide-2").appendChild(arrayDiscos3[0]);
+    let piramide2=document.getElementById("piramide-2");
+    let divHijo = piramide2.firstElementChild;
+
+    if(divHijo==null  ){
+    document.getElementById("piramide-2").prepend(arrayDiscos3[0]);
     arrayDiscos2.push(arrayDiscos3[0]);
-    arrayDiscos3.splice(0,1); 
+    arrayDiscos3.splice(0,1);
+    }else if(divHijo.clientWidth > arrayDiscos3[0].clientWidth){
+        document.getElementById("piramide-2").prepend(arrayDiscos3[0]);
+        arrayDiscos2.push(arrayDiscos3[0]);
+        arrayDiscos3.splice(0,1);      
+    }else{
+        alert("suuuu");
+    } 
 }
 
-
-
-
-function mouPila1_piramide3(){
-    document.getElementById("piramide-3").appendChild(arrayDiscos2[0]);
-    arrayDiscos3.push(arrayDiscos2[0]);
-    arrayDiscos2.splice(0,1);
-
-}
 
