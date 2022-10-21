@@ -58,6 +58,7 @@ function color(div) {
     } 
 }
 
+
 function move_to_piramide2_from_piramide1(){
     let piramide2=document.getElementById("piramide-2");
     let divHijo = piramide2.firstElementChild;
