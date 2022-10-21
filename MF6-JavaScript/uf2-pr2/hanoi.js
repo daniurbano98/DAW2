@@ -1,7 +1,14 @@
 var colors = ["red", "green", "yellow", "orange", "blue"];
 
 
-let arrayDiscos = new Array();
+let arrayDiscos1 = new Array();
+let arrayDiscos2 = new Array();
+let arrayDiscos3 = new Array();
+
+let piramide1 = document.getElementById("bloque-1");
+let piramide2 = document.getElementById("bloque-2");
+let piramide3 = document.getElementById("bloque-3");
+
 
 
 
@@ -23,7 +30,7 @@ function cantidadDiscos() {
             div.setAttribute("id", "disco" + index);
             document.getElementById("piramide-1").appendChild(div);       
             color(div);
-            arrayDiscos.push(div);
+            arrayDiscos1.push(div);
 
         }
         
@@ -51,14 +58,56 @@ function color(div) {
     } 
 }
 
-function mouPila1(){
-    console.log(arrayDiscos[0]);
-    document.getElementById("piramide-2").appendChild(arrayDiscos[0]);
+function move_to_piramide2_from_piramide1(){
+    
+    document.getElementById("piramide-2").appendChild(arrayDiscos1[0]);
+    arrayDiscos2.push(arrayDiscos1[0]);
+    arrayDiscos1.splice(0,1); 
+    console.log(arrayDiscos1);
 }
-function mouPila2(){
+
+function move_to_piramide3_from_piramide1(){
+
+    document.getElementById("piramide-3").appendChild(arrayDiscos1[0]);
+    arrayDiscos3.push(arrayDiscos1[0]);
+    arrayDiscos1.splice(0,1); 
     
 }
-function mouPila3(){
-    
+
+function move_to_piramide1_from_piramide2(){
+
+    document.getElementById("piramide-1").appendChild(arrayDiscos2[0]);
+    arrayDiscos1.push(arrayDiscos2[0]);
+    arrayDiscos2.splice(0,1); 
+
+}
+
+function move_to_piramide3_from_piramide2(){
+
+    document.getElementById("piramide-3").appendChild(arrayDiscos2[0]);
+    arrayDiscos3.push(arrayDiscos2[0]);
+    arrayDiscos2.splice(0,1); 
+
+}
+
+function move_to_piramide1_from_piramide3(){
+    document.getElementById("piramide-1").appendChild(arrayDiscos3[0]);
+    arrayDiscos1.push(arrayDiscos3[0]);
+    arrayDiscos3.splice(0,1); 
+}
+function move_to_piramide2_from_piramide3(){
+    document.getElementById("piramide-2").appendChild(arrayDiscos3[0]);
+    arrayDiscos2.push(arrayDiscos3[0]);
+    arrayDiscos3.splice(0,1); 
+}
+
+
+
+
+function mouPila1_piramide3(){
+    document.getElementById("piramide-3").appendChild(arrayDiscos2[0]);
+    arrayDiscos3.push(arrayDiscos2[0]);
+    arrayDiscos2.splice(0,1);
+
 }
 
