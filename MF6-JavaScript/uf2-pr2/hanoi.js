@@ -10,12 +10,13 @@ let piramide2 = document.getElementById("bloque-2");
 let piramide3 = document.getElementById("bloque-3");
 
 
-
+let cantDiscos;    
 
 function cantidadDiscos() {
     let discos = document.getElementById("numeroDiscos").value;
     discos = parseInt(discos);
-
+    cantDiscos = discos;
+    
 
     if (discos > 5) {
         alert("Limite 5. Introduce un numero menor");
@@ -61,116 +62,144 @@ function color(div) {
 
 function move_to_piramide2_from_piramide1(){
     let piramide2=document.getElementById("piramide-2");
-    let divHijo = piramide2.firstElementChild;
+    console.log(arrayDiscos1);
     
 
-    if(divHijo==null){
+    if(piramide2.firstElementChild==null){
         document.getElementById("piramide-2").prepend(arrayDiscos1[0]);
-        arrayDiscos2.push(arrayDiscos1[0]);
+        arrayDiscos2.unshift(arrayDiscos1[0]);
         arrayDiscos1.splice(0,1);
-        console.log(arrayDiscos1); 
+         
         
-    }else if(divHijo.clientWidth > arrayDiscos1[0].clientWidth){
+    }else if(piramide2.firstElementChild.clientWidth > arrayDiscos1[0].clientWidth){
         document.getElementById("piramide-2").prepend(arrayDiscos1[0]);
-        arrayDiscos2.push(arrayDiscos1[0]);
+        arrayDiscos2.unshift(arrayDiscos1[0]);
         arrayDiscos1.splice(0,1); 
     }
     else{
-        alert("no puedes");
+        alert("no puedes poner una ficha más grande encima de una más pequeña");
     }
    
 }
 
 function move_to_piramide3_from_piramide1(){
     let piramide3=document.getElementById("piramide-3");
-    let divHijo = piramide3.firstElementChild;
+ 
 
-    if(divHijo==null ){
+    if(piramide3.firstElementChild==null ){
         document.getElementById("piramide-3").prepend(arrayDiscos1[0]);
-        arrayDiscos3.push(arrayDiscos1[0]);
+        arrayDiscos3.unshift(arrayDiscos1[0]);
         arrayDiscos1.splice(0,1); 
-    }else if( divHijo.clientWidth > arrayDiscos1[0].clientWidth){
+    }else if( piramide3.firstElementChild.clientWidth > arrayDiscos1[0].clientWidth){
         document.getElementById("piramide-3").prepend(arrayDiscos1[0]);
-        arrayDiscos3.push(arrayDiscos1[0]);
+        arrayDiscos3.unshift(arrayDiscos1[0]);
         arrayDiscos1.splice(0,1);
     }
     else{
-        alert("lets go");
+        alert("no puedes poner una ficha más grande encima de una más pequeña");
     }
 }
 
 function move_to_piramide1_from_piramide2(){
     let piramide1=document.getElementById("piramide-1");
-    let divHijo = piramide1.firstElementChild;
+   
 
-    if(divHijo==null ){
+    if(piramide1.firstElementChild==null ){
         document.getElementById("piramide-1").prepend(arrayDiscos2[0]);
-        arrayDiscos1.push(arrayDiscos2[0]);
+        arrayDiscos1.unshift(arrayDiscos2[0]);
         arrayDiscos2.splice(0,1); 
-    }else if(divHijo.clientWidth > arrayDiscos2[0].clientWidth){
+    }else if(piramide1.firstElementChild.clientWidth > arrayDiscos2[0].clientWidth){
         document.getElementById("piramide-1").prepend(arrayDiscos2[0]);
-        arrayDiscos1.push(arrayDiscos2[0]);
+        arrayDiscos1.unshift(arrayDiscos2[0]);
         arrayDiscos2.splice(0,1); 
     }
     else{
-        alert("lets go");
+        alert("no puedes poner una ficha más grande encima de una más pequeña");
     }
 
 }
 
 function move_to_piramide3_from_piramide2(){
     let piramide3=document.getElementById("piramide-3");
-    let divHijo = piramide3.firstElementChild;
+ 
 
-    if(divHijo==null ){
+    if(piramide3.firstElementChild==null ){
         document.getElementById("piramide-3").prepend(arrayDiscos2[0]);
-        arrayDiscos3.push(arrayDiscos2[0]);
+        arrayDiscos3.unshift(arrayDiscos2[0]);
         arrayDiscos2.splice(0,1); 
-    }else if(divHijo.clientWidth > arrayDiscos2[0].clientWidth){
+    }else if(piramide3.firstElementChild.clientWidth > arrayDiscos2[0].clientWidth){
         document.getElementById("piramide-3").prepend(arrayDiscos2[0]);
-        arrayDiscos3.push(arrayDiscos2[0]);
+        arrayDiscos3.unshift(arrayDiscos2[0]);
         arrayDiscos2.splice(0,1); 
     }
     else{
-        alert("lets go");
+        alert("no puedes poner una ficha más grande encima de una más pequeña");
     }
 }
 
 function move_to_piramide1_from_piramide3(){
     let piramide1=document.getElementById("piramide-1");
-    let divHijo = piramide1.firstElementChild;
+    
 
-    if(divHijo==null ){
+    if(piramide1.firstElementChild==null ){
         document.getElementById("piramide-1").prepend(arrayDiscos3[0]);
-        arrayDiscos1.push(arrayDiscos3[0]);
+        arrayDiscos1.unshift(arrayDiscos3[0]);
         arrayDiscos3.splice(0,1);
-    }else if(divHijo.clientWidth > arrayDiscos3[0].clientWidth){
+    }else if(piramide1.firstElementChild.clientWidth > arrayDiscos3[0].clientWidth){
         document.getElementById("piramide-1").prepend(arrayDiscos3[0]);
-        arrayDiscos1.push(arrayDiscos3[0]);
+        arrayDiscos1.unshift(arrayDiscos3[0]);
         arrayDiscos3.splice(0,1);
     }
     
     
     else{
-        alert("suuuu");
+        alert("no puedes poner una ficha más grande encima de una más pequeña");
     }  
 }
 
 function move_to_piramide2_from_piramide3(){
     let piramide2=document.getElementById("piramide-2");
-    let divHijo = piramide2.firstElementChild;
+   
 
-    if(divHijo==null  ){
+    if(piramide2.firstElementChild==null  ){
     document.getElementById("piramide-2").prepend(arrayDiscos3[0]);
-    arrayDiscos2.push(arrayDiscos3[0]);
+    arrayDiscos2.unshift(arrayDiscos3[0]);
     arrayDiscos3.splice(0,1);
-    }else if(divHijo.clientWidth > arrayDiscos3[0].clientWidth){
+    }else if(piramide2.firstElementChild.clientWidth > arrayDiscos3[0].clientWidth){
         document.getElementById("piramide-2").prepend(arrayDiscos3[0]);
-        arrayDiscos2.push(arrayDiscos3[0]);
+        arrayDiscos2.unshift(arrayDiscos3[0]);
         arrayDiscos3.splice(0,1);      
     }else{
-        alert("suuuu");
+        alert("no puedes poner una ficha más grande encima de una más pequeña");
     } 
+}
+
+
+function comprobacionVictoria(cantidad){
+    switch(cantidad){
+        case 2:
+            if(arrayDiscos1.includes("disco0","disco1")|| arrayDiscos2.includes("disco0","disco1") || arrayDiscos3.includes("disco0","disco1")){
+                alert("you win");
+            }
+            break;
+        case 3:
+            if(arrayDiscos1.includes("disco0","disco1","disco2")|| arrayDiscos2.includes("disco0","disco1","disco2") || arrayDiscos3.includes("disco0","disco1","disco2")){
+                alert("you win");
+            }
+            break;
+        case 4:
+            if(arrayDiscos1.includes("disco0","disco1","disco2","disco3")|| arrayDiscos2.includes("disco0","disco1","disco2","disco3") || arrayDiscos3.includes("disco0","disco1","disco2","disco3")){
+                alert("you win");
+            }
+            break;
+        case 5:
+            if(arrayDiscos1.includes("disco0","disco1","disco2","disco3","disco4")|| arrayDiscos2.includes("disco0","disco1","disco2","disco3","disco4") || arrayDiscos3.includes("disco0","disco1","disco2","disco3")){
+                alert("you win");
+            }
+            break;
+    }
+    
+   
 }
 
 
