@@ -9,6 +9,11 @@ let piramide1 = document.getElementById("bloque-1");
 let piramide2 = document.getElementById("bloque-2");
 let piramide3 = document.getElementById("bloque-3");
 
+let piramides = [
+    [],[],[]  
+];
+
+console.log(piramides);
 
 let cantDiscos;    
 
@@ -16,7 +21,6 @@ function cantidadDiscos() {
     let discos = document.getElementById("numeroDiscos").value;
     discos = parseInt(discos);
     cantDiscos = discos;
-    
 
     if (discos > 5) {
         alert("Limite 5. Introduce un numero menor");
@@ -25,6 +29,7 @@ function cantidadDiscos() {
     } else {
         document.getElementById("start").disabled = true;
         let array1 = new Array(discos);
+        
 
         for (let index = 0; index < array1.length; index++) {
             let div = document.createElement("div");
@@ -32,6 +37,8 @@ function cantidadDiscos() {
             document.getElementById("piramide-1").appendChild(div);       
             color(div);
             arrayDiscos1.push(div);
+            piramides[0].push(div);
+            console.log(piramides);
 
         }
         
@@ -67,7 +74,7 @@ function move_to_piramide2_from_piramide1(){
 
     if(piramide2.firstElementChild==null){
         document.getElementById("piramide-2").prepend(arrayDiscos1[0]);
-        arrayDiscos2.unshift(arrayDiscos1[0]);
+        arrayDiscos2.unshift(arrayDiscos1[0]); 
         arrayDiscos1.splice(0,1);
          
         
