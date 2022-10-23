@@ -17,7 +17,7 @@ console.log(piramides);
 
 let cantDiscos;    
 
-function cantidadDiscos() {
+function creacionDiscos() {
     let discos = document.getElementById("numeroDiscos").value;
     discos = parseInt(discos);
     cantDiscos = discos;
@@ -76,6 +76,7 @@ function move_to_piramide2_from_piramide1(){
         document.getElementById("piramide-2").prepend(piramides[0][0]);
         piramides[1].unshift(piramides[0][0]);
         piramides[0].splice(0,1);
+        comprobacion(cantDiscos)
         console.log(piramides);
         
          
@@ -83,7 +84,8 @@ function move_to_piramide2_from_piramide1(){
     }else if(piramide2.firstElementChild.clientWidth > piramides[0][0].clientWidth){
         document.getElementById("piramide-2").prepend(piramides[0][0]);
         piramides[1].unshift(piramides[0][0]);
-        piramides[0].splice(0,1)
+        piramides[0].splice(0,1);
+        comprobacion(cantDiscos)
         console.log(piramides);
         
     }
@@ -101,12 +103,14 @@ function move_to_piramide3_from_piramide1(){
         document.getElementById("piramide-3").prepend(piramides[0][0]);
         piramides[2].unshift(piramides[0][0]);
         piramides[0].splice(0,1);
+        comprobacion(cantDiscos)
         console.log(piramides);
 
     }else if( piramide3.firstElementChild.clientWidth > piramides[0][0].clientWidth){
         document.getElementById("piramide-3").prepend(piramides[0][0]);
         piramides[2].unshift(piramides[0][0]);
         piramides[0].splice(0,1);
+        comprobacion(cantDiscos)
         console.log(piramides);
     }
     else{
@@ -121,11 +125,13 @@ function move_to_piramide1_from_piramide2(){
     if(piramide1.firstElementChild==null ){
         document.getElementById("piramide-1").prepend(piramides[1][0]);
         piramides[0].unshift(piramides[1][0]);
-        piramides[1].splice(0,1); 
+        piramides[1].splice(0,1);
+        comprobacion(cantDiscos) 
     }else if(piramide1.firstElementChild.clientWidth > piramides[1][0].clientWidth){
         document.getElementById("piramide-1").prepend(piramides[1][0]);
         piramides[0].unshift(piramides[1][0]);
         piramides[1].splice(0,1);
+        comprobacion(cantDiscos)
     }
     else{
         alert("no puedes poner una ficha más grande encima de una más pequeña");
@@ -140,11 +146,13 @@ function move_to_piramide3_from_piramide2(){
     if(piramide3.firstElementChild==null ){
         document.getElementById("piramide-3").prepend(piramides[2][0]);
         piramides[2].unshift(piramides[1][0]);
-        piramides[1].splice(0,1); 
+        piramides[1].splice(0,1);
+        comprobacion(cantDiscos)
     }else if(piramide3.firstElementChild.clientWidth > piramides[2][0].clientWidth){
         document.getElementById("piramide-3").prepend(piramides[2][0]);
         piramides[2].unshift(piramides[1][0]);
         piramides[1].splice(0,1);
+       comprobacion(cantDiscos)
     }
     else{
         alert("no puedes poner una ficha más grande encima de una más pequeña");
@@ -159,10 +167,12 @@ function move_to_piramide1_from_piramide3(){
         document.getElementById("piramide-1").prepend(piramides[2][0]);
         piramides[0].unshift(piramides[2][0]);
         piramides[2].splice(0,1);
+        comprobacion(cantDiscos);
     }else if(piramide1.firstElementChild.clientWidth > piramides[2][0].clientWidth){
         document.getElementById("piramide-1").prepend(piramides[2][0]);
         piramides[0].unshift(piramides[2][0]);
         piramides[2].splice(0,1);
+        comprobacion(cantDiscos);
     }
     
     
@@ -179,12 +189,61 @@ function move_to_piramide2_from_piramide3(){
     document.getElementById("piramide-2").prepend(piramides[2][0]);
     piramides[1].unshift(piramides[2][0]);
     piramides[2].splice(0,1);
+    comprobacion(cantDiscos);
     }else if(piramide2.firstElementChild.clientWidth > piramides[2][0].clientWidth){
         document.getElementById("piramide-2").prepend(piramides[2][0]);
         piramides[1].unshift(piramides[2][0]);
-        piramides[2].splice(0,1);     
+        piramides[2].splice(0,1); 
+       comprobacion(cantDiscos);    
     }else{
         alert("no puedes poner una ficha más grande encima de una más pequeña");
     } 
 }
+
+function comprobacion(cantidad){
+
+    let div0 = document.getElementById("disco0");
+    let div1 = document.getElementById("disco1");
+    let div2 = document.getElementById("disco2");
+    let div3 = document.getElementById("disco3");
+    let div4 = document.getElementById("disco4");
+
+   switch(cantidad){
+    case 2:
+        if((piramides[0].includes(div0) && piramides[0].includes(div1)) || (piramides[1].includes(div0) && piramides[1].includes(div1)) 
+            ||  (piramides[2].includes(div0) && piramides[2].includes(div1))){
+            alert("you win")
+        } 
+        break;
+    case 3:
+        if((piramides[0].includes(div0) && piramides[0].includes(div1) && piramides[0].includes(div2)) || (piramides[1].includes(div0) && piramides[1].includes(div1) 
+            && piramides[1].includes(div2)) ||  (piramides[2].includes(div0) && piramides[2].includes(div1) && piramides[2].includes(div2))){
+            alert("you win")
+        } 
+        break;
+    case 4:
+        if((piramides[0].includes(div0) && piramides[0].includes(div1) && piramides[0].includes(div2)) && piramides[0].includes(div3) || (piramides[1].includes(div0) && piramides[1].includes(div1) 
+            && piramides[1].includes(div2)) && piramides[1].includes(div3) ||  (piramides[2].includes(div0) && piramides[2].includes(div1) && piramides[2].includes(div2) && piramides[2].includes(div3))){
+            alert("you win")
+        } 
+        break;
+
+    case 5:
+        if((piramides[0].includes(div0) && piramides[0].includes(div1) && piramides[0].includes(div2) && piramides[0].includes(div3) 
+        && piramides[0].includes(div4)) || (piramides[1].includes(div0) && piramides[1].includes(div1) && piramides[1].includes(div2) 
+        && piramides[1].includes(div3) && piramides[1].includes(div4)) ||  (piramides[2].includes(div0) && piramides[2].includes(div1) 
+        && piramides[2].includes(div2) && piramides[2].includes(div3) && piramides[2].includes(div4))){
+            alert("you win")
+        } 
+        break;
+   }
+
+    
+       
+        
+
+}
+
+
+
 
