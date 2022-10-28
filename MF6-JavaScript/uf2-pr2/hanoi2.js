@@ -144,12 +144,12 @@ function move_to_piramide3_from_piramide2(){
  
 
     if(piramide3.firstElementChild==null ){
-        document.getElementById("piramide-3").prepend(piramides[2][0]);
+        document.getElementById("piramide-3").prepend(piramides[1][0]);
         piramides[2].unshift(piramides[1][0]);
         piramides[1].splice(0,1);
         comprobacion(cantDiscos)
-    }else if(piramide3.firstElementChild.clientWidth > piramides[2][0].clientWidth){
-        document.getElementById("piramide-3").prepend(piramides[2][0]);
+    }else if(piramide3.firstElementChild.clientWidth > piramides[1][0].clientWidth){
+        document.getElementById("piramide-3").prepend(piramides[1][0]);
         piramides[2].unshift(piramides[1][0]);
         piramides[1].splice(0,1);
        comprobacion(cantDiscos)
