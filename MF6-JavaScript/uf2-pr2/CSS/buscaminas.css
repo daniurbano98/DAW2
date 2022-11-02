@@ -5,11 +5,7 @@
 #tabla{
     display: inline-grid;
     grid-template-columns: 3rem 3rem 3rem 3rem 3rem 3rem 3rem 3rem;
-    grid-gap:1rem;
-  
- 
-    
-   
+    grid-gap:1rem;   
 }
 
 .block{
