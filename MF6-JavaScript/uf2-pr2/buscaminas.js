@@ -36,8 +36,7 @@ function repartirBombas(matriz){
             let posicionRandom = Math.floor(Math.random() * 8);
         for (let x = 0; x < matriz.length; x++) {
             
-            do {
-                
+            do {    
                 matriz[i][posicionRandom].innerHTML="DNASKIAF";
                 console.log(random);
                 random--;
