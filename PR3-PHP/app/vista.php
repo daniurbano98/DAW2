@@ -15,13 +15,15 @@ require_once("index.php");
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/styles.css">
+    
     <title>DRAGON BALL API</title>
 </head>
 <body>
     <table class="table">
         <thead>
             <tr>
-                <th>DRAGON BALL API</th>
+                <th>SAIYANS API</th>
             </tr>
         </thead>
         <tbody>
@@ -37,19 +39,20 @@ require_once("index.php");
             </tr>
 
             <?php 
-                foreach ($array_characters as $character) {?>
-                    <tr>
-                    <td><?php echo ("id: ".$character->getId());?></td>
-                    <td><?php echo ("name: ".$character->getName());?></td>
-                    <td><?php echo ("origin planet: ".$character->getOriginPlanet());?></td>
-                    <td><?php echo ("role: ".$character->getRole());?></td>
-                    <td><?php echo ("specie: ".$character->getSpecie());?></td>
-                    <td><?php echo ("status: ".$character->getStatus());?></td>
-                    <td><?php echo ("transform: ".$character->getTransform());?></td>
-                    <td><?php echo ("universe: ".$character->getUniverse());?></td>
+                foreach ($array_characters as $character) {
+                    if($character->getSpecie()=='Saiyan'){
+                        ?>
+                        <tr>
+                        <td><?php echo  $character->getId();?></td>
+                        <td><?php echo $character->getName();?></td>
+                        <td><?php echo  $character->getOriginPlanet();?></td>
+                        <td><?php echo  $character->getRole();?></td>
+                        <td><?php echo  $character->getSpecie();?></td>
+                        <td><?php echo  $character->getStatus();?></td>
+                        <td><?php echo $character->getTransform();?></td>
+                        <td><?php echo  $character->getUniverse();?></td>
                    </tr>
-                  
-                   <?php
+                   <?php }
                  }
                  ?>
             

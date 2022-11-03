@@ -29,7 +29,7 @@ foreach ($characters_json as $character) {
     $universe= $character['universe'];
 
     $pj = New Character($id,$name,$originPlanet,$role,$specie,$status,$transform,$universe);
-    $array_characters[$id] = $pj;
+    $array_characters[] = $pj;
 }
 
 
