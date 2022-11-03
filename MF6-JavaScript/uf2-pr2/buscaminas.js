@@ -13,20 +13,12 @@ function createTable(){
     }
 
     for (let i = 0; i < matriz.length; i++) {
-        for (let j = 0; j < matriz[i].length; j++) {
+        for (let j = 0; j < matriz.length; j++) {
             let div = document.createElement("div");
             div.className = 'block';
             matriz[i][j] = div;
             table.append(matriz[i][j]);
-
-            let random = Math.floor(Math.random() * 4);
-            let posicionRandom = Math.floor(Math.random() * 9);
-            
-                
-            while (random>0) {
-                matriz[i][posicionRandom].className='bomb';
-                --random;
-                       }              
+            repartirMinas(matriz)        
         }
         
     }
@@ -34,23 +26,24 @@ function createTable(){
    
 }
 
-// function repartirMinas(matriz){
-//     let random = Math.floor(Math.random() * 4);
-//     let posicionRandom = Math.floor(Math.random() * 9);
+function repartirMinas(matriz){
+    let random = Math.floor(Math.random() * 4);
+    let posicionRandom = Math.floor(Math.random() * 9);
     
 
-//     for (let i = 0; i < matriz[i].length; i++) {
+    for (let i = 0; i < matriz.length; i++) {
+        for (let x = 0; x < matriz.length; x++) {
+            do {
+                matriz[i][posicionRandom] = ;
+                --random;
+                } while (random>0);   
+            }
+        }
         
-//         do {
-//             matriz[posicionRandom] = ;
-//             --random;
-//             } while (random>0);
-            
         
-       
-//     }
        
               
     
-// }
+}
+
 
