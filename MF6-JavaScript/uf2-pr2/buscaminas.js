@@ -1,6 +1,6 @@
 
 let matriz = [];
-let minas = 10;
+let minas = 0;
 
 
 
@@ -13,37 +13,37 @@ function createTable(){
     }
 
     for (let i = 0; i < matriz.length; i++) {
-        for (let j = 0; j < matriz.length; j++) {
+        for (let j = 0; j < matriz[i].length; j++) {
             let div = document.createElement("div");
             div.className = 'block';
             matriz[i][j] = div;
-            table.append(matriz[i][j]);
-            repartirMinas(matriz)        
+            table.append(matriz[i][j]);       
         }
         
     }
 
    
+    repartirBombas(matriz);
+    
+   
 }
 
-function repartirMinas(matriz){
-    let random = Math.floor(Math.random() * 4);
-    let posicionRandom = Math.floor(Math.random() * 9);
+function repartirBombas(matriz){
     
-
+    
     for (let i = 0; i < matriz.length; i++) {
+            let random = Math.floor(Math.random() * 4);
+            let posicionRandom = Math.floor(Math.random() * 8);
         for (let x = 0; x < matriz.length; x++) {
+            
             do {
-                matriz[i][posicionRandom] = ;
-                --random;
-                } while (random>0);   
-            }
+                
+                matriz[i][posicionRandom].innerHTML="DNASKIAF";
+                console.log(random);
+                random--;
+                minas--;
+            } while (random>0);   
         }
-        
-        
-       
-              
-    
+    }
 }
-
 
