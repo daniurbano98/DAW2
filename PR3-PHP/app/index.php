@@ -2,6 +2,9 @@
 
 //DRAGON BALL API
 
+namespace CurlDragonBall;
+require_once("../entity/Character.php");
+
 $url = 'https://dragon-ball-super-api.herokuapp.com/api/characters';
 
 $ch = curl_init($url);
@@ -25,9 +28,11 @@ foreach ($characters_json as $character) {
     $transform= $character['transform'];
     $universe= $character['universe'];
 
-    $pj = New Entities\Character($id,$name,$originPlanet,$role,$specie,$status,$transform,$universe);
+    $pj = New Character($id,$name,$originPlanet,$role,$specie,$status,$transform,$universe);
     $array_characters[$id] = $pj;
 }
+
+
 
 
 

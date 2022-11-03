@@ -1,5 +1,5 @@
 <?php 
-namespace app;
+namespace CurlDragonBall;
 class Character{
     private $id;
     private $name;
@@ -14,10 +14,13 @@ class Character{
     public function __construct($id,$name,$originPlanet,$role,$specie,$status,$transform,$universe)
     {
         $this->id = $id;
-        $this->id = $id;
-        $this->id = $id;
-        $this->id = $id;
-        $this->id = $id;
+        $this->name = $name;
+        $this->originPlanet = $originPlanet;
+        $this->role = $role;
+        $this->specie = $specie;
+        $this->status = $status;
+        $this->transform = $transform;
+        $this->universe = $universe;
 
     }
     /**
