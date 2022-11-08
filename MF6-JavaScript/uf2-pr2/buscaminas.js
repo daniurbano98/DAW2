@@ -43,6 +43,7 @@ function repartirBombas(matriz){
                     break;
                 }else{
                     matriz[i][posicionRandom].setAttribute("data", "bomba");
+                    
                     random--;
                     minas--;
                     posicionRandom =  Math.floor(Math.random() * 8);
@@ -59,23 +60,27 @@ function repartirBombas(matriz){
 function repartirNumeros(matriz){
     for (let i = 0; i < matriz.length; i++) {
        for (let x = 0; x < matriz.length; x++) {
-            if(matriz[i][x].hasAttribute("bomba")){
+            if(matriz[i][x].getAttribute("data")=="bomba"){
                 continue;
             }else{
                 contador = 0;
                 if(i==0 && x==0){ //esquina superior izquierda
-                    console.log("entras");
-                    if(matriz[i+1][x].hasAttribute("bomba")){ //abajo
+                    
+                    if(matriz[i+1][x].getAttribute("data")=="bomba"){ //abajo
+                        console.log("entras");
                         contador++;
                     }
-                    if(matriz[i][x+1].hasAttribute("bomba")){//derecha
+                    if(matriz[i][x+1].getAttribute("data")=="bomba"){//derecha
+                        console.log("entras");
                         contador++;
                     }
-                    if(matriz[i+1][x+1].hasAttribute("bomba")){//diagonal derecha
+                    if(matriz[i+1][x+1].getAttribute("data")=="bomba"){//diagonal derecha
+                        console.log("entras");
                         contador++;
                     }
                     
-                    matriz[i][x].setAttribute(contador);
+                    matriz[i][x].setAttribute("data",contador);
+                   
 
                 }else if(i==0 && x==7){ //esquina superior derecha
                     contador = 0;
@@ -234,18 +239,17 @@ function repartirNumeros(matriz){
     }
 }
 
-function pulsado(matriz){
+function asignarClicado(matriz){
 
     for (let i = 0; i < matriz.length; i++) {
        for (let x = 0; x < array.length; x++) {
-            
-        
+            matriz[i][j].addEventListener("click",click())
        }
         
     }
+}
 
-
-
+function click(){
     if(div.hasAttribute("bomba")){
         alert("has perdido");
     }else{
@@ -253,6 +257,8 @@ function pulsado(matriz){
         div.innerHTML(atributo);
     }
 }
+
+   
 
 
 
