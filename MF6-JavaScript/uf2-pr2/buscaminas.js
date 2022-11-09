@@ -1,8 +1,7 @@
 
 let matriz = [];
 let minas = 10;
-
-
+let puntuacion = 0;
 
 function createTable(){
     
@@ -15,6 +14,7 @@ function createTable(){
     for (let i = 0; i < matriz.length; i++) {
         for (let j = 0; j < matriz[i].length; j++) {
             let div = document.createElement("div");
+            console.log(div.innerHTML);
             div.className = 'block';
             div.addEventListener("click", function() {
                 let atributo=div.getAttribute("data");
@@ -23,28 +23,43 @@ function createTable(){
                     alert("has perdido");
                 }else{
                     div.innerHTML=div.getAttribute("data");
+                    let valoraSumar = parseInt(div.getAttribute("data"));
+                    puntuacion = puntuacion + valoraSumar;   
+                    document.getElementById("puntuacion").innerHTML = puntuacion;
+                    comprobacionVictoria(matriz);
                 }
             });     
             matriz[i][j] = div;
-            table.append(matriz[i][j]);
-            
-                  
+            table.append(matriz[i][j]);           
         }
-         
     }
-
-   
     repartirBombas(matriz);
     repartirNumeros(matriz);
-  
-   
 }
 
 
 
+function comprobacionVictoria(matriz){
+    for (let i = 0; i < matriz.length; i++) {
+        for (let x = 0; x < matriz.length; x++) {
+            if(matriz[i][x].innerHTML==""){
+                break;
+            }else if(i==7 && i==7){
+                if(matriz[7][7].innerHTML!="bomba"){
+                    alert("has ganado");
+                }
+            }else{
+                continue;
+            }
+    }
+}
+}
+
+
+        
+            
 function repartirBombas(matriz){
-    
-    
+       
     for (let i = 0; i < matriz.length; i++) {
         let random = Math.floor(Math.random() * 4);
         let posicionRandom = Math.floor(Math.random() * 8);
@@ -58,12 +73,8 @@ function repartirBombas(matriz){
                     random--;
                     minas--;
                     posicionRandom =  Math.floor(Math.random() * 8);
-                }
-               
-            }
-            
-            
-                       
+                }  
+            }                
         }
     }
 }
