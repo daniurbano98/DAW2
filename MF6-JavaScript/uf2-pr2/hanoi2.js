@@ -210,29 +210,23 @@ function comprobacion(cantidad){
 
    switch(cantidad){
     case 2:
-        if((piramides[0].includes(div0) && piramides[0].includes(div1)) || (piramides[1].includes(div0) && piramides[1].includes(div1)) 
-            ||  (piramides[2].includes(div0) && piramides[2].includes(div1))){
+        if((piramides[2].includes(div0) && piramides[2].includes(div1))){
             alert("you win")
         } 
         break;
     case 3:
-        if((piramides[0].includes(div0) && piramides[0].includes(div1) && piramides[0].includes(div2)) || (piramides[1].includes(div0) && piramides[1].includes(div1) 
-            && piramides[1].includes(div2)) ||  (piramides[2].includes(div0) && piramides[2].includes(div1) && piramides[2].includes(div2))){
+        if((piramides[2].includes(div0) && piramides[2].includes(div1) && piramides[2].includes(div2))){
             alert("you win")
         } 
         break;
     case 4:
-        if((piramides[0].includes(div0) && piramides[0].includes(div1) && piramides[0].includes(div2)) && piramides[0].includes(div3) || (piramides[1].includes(div0) && piramides[1].includes(div1) 
-            && piramides[1].includes(div2)) && piramides[1].includes(div3) ||  (piramides[2].includes(div0) && piramides[2].includes(div1) && piramides[2].includes(div2) && piramides[2].includes(div3))){
+        if((piramides[2].includes(div0) && piramides[2].includes(div1) && piramides[2].includes(div2) && piramides[2].includes(div3))){
             alert("you win")
         } 
         break;
 
     case 5:
-        if((piramides[0].includes(div0) && piramides[0].includes(div1) && piramides[0].includes(div2) && piramides[0].includes(div3) 
-        && piramides[0].includes(div4)) || (piramides[1].includes(div0) && piramides[1].includes(div1) && piramides[1].includes(div2) 
-        && piramides[1].includes(div3) && piramides[1].includes(div4)) ||  (piramides[2].includes(div0) && piramides[2].includes(div1) 
-        && piramides[2].includes(div2) && piramides[2].includes(div3) && piramides[2].includes(div4))){
+        if((piramides[2].includes(div0) && piramides[2].includes(div1) && piramides[2].includes(div2) && piramides[2].includes(div3) && piramides[2].includes(div4))){
             alert("you win")
         } 
         break;

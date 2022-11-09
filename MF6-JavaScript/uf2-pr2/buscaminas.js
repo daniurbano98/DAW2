@@ -19,7 +19,7 @@ function createTable(){
             div.addEventListener("click", function() {
                 let atributo=div.getAttribute("data");
                 if( atributo=="bomba"){
-                    div.innerHTML=div.getAttribute("data");
+                    revelarMatriz(matriz)
                     alert("has perdido");
                 }else{
                     div.innerHTML=div.getAttribute("data");
@@ -32,27 +32,49 @@ function createTable(){
             matriz[i][j] = div;
             table.append(matriz[i][j]);           
         }
+
     }
     repartirBombas(matriz);
     repartirNumeros(matriz);
 }
 
 
-
-function comprobacionVictoria(matriz){
+function revelarMatriz(matriz){
     for (let i = 0; i < matriz.length; i++) {
         for (let x = 0; x < matriz.length; x++) {
-            if(matriz[i][x].innerHTML==""){
-                break;
-            }else if(i==7 && i==7){
-                if(matriz[7][7].innerHTML!="bomba"){
-                    alert("has ganado");
-                }
-            }else{
-                continue;
-            }
+             matriz[i][x].innerHTML = matriz[i][x].getAttribute("data"); 
+        }
     }
 }
+
+
+
+function comprobacionVictoria(matriz){
+let contadorNumeros = 0;
+let contadorLevantados = 0;
+
+    for (let i = 0; i < matriz.length; i++) {
+        for (let x = 0; x < matriz.length; x++) {
+           if(matriz[i][x].getAttribute("data")!="bomba"){
+                contadorLevantados++;     
+            }
+        }
+    }
+
+    for (let i = 0; i < matriz.length; i++) {
+        for (let x = 0; x < matriz.length; x++) {
+            if(matriz[i][x].innerHTML!=""){
+            contadorNumeros++;     
+            
+            }
+        
+        } 
+    }
+
+    if(contadorNumeros==contadorLevantados){
+        alert("you win!");
+    }
+
 }
 
 
@@ -77,6 +99,8 @@ function repartirBombas(matriz){
             }                
         }
     }
+
+    console.log(matriz);
 }
 
 function repartirNumeros(matriz){
