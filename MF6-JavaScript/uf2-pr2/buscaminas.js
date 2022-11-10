@@ -21,6 +21,8 @@ function createTable(){
                 if( atributo=="bomba"){
                     revelarMatriz(matriz)
                     alert("has perdido");
+                }else if(atributo==0){
+                    // TODO:HACER LO DE DESPEJAR LOS 0
                 }else{
                     div.innerHTML=div.getAttribute("data");
                     let valoraSumar = parseInt(div.getAttribute("data"));
@@ -42,7 +44,12 @@ function createTable(){
 function revelarMatriz(matriz){
     for (let i = 0; i < matriz.length; i++) {
         for (let x = 0; x < matriz.length; x++) {
-             matriz[i][x].innerHTML = matriz[i][x].getAttribute("data"); 
+            if( matriz[i][x].getAttribute("data")=="bomba"){
+                matriz[i][x].innerHTML="💣";
+            }else{
+                matriz[i][x].innerHTML = matriz[i][x].getAttribute("data");
+            }
+             
         }
     }
 }
