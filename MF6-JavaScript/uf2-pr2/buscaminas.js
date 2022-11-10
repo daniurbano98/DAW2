@@ -3,6 +3,17 @@ let matriz = [];
 let minas = 10;
 let puntuacion = 0;
 
+let reset = document.getElementById("reset");
+
+reset.addEventListener("click",resetPage);
+
+function resetPage(){
+    location.reload();
+}
+
+
+
+
 function createTable(){
     
     let table = document.getElementById("tabla");
@@ -16,20 +27,23 @@ function createTable(){
             let div = document.createElement("div");
             console.log(div.innerHTML);
             div.className = 'block';
-            div.addEventListener("click", function() {
+            div.addEventListener("click", function funcionalidadClick() {
                 let atributo=div.getAttribute("data");
-                if( atributo=="bomba"){
-                    revelarMatriz(matriz)
-                    alert("has perdido");
-                }else if(atributo==0){
+                    if( atributo=="bomba"){
+                        revelarMatriz(matriz);
+                        alert("has perdido");
+                        document.getElementById("puntuacion").style.display="none";
+                        document.getElementById("mensajeFinal").innerHTML="😈😈😈";
+                                                      
+                // }else if(atributo==0){
                     // TODO:HACER LO DE DESPEJAR LOS 0
-                }else{
-                    div.innerHTML=div.getAttribute("data");
-                    let valoraSumar = parseInt(div.getAttribute("data"));
-                    puntuacion = puntuacion + valoraSumar;   
-                    document.getElementById("puntuacion").innerHTML = puntuacion;
-                    comprobacionVictoria(matriz);
-                }
+                    }else{
+                        div.innerHTML=div.getAttribute("data");
+                        let valoraSumar = parseInt(div.getAttribute("data"));
+                        puntuacion = puntuacion + valoraSumar;   
+                        document.getElementById("puntuacion").innerHTML = puntuacion;
+                        comprobacionVictoria(matriz);
+                    }
             });     
             matriz[i][j] = div;
             table.append(matriz[i][j]);           
@@ -39,6 +53,11 @@ function createTable(){
     repartirBombas(matriz);
     repartirNumeros(matriz);
 }
+
+
+
+
+
 
 
 function revelarMatriz(matriz){
@@ -98,16 +117,46 @@ function repartirBombas(matriz){
                 if(minas==0){
                     break;
                 }else{
-                    matriz[i][posicionRandom].setAttribute("data", "bomba");            
+                    matriz[i][posicionRandom].setAttribute("data", "bomba");
+                    console.log(matriz[i][posicionRandom]); //Podemos ver en que posiciones estan las bombas            
                     random--;
                     minas--;
                     posicionRandom =  Math.floor(Math.random() * 8);
                 }  
             }                
         }
+
+        if(minas>0){
+
+            let contadorMinas = 0;
+
+            for (let i = 0; i < matriz.length; i++) {
+                let posicionRandom = Math.floor(Math.random() * 8);
+                for (let x = 0; x < matriz.length; x++) {
+
+                    if(matriz[i][x].getAttribute("data")=="bomba"){
+                        contadorMinas++;
+                        
+                        if(x==7 && contadorMinas<3){
+                            while(minas>0 && contadorMinas>=3){
+                                if(matriz[i][posicionRandom].getAttribute("data"!="bomba")){
+                                    matriz[i][posicionRandom].setAttribute("data", "bomba");
+                                    minas--;
+                                    contadorMinas++;
+                                }
+                               
+                            }
+                        }
+                    }
+                    
+                    
+                }
+                
+            }
+        }
     }
 
-    console.log(matriz);
+    
 }
 
 function repartirNumeros(matriz){
@@ -292,6 +341,7 @@ function repartirNumeros(matriz){
         
     }
 }
+
 
 
 

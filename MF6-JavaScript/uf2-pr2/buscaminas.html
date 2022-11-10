@@ -5,22 +5,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css" crossorigin="anonymous">
+    <script src="bootstrap/bootstrap.min.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="CSS/buscaminas.css">
     <script src="buscaminas.js" defer></script>
 </head>
 <body onload="createTable()">
     
-    <h1>BUSCAMINAS</h1>
 
-    <h2>Puntuación:</h2>
-    
+    <h1  class="display-3">BUSCAMINAS</h1>
+
+    <h2 class="display-6">Puntuación:</h2>
     <div id="puntuacion">0</div>
+    <div id="mensajeFinal"></div>
+
+    <button type="button" class="btn btn-primary" id="reset">RESET</button> 
+    
+    
+    
     
     <BR></BR>
 
     <div id="container">
         <div id="tabla"></div>
     </div>
+
+    
     
     
 </body>
