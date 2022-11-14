@@ -31,12 +31,9 @@ function createTable(){
                 let atributo=div.getAttribute("data");
                     if( atributo=="bomba"){
                         revelarMatriz(matriz);
-                        alert("has perdido");
+                        alert("YOU LOSE!");
                         document.getElementById("puntuacion").style.display="none";
                         document.getElementById("mensajeFinal").innerHTML="😈😈😈";
-                                                      
-                // }else if(atributo==0){
-                    // TODO:HACER LO DE DESPEJAR LOS 0
                     }else{
                         div.innerHTML=div.getAttribute("data");
                         let valoraSumar = parseInt(div.getAttribute("data"));
@@ -98,7 +95,9 @@ let contadorLevantados = 0;
     }
 
     if(contadorNumeros==contadorLevantados){
-        alert("you win!");
+        alert("YOU WIN!");
+        document.getElementById("puntuacion").style.display="none";
+        document.getElementById("mensajeFinal").innerHTML="🎉🎊🏆🏆🏆🎉🎊";
     }
 
 }

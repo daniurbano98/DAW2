@@ -13,6 +13,10 @@ let piramides = [
     [],[],[]  
 ];
 
+function reset(){
+    location.reload();
+}
+
 console.log(piramides);
 
 let cantDiscos;    
@@ -211,23 +215,27 @@ function comprobacion(cantidad){
    switch(cantidad){
     case 2:
         if((piramides[2].includes(div0) && piramides[2].includes(div1))){
-            alert("you win")
+            alert("you win");
+            location.reload();
         } 
         break;
     case 3:
         if((piramides[2].includes(div0) && piramides[2].includes(div1) && piramides[2].includes(div2))){
             alert("you win")
+            location.reload();
         } 
         break;
     case 4:
         if((piramides[2].includes(div0) && piramides[2].includes(div1) && piramides[2].includes(div2) && piramides[2].includes(div3))){
             alert("you win")
+            location.reload();
         } 
         break;
 
     case 5:
         if((piramides[2].includes(div0) && piramides[2].includes(div1) && piramides[2].includes(div2) && piramides[2].includes(div3) && piramides[2].includes(div4))){
             alert("you win")
+            location.reload();
         } 
         break;
    }
