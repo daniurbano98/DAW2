@@ -29,7 +29,6 @@ foreach ($titans_json as $titan) {
     $picture_url= $titan['picture_url'];
 
    
-  
     $id_shifter = $titan['shifter']['id'];
     $name_shifter = $titan['shifter']['name'];
     $gender_shifter = $titan['shifter']['gender'];
