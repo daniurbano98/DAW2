@@ -1,7 +1,7 @@
 <?php
 namespace CurlDragonBall;
 
-require_once('../entity/Character.php');
+require_once('../Model/Character.php');
 //DRAGON BALL API
 
 class ApiController{
@@ -34,7 +34,7 @@ public function getCharacters(){
             $universe= $character['universe'];
 
             $pj = New Character($id,$name,$originPlanet,$role,$specie,$status,$transform,$universe);
-            $array_characters[] = $pj;
+            $array_characters[] = $pj; //en cada iteración guardo el objeto creado en el array
         }
             return $array_characters;
     }

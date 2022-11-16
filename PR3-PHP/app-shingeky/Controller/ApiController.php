@@ -1,8 +1,8 @@
 <?php 
 
 namespace CurlShingeky;
-require_once("../entity/Titan.php");
-require_once("../entity/Shifter.php");
+require_once("../Model/Titan.php");
+require_once("../Model/Shifter.php");
 
 
 class ApiController{
