@@ -1,9 +1,7 @@
 <?php 
 
 require_once("../entity/Character.php");
-require_once("index.php");
-
-
+require_once("ApiController.php");
 
 ?>
 
@@ -38,9 +36,13 @@ require_once("index.php");
                 <td>UNIVERSE</td>
             </tr>
 
-            <?php 
-                foreach ($array_characters as $character) {
-                    if($character->getSpecie()=='Saiyan'){
+            <?php
+                $api = new CurlDragonBall\ApiController;
+                $array = $api->getCharacters();
+
+
+                foreach ($array as $character) {
+                    if($character->getSpecie()=='Saiyan'){ //Filtro por esta caracteristica
                         ?>
                         <tr>
                         <td><?php echo  $character->getId();?></td>
