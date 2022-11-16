@@ -52,9 +52,10 @@ require_once("ApiController.php");
                         <td><?php echo  $titan->getHeight_m();?></td>
                         <td><?php echo  $titan->getCreated_at();?></td>
                         <td><?php echo  $titan->getUpdated_at();?></td>
-                        <td><?php echo  $titan->getShifter()->getId();
-                                  echo $titan->getShifter()->getName();
-                                  echo $titan->getShifter()->getGender()?></td>
+                        <td><?php echo  $titan->getShifter()->getId();?>
+                        <br>
+                            <?php echo $titan->getShifter()->getName();
+                                  ?></td>
                         </tr>
                    <?php 
                  }
