@@ -37,6 +37,25 @@ public function getCharacters(){
             $array_characters[] = $pj;
         }
             return $array_characters;
-    }   
+    }
+    
+public function getSaiyans($array){
+    foreach ($array as $character) {
+        if($character->getSpecie()=='Saiyan'){ //Filtro por esta caracteristica
+            ?>
+            <tr>
+            <td><?php echo  $character->getId();?></td>
+            <td><?php echo $character->getName();?></td>
+            <td><?php echo  $character->getOriginPlanet();?></td>
+            <td><?php echo  $character->getRole();?></td>
+            <td><?php echo  $character->getSpecie();?></td>
+            <td><?php echo  $character->getStatus();?></td>
+            <td><?php echo $character->getTransform();?></td>
+            <td><?php echo  $character->getUniverse();?></td>
+       </tr>
+       <?php }
+     }
+}  
+    
 }
 ?>

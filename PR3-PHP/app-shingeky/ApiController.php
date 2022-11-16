@@ -43,6 +43,29 @@ class ApiController{
            return $array_titans;
 
         }
+
+
+
+    public function showTitans($array_titans){
+        foreach ($array_titans as $titan) {
+            ?>
+                <tr>
+                    <td><?php echo  $titan->getId(); ?></td>
+                    <td><?php echo $titan->getName(); ?></td>
+                    <td><?php echo $titan->getDescription(); ?></td>
+                    <td><?php echo  $titan->getShifter()->getId(); ?></td>
+                    <td><?php echo  $titan->getHeight_m(); ?></td>
+                    <td><?php echo  $titan->getCreated_at(); ?></td>
+                    <td><?php echo  $titan->getUpdated_at(); ?></td>
+                    <td><?php echo  $titan->getShifter()->getId(); ?>
+                        <br>
+                        <?php echo $titan->getShifter()->getName();
+                        ?>
+                    </td>
+                </tr>
+            <?php
+            }
+    }
 }
 
 ?>

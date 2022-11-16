@@ -37,26 +37,11 @@ require_once("ApiController.php");
             </tr>
 
             <?php
-                $api = new CurlDragonBall\ApiController;
+                use CurlDragonBall\ApiController;
+                $api = new ApiController;
                 $array = $api->getCharacters();
-
-
-                foreach ($array as $character) {
-                    if($character->getSpecie()=='Saiyan'){ //Filtro por esta caracteristica
-                        ?>
-                        <tr>
-                        <td><?php echo  $character->getId();?></td>
-                        <td><?php echo $character->getName();?></td>
-                        <td><?php echo  $character->getOriginPlanet();?></td>
-                        <td><?php echo  $character->getRole();?></td>
-                        <td><?php echo  $character->getSpecie();?></td>
-                        <td><?php echo  $character->getStatus();?></td>
-                        <td><?php echo $character->getTransform();?></td>
-                        <td><?php echo  $character->getUniverse();?></td>
-                   </tr>
-                   <?php }
-                 }
-                 ?>
+                $api->getSaiyans($array);
+            ?>
             
            
         </tbody>
