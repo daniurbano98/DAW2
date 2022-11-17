@@ -1,9 +1,20 @@
-function args(){
-    console.log(arguments);
-    console.log(arguments.length);
-    
+class persona{
+    constructor(nombre,edad){
+        this.nombre = nombre;
+        this.edad = edad;
+    }
 }
 
-args();
-args(2);
-args("gol", "sol", "remo", 445);
+class abuelo extends persona{
+    constructor(nombre,edad,jubilacion){
+        super(nombre,edad);
+        this.jubilacion=jubilacion;
+    }
+    
+
+    
+
+}
+
+let abuelo1 = new abuelo("jose","muñoz","si");
+console.log(abuelo1);
