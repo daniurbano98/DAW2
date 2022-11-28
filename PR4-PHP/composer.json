@@ -1,0 +1,17 @@
+{
+    "name": "st2021238/pr4-php",
+    "autoload": {
+        "psr-4": {
+            "St2021238\\Pr4Php\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Dani Urbano",
+            "email": "daniurbanogarcia26@gmail.com"
+        }
+    ],
+    "require": {
+        "monolog/monolog": "^3.2"
+    }
+}
