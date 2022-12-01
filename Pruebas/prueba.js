@@ -50,7 +50,7 @@ humano.prototype.nationality="Spanish" ;
 
 console.log(humano1.nationality);
 
-console.log(humano1);
+
 
 
 humano.prototype.name = function (){
