@@ -1,4 +1,3 @@
-
 class Circuito {
     nombre;
     tiempo;
