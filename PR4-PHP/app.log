@@ -1,0 +1,10 @@
+
+[2022-12-05T18:37:13.478132+01:00] app.log.WARNING: Controller - Se introducirán los primeros 9 numeros del cif [] []
+[2022-12-05T18:37:13.498662+01:00] app.log.INFO: conexión establecida [] []
+[2022-12-05T18:37:13.500968+01:00] app.log.INFO: Se ha creado la bbdd correctamente [] []
+[2022-12-05T18:37:13.552276+01:00] app.log.INFO: Se ha creado la tabla correctamente [] []
+[2022-12-05T18:37:13.559476+01:00] app.log.INFO: Se ha insertado correctamente [] []
+[2022-12-05T18:40:32.000361+01:00] app.log.INFO: conexión establecida [] []
+[2022-12-05T18:40:32.005517+01:00] app.log.WARNING: No se ha podido crear la bbdd porque ya esta creada [] []
+[2022-12-05T18:40:32.006212+01:00] app.log.WARNING: No se ha podido crear la tabla porque ya esta creada [] []
+[2022-12-05T18:40:32.007084+01:00] app.log.ERROR: No se ha podido crear el insert [] []

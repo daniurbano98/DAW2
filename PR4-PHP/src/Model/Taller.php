@@ -1,5 +1,5 @@
 <?php 
-
+namespace Model;
 Class Taller{
     private $cif_taller;
     private $direccion;

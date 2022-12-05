@@ -1,9 +1,3 @@
-<?php
-require_once("../Controller/TallerController.php");
-
-
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -14,28 +8,32 @@ require_once("../Controller/TallerController.php");
     <title>Talleres Kerri Kopo Jon</title>
 </head>
 <body>
-<h1>TALLERES KERRI KOPO JON</h1>
+<h1>TALLER PEPE</h1>
 <form action="index.php" method="POST">
     <label>cif taller</label><input type="text" name="cif_taller"> <br>
     <label>direccion</label><input type="text" name="direccion">    <br>
-    <label>telefono</label><input type="text" name="telefono">    <br>
+    <label>telefono</label><input type="number" name="telefono">    <br>
     <label>facturacion</label><input type="text" name="facturacion"><br>
-    <label>fecha de facturacion</label><input type="text" name="fecha_facturacion">  <br> 
-    <input type="submit" value="Enviar">
+    <label>fecha de facturacion</label><input type="date" name="fecha_facturacion">  <br> 
+    <input type="submit" value="Enviar" name="enviar">
 
 </form>
 
 
 <?php
     
-    $cif_taller = $_POST["cif_taller"];
-    $direccion= $_POST["direccion"];
-    $telefono = $_POST["telefono"];
-    $facturacion = $_POST["facturacion"];
-    $fecha_facturacion= $_POST["fecha_facturacion"];
+    require_once("../Controller/TallerController.php");
 
-    $tallerController = new TallerController;
-    $tallerController->createTaller($cif_taller,$direccion,$telefono,$facturacion,$fecha_facturacion); 
+    if(isset($_POST["enviar"])){
+        $cif_taller = $_POST["cif_taller"];
+        $direccion= $_POST["direccion"];
+        $telefono = $_POST["telefono"];
+        $facturacion = $_POST["facturacion"];
+        $fecha_facturacion= $_POST["fecha_facturacion"];
+    
+        $tallerController = new TallerController;
+        $tallerController->insertRecord($cif_taller,$direccion,$telefono,$facturacion,$fecha_facturacion);
+    }
         
 ?>
 </body>

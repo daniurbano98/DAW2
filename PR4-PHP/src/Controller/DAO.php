@@ -1,11 +1,14 @@
 <?php 
- require './vendor/autoload.php';
- use Monolog\Handler\StreamHandler;
- use Monolog\Logger;
- 
- 
-      
+namespace Controller;
+ require '../../vendor/autoload.php';
 
+use Exception;
+use Monolog\Handler\StreamHandler;
+ use Monolog\Logger;
+ use mysqli;
+
+ 
+ 
 class DAO{
       
       private $log;
@@ -13,8 +16,8 @@ class DAO{
 
       public function __construct()
       {
-         $this->log = new Monolog\Logger("LogCarsManagementDB");
-         $this->log->pushHandler(new StreamHandler(__DIR__ . '../../app.log', Logger::DEBUG));
+         $this->log = new Logger("app.log");
+         $this->log->pushHandler(new StreamHandler('../../app.log', Logger::INFO));
          $this->db=parse_ini_file("../../db_config.ini");
       }
 
@@ -31,37 +34,17 @@ class DAO{
       }
    }
 
-   public function createDDBB(){
-    
-      $conexion = $this->checkConnection();
 
-     if($conexion==true){
-         $sql_bbdd = "CREATE DATABASE taller_ddbb";
-         $sql_table = "CREATE TABLE IF NOT EXISTS TALLER (cif_taller VARCHAR(9) PRIMARY KEY, nombre VARCHAR(50), direccion VARCHAR(100),
-                                                      telefono CHAR(9), facturacion INT, fecha_facturacion DATE);";
-
-         $result_bbdd = $conexion->query($sql_bbdd);
-         $result_table = $conexion->query($sql_table);
-
-         if($result_bbdd && $result_table){
-            $this->log->info("Se ha creado la bbdd y la tabla con éxito");
-         }else{
-            $this->log->warning("No se ha podido crear la bbdd");
-              }
-         
-     }else{
-         $this->log->warning("No se ha podido crear la bbdd");
-     }
-      $conexion->close();
-   }
-  
-    
 
    public function insert($taller){
-
+    
       $conexion = $this->checkConnection();
-
-      if($conexion==true){
+         
+         
+         $sql_bbdd = "CREATE DATABASE taller_ddbb";
+        
+         $sql_table = "CREATE TABLE taller_ddbb.TALLER (cif_taller VARCHAR(9) PRIMARY KEY, nombre VARCHAR(50), direccion VARCHAR(100),
+                                                      telefono CHAR(9), facturacion INT, fecha_facturacion DATE);";
          $cif = $taller->getCif_taller();
          $nombre = $taller->getDireccion();
          $direccion = $taller->getTelefono();
@@ -69,17 +52,34 @@ class DAO{
          $facturacion = $taller->getFacturacion();
          $fecha_facturacion = $taller->getFecha_facturacion();
 
+         $sql_insert = "INSERT INTO TALLER (cif_taller, nombre, direccion, telefono, facturacion, fecha_facturacion)
+                        VALUES ('".$cif."','".$nombre."','".$direccion."','".$telefono."','".$facturacion."','".$fecha_facturacion."')";
+         
+         
 
-         $sql = "INSERT INTO TALLER (cif_taller, nombre, direccion, telefono, facturacion, fecha_facturacion)
-                  VALUES ($cif,$nombre,$direccion,$telefono,$facturacion,$fecha_facturacion)";
+         try{
+             $conexion->query($sql_bbdd);
+             $this->log->info("Se ha creado la bbdd correctamente");
+         }catch(Exception $e){
+               $this->log->warning("No se ha podido crear la bbdd porque ya esta creada");
+         }
 
-         $result = $conexion->query($sql);
-               
-         if($result){
-            $this->log->info("Se ha insertado el registro con éxito");
-         }else{
-            $this->log->warning("No se ha podido insertar el registro");
-            }
-      }
+         try{
+             $conexion->query($sql_table);
+             $this->log->info("Se ha creado la tabla correctamente");
+         }catch(Exception $e){
+               $this->log->warning("No se ha podido crear la tabla porque ya esta creada");
+         }
+
+         try{
+             $conexion->select_db("taller_ddbb");
+             $conexion->query($sql_insert);
+             $this->log->info("Se ha insertado correctamente");
+         }catch(Exception $e){
+               $this->log->error("No se ha podido crear el insert");
+         }
+            
+      $conexion->close();
    }
+  
 }
