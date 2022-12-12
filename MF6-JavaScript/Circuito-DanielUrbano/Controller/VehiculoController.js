@@ -6,7 +6,7 @@ export class VehiculoController{
         return Math.floor(Math.random() * (max - min + 1) + min)
       }
 
-      definirMovimiento() {
+      avanzar() {
             if(this.constructor.name=="moto"){
                 if (this.traccion=="dura"){
                     this.movimiento = randomIntFromInterval() + 5 ;

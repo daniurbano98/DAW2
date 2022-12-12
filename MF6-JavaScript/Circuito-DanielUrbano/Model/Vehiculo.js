@@ -1,6 +1,7 @@
 class Vehiculo{
     modelo;
     traccion;
+    movimiento;
     velocidadMinima;
     velocidadMaxima;
     
