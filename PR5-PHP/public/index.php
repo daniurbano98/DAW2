@@ -1,5 +1,7 @@
 <?php 
-   
+    if(!isset($_SESSION)){
+        session_start();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -14,12 +16,15 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </head>
 
-<BODY>
 
+
+<BODY>
+   
     <div class="d-inline-flex p-2">
         <div class="container">
-            <form action="POST" action="../processImage.php" enctype="multipart/form-data">
+            <form action="POST" action="../viewImages.php" enctype="multipart/form-data">
                 <h1>VER IMAGENES</h1>
+                <h2>Seleccionar una</h2>
                 <select name="optionViewImage">
                     <?php 
                         foreach ($_SESSION['images']['all'] as $foto ) {
@@ -27,12 +32,17 @@
                             <option value="<?php echo $foto;?>"><?php echo $foto;?></option>;
                             <?php
                         }?>
-                </select>
+                </select><br><br>
                 <input type="submit" value="Ver"></input><br><br>
-                <label>Ver enfocadas</label><input type="checkbox" name="enfocadas" id="enfocadas"><br>
-                <label>Ver desenfocadas</label><input type="checkbox" name="desenfocadas" id="desenfocadas"><br>
-                <label>Ver todas</label><input type="checkbox" name="todas" id="todas"><br><br>
-                <input type="submit" value="Submit"></input>
+                <h2>Seleccionar varias</h2>
+                <p>Por favor, selecciona una opción</p>
+                 <input type="radio" id="enfocadas" name="opciones_ver" value="enfocadas">
+                 <label for="enfocadas">Ver enfocadas</label><br>
+                 <input type="radio" id="desenfocadas" name="opciones_ver" value="desenfocadas">
+                 <label for="desenfocadas">Ver desenfocadas</label><br>
+                 <input type="radio" id="todas" name="opciones_ver" value="todas">
+                 <label for="todas">Ver todas</label> <br> <br>
+                <input type="submit"></input>
             </form>
         </div>
 
@@ -42,11 +52,8 @@
                 <br><LABEL>Sube la imagen</LABEL><br><input type="file" name="imgFile">
                 <br><LABEL>¿Qué desea hacer con la imagen?</LABEL><br>
                 <select name="optionImage">
-                    <option value="blur" selected>Borrosidad</option>
-                    <option value="bright" selected>Brillo</option>
                     <option value="fit">Redimension</option>
                     <option value="sharpen">sharpen</option>
-                    <option value="invert">Invert</option>
                 </select>
                 <br><br>
                 <input type="submit">
