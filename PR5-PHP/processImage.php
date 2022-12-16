@@ -1,5 +1,9 @@
 <?php
 require_once './vendor/autoload.php';
+if(!isset($_SESSION)){
+    session_start();
+    var_dump($_SESSION);
+}
 //print_r($_FILES["imgFile"]);
 
 $miGestorImagenes = new \Intervention\Image\ImageManager();
@@ -17,7 +21,7 @@ if (is_file("./resources/upload/inputImg/" . $_FILES["imgFile"]["name"])) {
     <html>
 
     <body>
-        <a href="./././public/index.php">Volver</a>
+        <a href="./public/index.php">Volver</a>
         <table style="border: 1px;">
             <tr>
                 <th>Imagen original</th>
