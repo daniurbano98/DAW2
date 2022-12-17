@@ -26,7 +26,7 @@ echo('</pre>');
 ?>
     <div class="d-inline-flex p-2">
         <div class="container">
-            <form method="POST" >
+            <form method="POST" action="../viewImage.php" enctype="multipart/form-data">
                 <h1>VER IMAGENES</h1>
                 <h2>Seleccionar una</h2>
                 <select name="optionViewImage">
@@ -56,13 +56,13 @@ echo('</pre>');
 
 
         <div class="container">
-            <FORM method="POST" action="../processImage.php" enctype="multipart/form-data">
+            <form method="POST" action="../processImage.php" enctype="multipart/form-data">
                 <h1>SUBIR IMAGENES</h1>
                 <h2>Sube la imagen</h2>
                 <input type="file" name="imgFile">
                 <br><br>
                 <input type="submit">
-            </FORM>
+            </form>
         </div>
     </div>
 </BODY>

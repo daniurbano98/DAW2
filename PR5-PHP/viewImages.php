@@ -7,7 +7,6 @@ if (!isset($_SESSION)) {
 
 $dir_desenfocada = "./resources/upload/inputImg";
 $dir_enfocada = "./resources/upload/outputImg";
-$dir_todas= "./resources/upload/all";
 $extensions_array = array('JPG','PNG','jpg','png','jpeg');
 
 function imprimirImagenes($dir_path,  $extensions_array){     

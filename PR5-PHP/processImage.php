@@ -37,10 +37,11 @@ if (is_file("./resources/upload/inputImg/" . $_FILES["imgFile"]["name"])) {
                 $fotoDesenfocada = "./resources/upload/inputImg/". $_FILES["imgFile"]["name"];
                 $_SESSION['images']['desenfocada'][] = $fotoDesenfocada;
                 $imagenObj->sharpen(50);
-                $imagenObj->fit(360,550);
+                $imagenObj->fit(350,550);
                 $imagenObj->save("./resources/upload/outputImg/". $_FILES["imgFile"]["name"]);
-                $fotoEnfocada = "./resources/upload/enfocada/". $_FILES["imgFile"]["name"];
-                $_SESSION['images']['enfocada'][] = $fotoEnfocada;
+                $fotoEnfocada = "./resources/upload/outputImg/". $_FILES["imgFile"]["name"];
+                $_SESSION['images']['outputImg'][] = $fotoEnfocada;
+                $_SESSION['images']['all'][] = $fotoEnfocada;
                 
         
         $imagenObj->save("./resources/upload/outputImg/" . $_FILES["imgFile"]["name"],90);
