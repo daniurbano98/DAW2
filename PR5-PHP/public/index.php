@@ -1,7 +1,7 @@
-<?php 
-    if(!isset($_SESSION)){
-        session_start();
-    }
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,42 +19,47 @@
 
 
 <BODY>
-   
+    <?php
+echo('<pre>');
+print_r($_SESSION);
+echo('</pre>');
+?>
     <div class="d-inline-flex p-2">
         <div class="container">
-            <form action="POST" action="../viewImages.php" enctype="multipart/form-data">
+            <form method="POST" >
                 <h1>VER IMAGENES</h1>
                 <h2>Seleccionar una</h2>
                 <select name="optionViewImage">
-                    <?php 
-                        foreach ($_SESSION['images']['all'] as $foto ) {
-                            ?>   
-                            <option value="<?php echo $foto;?>"><?php echo $foto;?></option>;
-                            <?php
-                        }?>
+                    <?php
+                    foreach ($_SESSION['images']['all'] as $foto) {
+                    ?>
+                        <option value="<?php echo $foto; ?>"><?php echo $foto; ?></option>;
+                    <?php
+                    } ?>
                 </select><br><br>
                 <input type="submit" value="Ver"></input><br><br>
+            </form>
+
+            <form method="POST" action="../viewImages.php">
                 <h2>Seleccionar varias</h2>
                 <p>Por favor, selecciona una opción</p>
-                 <input type="radio" id="enfocadas" name="opciones_ver" value="enfocadas">
-                 <label for="enfocadas">Ver enfocadas</label><br>
-                 <input type="radio" id="desenfocadas" name="opciones_ver" value="desenfocadas">
-                 <label for="desenfocadas">Ver desenfocadas</label><br>
-                 <input type="radio" id="todas" name="opciones_ver" value="todas">
-                 <label for="todas">Ver todas</label> <br> <br>
-                <input type="submit"></input>
-            </form>
+
+                <select name="options">
+                    <option value="enfocadas">enfocadas</option>
+                    <option value="desenfocadas">desenfocadas</option>
+                    <option value="todas">todas</option>
+                </select>
+                
+                <input type="submit" name="enviar"></input>
+            </form>     
         </div>
+
 
         <div class="container">
             <FORM method="POST" action="../processImage.php" enctype="multipart/form-data">
                 <h1>SUBIR IMAGENES</h1>
-                <br><LABEL>Sube la imagen</LABEL><br><input type="file" name="imgFile">
-                <br><LABEL>¿Qué desea hacer con la imagen?</LABEL><br>
-                <select name="optionImage">
-                    <option value="fit">Redimension</option>
-                    <option value="sharpen">sharpen</option>
-                </select>
+                <h2>Sube la imagen</h2>
+                <input type="file" name="imgFile">
                 <br><br>
                 <input type="submit">
             </FORM>

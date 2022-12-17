@@ -1,4 +1,8 @@
 <?php
+
+if (!isset($_SESSION)) {
+    session_start();
+}
 require_once './vendor/autoload.php';
 //print_r($_FILES["imgFile"]);
 
@@ -17,7 +21,7 @@ if (is_file("./resources/upload/inputImg/" . $_FILES["imgFile"]["name"])) {
     <html>
 
     <body>
-        <a href="./././public/index.php">Volver</a>
+        <a href="./public/index.php">Volver</a>
         <table style="border: 1px;">
             <tr>
                 <th>Imagen original</th>
@@ -29,20 +33,16 @@ if (is_file("./resources/upload/inputImg/" . $_FILES["imgFile"]["name"])) {
                 </td>
             <?php
         }
-        switch ($_POST["optionImage"]) {
-            case "fit":
-                $imagenObj->fit(350,550);
-                break;
-            case "sharpen":
-                $imagenObj->save("./resources/upload/desenfocada/". $_FILES["imgFile"]["name"]);
-                $fotoDesenfocada = "./resources/upload/desenfocada/". $_FILES["imgFile"]["name"];
+        
+                $fotoDesenfocada = "./resources/upload/inputImg/". $_FILES["imgFile"]["name"];
                 $_SESSION['images']['desenfocada'][] = $fotoDesenfocada;
                 $imagenObj->sharpen(50);
-                $imagenObj->save("./resources/upload/enfocada/". $_FILES["imgFile"]["name"]);
+                $imagenObj->fit(360,550);
+                $imagenObj->save("./resources/upload/outputImg/". $_FILES["imgFile"]["name"]);
                 $fotoEnfocada = "./resources/upload/enfocada/". $_FILES["imgFile"]["name"];
-                $_SESSION['images']['desenfocada'][] = $fotoEnfocada;
-                break;
-        }
+                $_SESSION['images']['enfocada'][] = $fotoEnfocada;
+                
+        
         $imagenObj->save("./resources/upload/outputImg/" . $_FILES["imgFile"]["name"],90);
         if (is_file("./resources/upload/inputImg/" . $_FILES["imgFile"]["name"])) {
             ?>
