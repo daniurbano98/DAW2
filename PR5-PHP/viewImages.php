@@ -43,7 +43,8 @@ if(isset($_POST["options"])){
         imprimirImagenes($dir_desenfocada,  $extensions_array);
 
     }else if($_POST["options"]=="todas"){
-        imprimirImagenes($dir_todas,  $extensions_array);
+        imprimirImagenes($dir_desenfocada,  $extensions_array);
+        imprimirImagenes($dir_enfocada,  $extensions_array);
     }
      
  }
