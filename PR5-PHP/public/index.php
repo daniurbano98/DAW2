@@ -18,15 +18,11 @@ if (!isset($_SESSION)) {
 
 
 
-<BODY>
-    <?php
-echo('<pre>');
-print_r($_SESSION);
-echo('</pre>');
-?>
+<body>
+   
     <div class="d-inline-flex p-2">
         <div class="container">
-            <form method="POST" action="../viewImage.php" enctype="multipart/form-data">
+            <form method="POST" action="../viewSelectedImage.php" enctype="multipart/form-data">
                 <h1>VER IMAGENES</h1>
                 <h2>Seleccionar una</h2>
                 <select name="optionViewImage">

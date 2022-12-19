@@ -11,7 +11,7 @@ $fotoSeleccionada = $_POST["optionViewImage"];
 
 $cadena_desenfocada   = 'inputImg';
 
-$posicion_coincidencia = strpos($fotoSeleccionada, $cadena_desenfocada);
+$posicion_coincidencia = strpos($fotoSeleccionada, $cadena_desenfocada); //buscamos si coinciden para buscar en una carpeta u otra
 
 if($posicion_coincidencia==false){
     //buscar en la ruta de output
@@ -30,17 +30,13 @@ function imprimirImagen($dir, $extensions_array,$fotoSeleccionada){
         
         for($i = 0; $i < count($files); $i++){
             if($files[$i]==$fotoSeleccionada){
-                // get file name
-                echo "File Name -> $files[$i]<br>";
-                
-                // get file extension
+                echo "Nombre de la imagen-> $files[$i]<br>";
+                //Conseguimos la extension
                 $file = pathinfo($files[$i]);
                 $extension = $file['extension'];
-                echo "File Extension-> $extension<br>";
-                
-            // check file extension
+                echo "Extension-> $extension<br>";
+                // comprobamos que sea una extension permitida
                 if(in_array($extension, $extensions_array)){
-                // show image
                 echo "<img src='$dir/$files[$i]'><br>";
                 }
             }

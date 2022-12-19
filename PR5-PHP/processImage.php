@@ -1,14 +1,10 @@
 <?php
 
+
+require_once './vendor/autoload.php';
 if (!isset($_SESSION)) {
     session_start();
 }
-require_once './vendor/autoload.php';
-if(!isset($_SESSION)){
-    session_start();
-    var_dump($_SESSION);
-}
-//print_r($_FILES["imgFile"]);
 
 $miGestorImagenes = new \Intervention\Image\ImageManager();
 $imagenObj = $miGestorImagenes->make($_FILES["imgFile"]["tmp_name"]);
