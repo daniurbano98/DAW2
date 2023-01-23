@@ -15,11 +15,11 @@ $posicion_coincidencia = strpos($fotoSeleccionada, $cadena_desenfocada); //busca
 
 if($posicion_coincidencia==false){
     //buscar en la ruta de output
-    $fotoSeleccionada=trim($fotoSeleccionada, "./resources/upload/outputImg/"); //recortamos la ruta para quedarnos con solo el nombre  
+    $fotoSeleccionada=str_replace("./resources/upload/outputImg/","",$fotoSeleccionada); //recortamos la ruta para quedarnos con solo el nombre  
     imprimirImagen($dir_enfocada, $extensions_array,$fotoSeleccionada);
 }else{
     //buscar en la ruta de input
-    $fotoSeleccionada=trim($fotoSeleccionada, "./resources/upload/inputImg/");  
+    $fotoSeleccionada=str_replace("./resources/upload/outputImg/","",$fotoSeleccionada);
     imprimirImagen($dir_desenfocada, $extensions_array,$fotoSeleccionada);   
 }
 
