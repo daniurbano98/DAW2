@@ -19,16 +19,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('sturia')->group(function () {
     // Ruta para listar todos los aviones
-Route::get('/sturia/planes', [PlaneController::class, 'index']);
+Route::get('/planes', [PlaneController::class, 'index']);
 
 // Ruta para mostrar el formulario de edición de un avión
-Route::get('/sturia/plane/edit/{idVuelo}', 'PlanesController@edit');
+Route::get('/sturia/plane/edit/{idVuelo}', [PlaneController::class, 'edit'])->name('edit');
 
 // Ruta para actualizar un avión
-Route::put('/sturia/update', 'PlanesController@update');
+Route::put('/sturia/update', [PlaneController::class, 'update']);
 
 // Ruta para eliminar un avión
-Route::delete('/sturia/plane/delete/{idVuelo}', 'PlanesController@delete');
+Route::delete('/sturia/plane/delete/{idVuelo}', [PlaneController::class, 'delete'])->name('delete');
 
 });
 

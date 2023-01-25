@@ -5,18 +5,26 @@ use App\Models\Plane;
 
 use Illuminate\Http\Request;
 
-class PlanesController extends Controller
+class PlaneController extends Controller
 {
     public function index()
     {
-        $path = storage_path('json/planes.json');
+        $path = storage_path('/json/planes.json');
         $aviones = json_decode(file_get_contents($path), true);
-        return view('planes.index', compact('aviones'));
+        return view('index', compact('aviones'));
+    }
+
+    public function edit($id)
+    {
+        $path = storage_path('/json/planes.json');
+        $aviones = json_decode(file_get_contents($path), true);
+        $avion = collect($aviones)->firstWhere('id', $id);
+        return view('editPlane', compact('avion'));
     }
 
     public function store(Request $request)
     {
-        $path = storage_path('json/planes.json');
+        $path = storage_path('/json/planes.json');
         $aviones = json_decode(file_get_contents($path), true);
         $data = $request->all();
         $data['id'] = (count($aviones) > 0) ? $aviones[count($aviones) - 1]['id'] + 1 : 1;
@@ -27,7 +35,7 @@ class PlanesController extends Controller
 
     public function update(Request $request, $id)
     {
-        $path = storage_path('json/planes.json');
+        $path = storage_path('/json/planes.json');
         $aviones = json_decode(file_get_contents($path), true);
         $index = collect($aviones)->search(function ($item) use ($id) {
             return $item['id'] == $id;
@@ -39,7 +47,7 @@ class PlanesController extends Controller
 
     public function delete($id)
     {
-        $path = storage_path('json/planes.json');
+        $path = storage_path('/json/planes.json');
         $aviones = json_decode(file_get_contents($path), true);
         $index = collect($aviones)->search(function ($item) use ($id) {
             return $item['id'] == $id;
