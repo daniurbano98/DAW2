@@ -22,13 +22,13 @@ Route::prefix('sturia')->group(function () {
 Route::get('/planes', [PlaneController::class, 'index']);
 
 // Ruta para mostrar el formulario de edición de un avión
-Route::get('/sturia/plane/edit/{idVuelo}', [PlaneController::class, 'edit'])->name('edit');
+Route::get('/plane/edit/{idVuelo}', [PlaneController::class, 'edit'])->name('edit');
 
 // Ruta para actualizar un avión
-Route::put('/sturia/update', [PlaneController::class, 'update']);
+Route::put('/update/{idVuelo}', [PlaneController::class, 'update'])->name('update');
 
 // Ruta para eliminar un avión
-Route::delete('/sturia/plane/delete/{idVuelo}', [PlaneController::class, 'delete'])->name('delete');
+Route::delete('/plane/delete/{idVuelo}', [PlaneController::class, 'delete'])->name('delete');
 
 });
 

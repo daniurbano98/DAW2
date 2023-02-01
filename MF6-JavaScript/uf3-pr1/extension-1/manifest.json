@@ -1,10 +1,12 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "Mi extensión",
     "description": "Una extensión que modifica el DOM de la página web actual",
     "version": "1.0",
     "permissions": [
         "activeTab",
+        "tabs",
+        "scripting",
         "storage"
     ],
     "content_scripts": [
@@ -15,8 +17,8 @@
             "run_at": "document_end"
         }
     ],
-    "browser_action": {
-        "default_popup": "index.html",
-        "default_title": "Mi extensión"
+    "action": {
+        "default_popup": "index.html"
     }
+    
 }

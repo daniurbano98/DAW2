@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 use App\Models\Plane;
 
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 use Illuminate\Http\Request;
 
 class PlaneController extends Controller
@@ -22,27 +24,23 @@ class PlaneController extends Controller
         return view('editPlane', compact('avion'));
     }
 
-    public function store(Request $request)
-    {
-        $path = storage_path('/json/planes.json');
-        $aviones = json_decode(file_get_contents($path), true);
-        $data = $request->all();
-        $data['id'] = (count($aviones) > 0) ? $aviones[count($aviones) - 1]['id'] + 1 : 1;
-        $aviones[] = $data;
-        file_put_contents($path, json_encode($aviones));
-        return redirect('/sturia/planes');
-    }
-
-    public function update(Request $request, $id)
-    {
-        $path = storage_path('/json/planes.json');
-        $aviones = json_decode(file_get_contents($path), true);
-        $index = collect($aviones)->search(function ($item) use ($id) {
-            return $item['id'] == $id;
+    public function update($idVuelo,Request $request)
+    {       
+        $idVuelo = (int)($idVuelo); 
+        $path = storage_path('/json/planes.json'); //recogemos el json 
+        $aviones = json_decode(file_get_contents($path), true); // lo convertimos en array
+        $index = collect($aviones)->search(function ($item) use ($idVuelo) {
+            return $item['id'] == $idVuelo;
         });
-        $aviones[$index] = array_merge($aviones[$index], $request->all());
-        file_put_contents($path, json_encode($aviones));
+        
+        $aviones[$index] = array_merge($aviones[$index], $request->all()); //realizamos el cambio en el array
+        file_put_contents($path, json_encode($aviones)); //reescribimos el json
         return redirect('/sturia/planes');
+
+        $log = new Logger('PlaneController');
+        $log->pushHandler(new StreamHandler(storage_path('/logs/laravel.log')));
+        $log->info('Se ha editado el avión con número '.$idVuelo.' de id' );
+         
     }
 
     public function delete($id)
@@ -52,9 +50,15 @@ class PlaneController extends Controller
         $index = collect($aviones)->search(function ($item) use ($id) {
             return $item['id'] == $id;
         });
-        unset($aviones[$index]);
+        unset($aviones[$index]); //lo borramos del array
         $aviones = array_values($aviones);
-        file_put_contents($path, json_encode($aviones));
+        file_put_contents($path, json_encode($aviones)); //reescribimos el json
+
+
+        $log = new Logger('PlaneController');
+        $log->pushHandler(new StreamHandler(storage_path('/logs/laravel.log')));
+        $log->info('Se ha borrado el avión con número '.$id.' de id' );
+        
         return redirect('/sturia/planes');
     }
 }
