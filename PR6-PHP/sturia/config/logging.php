@@ -118,5 +118,10 @@ return [
             'path' => storage_path('logs/laravel.log'),
         ],
     ],
+    'PlaneController' => [
+        'driver' => 'single',
+        'path' => storage_path('logs/PlaneController.log'),
+        'level' => 'debug',
+    ]
 
 ];

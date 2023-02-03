@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('sturia')->group(function () {
     // Ruta para listar todos los aviones
-Route::get('/planes', [PlaneController::class, 'index']);
+Route::get('/planes', [PlaneController::class, 'index'])->name('index');
 
 // Ruta para mostrar el formulario de edición de un avión
 Route::get('/plane/edit/{idVuelo}', [PlaneController::class, 'edit'])->name('edit');

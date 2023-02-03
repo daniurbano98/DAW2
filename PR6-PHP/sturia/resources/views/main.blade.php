@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,7 +9,7 @@
 </head>
 <body>
     @extends('footer')
-    @extends('formEdit')
+    @extends('index')
     @extends('header')
 </body>
 </html>
