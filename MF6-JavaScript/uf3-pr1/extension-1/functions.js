@@ -95,10 +95,9 @@ function click_show_password(evt){
 function exec_show_ocult_password(){
 
 
-    let inputs = document.querySelectorAll('input')
+    let inputs = document.querySelectorAll("input[type='password']");
 
     
-
     inputs.forEach((input) => {
         if(input.hasAttribute("is_pass")==false){
             input.setAttribute("is_pass","true");
