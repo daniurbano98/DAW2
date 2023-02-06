@@ -95,25 +95,33 @@ function click_show_password(evt){
 function exec_show_ocult_password(){
 
 
-    let inputs = document.querySelectorAll("input[type='password']");
+    let inputsPassword = document.querySelectorAll("input[type='password']");
 
     
-    inputs.forEach((input) => {
-        if(input.hasAttribute("is_pass")==false){
-            input.setAttribute("is_pass","true");
-            input.type = "text";
-            alert("entra en el primero");
-        }else{
-            alert("entra en el segundo");
-            if(input.getAttribute("is_pass")=="true"){
-                input.setAttribute("is_pass", "false");
+    if(inputsPassword.length==0){
+        let inputsText = document.querySelectorAll("input[type='text']");
+        inputsText.forEach((input) => {
+            input.setAttribute("is_pass", "true");
+            input.type = "password";
+        });
+        
+    }else{
+        inputsPassword.forEach((input) => {
+            if(input.hasAttribute("is_pass")==false){
+                input.setAttribute("is_pass","true");
                 input.type = "text";
             }else{
-                input.setAttribute("is_pass", "true");
-                input.type = "password";
-               } 
-        }   
-    });
+                if(input.getAttribute("is_pass")=="true"){
+                    input.setAttribute("is_pass", "false");
+                    input.type = "text";
+                }else{
+                    input.setAttribute("is_pass", "true");
+                    input.type = "password";
+                   } 
+            }   
+        });
+    }
+   
 
    
 
