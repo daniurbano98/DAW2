@@ -75,10 +75,9 @@ function exec_delete_img(){
 
 
 let bt4 = document.getElementById("btn_show_ocult_password");
-bt4.addEventListener("click",click_show_password);let show = true;
-let arrayInputPassword = [];
-arrayInputPassword = document.querySelectorAll('input[type="password"]')
-console.log(arrayInputPassword);
+bt4.addEventListener("click",click_show_password);
+
+
 
 
 function click_show_password(evt){
@@ -87,26 +86,38 @@ function click_show_password(evt){
     chrome.scripting.executeScript({
         target:{"tabId":tabId},
         func:exec_show_ocult_password,
-        args:[arrayInputPassword,show]
+        args:[]
     });
 }
 
 
 
-function exec_show_ocult_password(arrayInputPassword, show){
-    for (var i = 0; i < arrayInputPassword.length; i++) {
-        var input = arrayInputPassword[i];
-        if (show) {
-          // Show password
-          input.type = "text";
-          input.setAttribute("is_pass", "true");
-        } else {
-          // Hide password
-          input.type = "password";
-          input.setAttribute("is_pass", "false");
-        }
-      }
-      show = !show;
+function exec_show_ocult_password(){
+
+
+    let inputs = document.querySelectorAll('input')
+
+    
+
+    inputs.forEach((input) => {
+        if(input.hasAttribute("is_pass")==false){
+            input.setAttribute("is_pass","true");
+            input.type = "text";
+            alert("entra en el primero");
+        }else{
+            alert("entra en el segundo");
+            if(input.getAttribute("is_pass")=="true"){
+                input.setAttribute("is_pass", "false");
+                input.type = "text";
+            }else{
+                input.setAttribute("is_pass", "true");
+                input.type = "password";
+               } 
+        }   
+    });
+
+   
+
     }
 
     
