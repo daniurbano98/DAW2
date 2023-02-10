@@ -1,0 +1,24 @@
+{
+    "manifest_version": 3,
+    "name": "Mi extensión 2",
+    "description": "Una extensión que modifica el DOM de la página web actual",
+    "version": "1.0",
+    "permissions": [
+        "activeTab",
+        "tabs",
+        "scripting",
+        "storage"
+    ],
+    "content_scripts": [
+        {
+            "matches": ["https://www.amazon.es/gp/bestsellers/electronics/"],
+            "js": ["functions.js"],
+            "css": ["styles.css"],
+            "run_at": "document_end"
+        }
+    ],
+    "action": {
+        "default_popup": "index.html"
+    }
+    
+}

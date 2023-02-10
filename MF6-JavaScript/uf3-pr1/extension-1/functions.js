@@ -13,8 +13,6 @@ btn.addEventListener("click", click_change_background);
 
 function click_change_background(evt) {
     evt.target.style.backgroundColor = "cyan";
-    console.log("Clicado!");
-
     chrome.scripting.executeScript({
         target: { "tabId": tabId },
         func: exec_change_background,
