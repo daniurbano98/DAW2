@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formularios</title>
+    <script src="function.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <form action="" name="form" novalidate>
+            <label for="firstInput" >Entre 3 y 5 lletres</label>
+            <input type="text" name="firstInput" id="firstInput" pattern="[A-z]{3,5}" required>
+            <label for="emailInput">Format email vàlid</label>
+            <input type="email"  name="emailInput" id="emailInput" required>
+            <div>
+                <label for="check1">check1:</label>
+                <input type="checkbox" name="check" value="check1" id="check1">
+                <label for="check2">check2:</label>
+                <input type="checkbox" name="check" value="check2" id="check2">
+                <label for="check3">check3:</label>
+                <input type="checkbox" name="check" value="check3" id="check3">
+            </div>
+            
+            <select name="" id="">
+                <option value="">opcio 1</option>
+                <option value="">opcio 2</option>
+                <option value="">opcio 3</option>
+                <option value="">opcio 4</option>
+            </select>
+            <input type="submit" value="enviar">
+        </form>
+    </div>
+    
+    
+</body>
+</html>
