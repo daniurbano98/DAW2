@@ -2,12 +2,17 @@ let form = document.forms["form"];
 let firstInput = form["firstInput"];
 let email = form["emailInput"];
 let checkboxs = form["check"];
-let contador = 0;
+const checkbox1 = document.getElementById("check1");
+const checkbox2 = document.getElementById("check2");
+const checkbox3 = document.getElementById("check3");
+
 
 
 firstInput.addEventListener("input", valida_firstInput);
 email.addEventListener("input", valida_email);
-
+checkbox1.addEventListener("click", valida_checkBox);
+checkbox2.addEventListener("click", valida_checkBox);
+checkbox3.addEventListener("click", valida_checkBox);
 
 function valida_firstInput() {
     firstInput.setCustomValidity("");
@@ -30,16 +35,22 @@ function valida_email() {
 }
 
 
+
+
 function valida_checkBox() {
     
+    let contador = 0;
     for(var i =0; i < checkboxs.length; i++){
-        if(checkboxs[k].checked == true){
+        if(checkboxs[i].checked == true){
             contador++;
+            console.log(contador);
 
             if(contador==2){
                 let div = document.createElement("div");
-                div.innerHTML = "has marcado 2 bro"
+                div.innerHTML = "has marcado 2 bro";
             }
         }
-    }        
+        
+    }  
+    contador = 0;      
 }
