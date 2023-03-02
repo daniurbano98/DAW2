@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
+use DB;
 
 class BooksTableSeeder extends Seeder
 {
@@ -17,7 +18,7 @@ class BooksTableSeeder extends Seeder
 
         for ($i = 1; $i <= 10; $i++) {
             DB::table('books')->insert([
-                'isbn' => $faker->unique()->isbn13,
+                'isbn' => $faker->unique()->isbn13(),
                 'title' => $faker->sentence(5),
                 'author' => $faker->name,
                 'published_date' => $faker->date('Y-m-d'),
@@ -27,7 +28,5 @@ class BooksTableSeeder extends Seeder
                 'updated_at' => now(),
             ]);
         }
-
-        return '10 books have been generated';
     }
 }

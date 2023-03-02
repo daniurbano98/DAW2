@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Factory as Faker;
+use DB;
 
 class CategoriesTableSeeder extends Seeder
 {
@@ -16,14 +17,12 @@ class CategoriesTableSeeder extends Seeder
         $faker = Faker::create();
 
         for ($i = 1; $i <= 10; $i++) {
-            DB::table('books')->insert([
-                'name'=> $faker->name,
+            DB::table('categories')->insert([
+                'name'=> $faker->name(),
                 'created_at' => now(),
                 'updated_at' => now(),
             ]);
         }
-
-        return '10 books have been generated';
     }
 }
 

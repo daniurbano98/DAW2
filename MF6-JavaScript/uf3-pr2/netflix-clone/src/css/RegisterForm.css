@@ -1,0 +1,16 @@
+button {
+    background-color: red;
+    color: white;
+    padding: .5rem;
+    width: 5rem;
+    margin: 2rem 2rem;
+}
+
+input {
+    width: 20rem;
+    padding: 1rem;
+}
+
+.error {
+    color: white;
+}
