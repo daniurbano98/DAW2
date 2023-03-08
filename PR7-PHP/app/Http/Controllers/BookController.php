@@ -15,19 +15,36 @@ class BookController extends Controller
 
     public function create()
     {
-        return view('createBook');
-      
-        
+        return view('createBook'); 
     }
+
     public function show($id)
     {
         $book = DB::table('books')->where('id', $id)->get();
         return view('show',['book' => $book[0]]);
     }
 
-    public function store()
+    public function store(Request $request)
     {
-        return view("create");
+        dd($request);
+        
+            $this->validate($request, [
+                'isbn' => 'required|unique:books|min:13|max:13',
+                'author' => 'required',
+                'title' => 'required',
+                'date_published' => 'required|date',
+                'description' => 'required',
+                'price' => 'required'
+            ]);
+
+            $book = DB::table('books')->insert([
+                'isbn' => $request->isbn,
+                'author' =>  $request->author,
+                'title' =>  $request->title,
+                'date_published' =>  $request->fecha_publicacion,
+                'description' =>  $request->descripcion,
+                'price' =>  $request->precio
+            ]);
 
     }
     public function edit()
