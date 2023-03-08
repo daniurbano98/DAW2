@@ -12,17 +12,23 @@ class BookController extends Controller
         $books = DB::table('books')->get();
         return view('index',['books' => $books]);
     }
-    public function show()
-    {
-        
-    }
+
     public function create()
     {
+        return view('createBook');
+      
         
     }
+    public function show($id)
+    {
+        $book = DB::table('books')->where('id', $id)->get();
+        return view('show',['book' => $book[0]]);
+    }
+
     public function store()
     {
-        
+        return view("create");
+
     }
     public function edit()
     {

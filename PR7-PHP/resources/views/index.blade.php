@@ -1,7 +1,32 @@
+@extends('main')
 
+@section('content')
     <h1>List of Books</h1>
-    <ul>
-        @foreach ($books as $book)
-            <li>{{$book->title}}</li>
-        @endforeach
-    </ul>
+    <table>
+        <thead>
+            <tr>
+                <th>ISBN</th>
+                <th>TITLE</th>
+                <th>AUTHOR</th>
+                <th>PUBLISHED_DATE</th>
+                <th>DESCRIPTION</th>
+                <th>PRICE</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach ($books as $book)
+            <tr>
+                <td>{{$book->isbn}}</td>
+                <td>{{$book->title}}</td>
+                <td>{{$book->author}}</td>
+                <td>{{$book->published_date}}</td>
+                <td>{{$book->description}}</td>
+                <td>{{$book->price}}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+    @endsection
+        
+    

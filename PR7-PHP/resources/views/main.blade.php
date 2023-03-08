@@ -7,9 +7,8 @@
         <header>
             <nav>
                 <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/contact">Contact</a></li>
+                    <li><a href="/books">All</a></li>
+                    <li><a href="/books/create">Register Book</a></li>
                 </ul>
             </nav>
         </header>
