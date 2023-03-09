@@ -1,50 +1,54 @@
 @extends('main')
 
-@section('content')
-<form action="{{route('store')}}" method="POST" novalidate>
-  @csrf
-  <label for="author">Autor:</label>
-  <input type="text" id="author" name="author" required>
+@section('title')
+  CREATE BOOK
+@endsection
 
+@section('content')
+<form class="form-group container" action="{{route('store')}}" method="POST" novalidate>
+  @csrf
+    <label for="author" class="form-label">Autor:</label>
+    <input type="text" id="author" name="author"  class="form-control" required>
+ 
   @error('author')
-  <p>{{ $message }}</p>
+  <p class="alert alert-danger" role="alert">{{ $message }}</p>
   @enderror
 
-  <label for="title">Título:</label>
-  <input type="text" id="title" name="title" required>
+  <label for="title" class="form-label">Título:</label>
+  <input type="text" id="title" name="title"  class="form-control" required>
 
   @error('title')
-  <p>{{ $message }}</p>
+  <p class="alert alert-danger" role="alert">{{ $message }}</p>
   @enderror
 
-  <label for="isbn">ISBN:</label>
-  <input type="text" id="isbn" name="isbn" required>
+  <label for="isbn" class="form-label">ISBN:</label>
+  <input type="text" id="isbn" name="isbn"  class="form-control" required>
 
   @error('isbn')
-  <p>{{ $message }}</p>
+  <p class="alert alert-danger" role="alert">{{ $message }}</p>
   @enderror
 
-  <label for="date_published">Fecha de publicación:</label>
-  <input type="date" id="date_published" name="date_published" required>
+  <label for="published_date" class="form-label">Fecha de publicación:</label>
+  <input type="date" id="published_date" name="published_date"  class="form-control" required>
 
   @error('date_published')
-  <p>{{ $message }}</p>
+  <p class="alert alert-danger" role="alert">{{ $message }}</p>
   @enderror
 
-  <label for="description">Descripción:</label>
-  <textarea id="description" name="description" required></textarea>
+  <label for="description" class="form-label">Descripción:</label>
+  <textarea id="description" name="description"  class="form-control" required></textarea>
 
   @error('description')
-  <p>{{ $message }}</p>
+  <p class="alert alert-danger" role="alert">{{ $message }}</p>
   @enderror
 
-  <label for="price">Precio:</label>
-  <input type="number" id="price" name="price" required>
+  <label for="price" class="form-label">Precio:</label>
+  <input type="number" id="price" name="price"  class="form-control" required>
 
   @error('price')
-  <p>{{ $message }}</p>
+  <p class="alert alert-danger" role="alert">{{ $message }}</p>
   @enderror
 
-  <input  class="btn btn-primary" type="submit" value="Enviar">
+  <input  class="btn btn-primary mt-5" type="submit"  class="form-control" value="Enviar">
 </form>
 @endsection

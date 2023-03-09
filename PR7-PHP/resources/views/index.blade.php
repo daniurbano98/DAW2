@@ -25,8 +25,13 @@
                 <td>{{$book->price}}</td>
             </tr>
             @endforeach
-        </tbody>
+            
+        </tbody> 
     </table>
+    <div class="mt-5">
+        {{$books->links()}}
+    </div>
+    
     @endsection
         
     
