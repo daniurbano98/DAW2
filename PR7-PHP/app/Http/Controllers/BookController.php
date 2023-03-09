@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -22,7 +24,11 @@ class BookController extends Controller
     public function show($id)
     {
         $book = DB::table('books')->where('id', $id)->get();
-        return view('show', ['book' => $book[0]]);
+        if ($book->isEmpty()) {
+            return response()->view('404', [], 404);
+        } else {
+            return view('show', ['book' => $book[0]]);
+        }
     }
 
     public function store(Request $request)
@@ -40,11 +46,11 @@ class BookController extends Controller
 
         $book = DB::table('books')->insert([
             'isbn' => $request->isbn,
-            'author' =>  $request->author,
-            'title' =>  $request->title,
-            'published_date' =>  $request->published_date,
-            'description' =>  $request->description,
-            'price' =>  $request->price
+            'author' => $request->author,
+            'title' => $request->title,
+            'published_date' => $request->published_date,
+            'description' => $request->description,
+            'price' => $request->price
         ]);
 
         return redirect()->route('index');
@@ -52,7 +58,11 @@ class BookController extends Controller
     public function edit($id)
     {
         $book = DB::table('books')->where('id', $id)->get();
-        return view('edit', ['book' => $book[0]]);
+        if ($book->isEmpty()) {
+            return response()->view('404', [], 404);
+        } else {
+            return view('edit', ['book' => $book[0]]);
+        }
     }
     public function update(Request $request)
     {
@@ -67,17 +77,30 @@ class BookController extends Controller
 
         $affected = DB::table('books')->where('id', $request->id)->update([
             'isbn' => $request->isbn,
-            'author' =>  $request->author,
-            'title' =>  $request->title,
-            'published_date' =>  $request->published_date,
-            'description' =>  $request->description,
-            'price' =>  $request->price
+            'author' => $request->author,
+            'title' => $request->title,
+            'published_date' => $request->published_date,
+            'description' => $request->description,
+            'price' => $request->price
         ]);
 
         return redirect()->route('index');
 
     }
-    public function destroy()
-    {
+
+    public function delete(){
+        $books = Book::all();
+        return view('delete',["books"=>$books]);  
+    }
+    public function destroy($id)
+    {  
+        $book = DB::table('books')->where('id', $id)->get();
+      
+        if ($book->isEmpty()) {
+            return response()->view('404', [], 404);
+        } else {
+            $book = DB::table('books')->where('id', $id)->delete();
+            return redirect()->route('index');
+        }
     }
 }

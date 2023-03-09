@@ -2,21 +2,23 @@
 
 @section('content')
     <h1>List of Books</h1>
-    <table>
-        <thead>
+    <table class="table table-striped table-bordered">
+        <thead class="thead-light">
             <tr>
-                <th>ISBN</th>
-                <th>TITLE</th>
-                <th>AUTHOR</th>
-                <th>PUBLISHED_DATE</th>
-                <th>DESCRIPTION</th>
-                <th>PRICE</th>
+                <th scope="col">ID</th>
+                <th scope="col">ISBN</th>
+                <th scope="col">TITLE</th>
+                <th scope="col">AUTHOR</th>
+                <th scope="col">PUBLISHED_DATE</th>
+                <th scope="col">DESCRIPTION</th>
+                <th scope="col">PRICE</th>
             </tr>
         </thead>
 
         <tbody>
             @foreach ($books as $book)
             <tr>
+                <th scope="row">{{$book->id}}</th>
                 <td>{{$book->isbn}}</td>
                 <td>{{$book->title}}</td>
                 <td>{{$book->author}}</td>

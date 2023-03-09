@@ -12,6 +12,7 @@
                     <li><a href="/books">All</a></li>
                     <li><a href="/books/create">Register Book</a></li>
                     <li><a href="/books/edit">Edit Book</a></li>
+                    <li><a href="/books/delete">Delete Book</a></li>
                 </ul>
             </nav>
         </header>
@@ -25,7 +26,7 @@
         </main>
 
         <footer>
-            <p class="mt-5">Copyright &copy; {{ date('Y') }} My Website</p>
+            <p class="mt-5">Copyright &copy; {{ date('Y') }} Daniel Urbano</p>
         </footer>
     </body>
 </html>
