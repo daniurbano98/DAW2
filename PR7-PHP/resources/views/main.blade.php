@@ -9,10 +9,10 @@
         <header>
             <nav>
                 <ul>
-                    <li><a href="/books">All</a></li>
+                    <li><a href="/books">View All Books</a></li>
                     <li><a href="/books/create">Register Book</a></li>
-                    <li><a href="/books/edit">Edit Book</a></li>
-                    <li><a href="/books/delete">Delete Book</a></li>
+                    <li><a href="/categories">View All Categories</a></li>
+                    <li><a href="/categories/create">Register Category</a></li>
                 </ul>
             </nav>
         </header>

@@ -2,6 +2,18 @@
 
 @section('content')
     <h1>List of Books</h1>
+    <form method="POST" action="{{route('getBooks')}}">
+        @csrf
+        <label for="category">Category:</label>
+        <select name="category_id" id="category" class="mb-5 mt-3">
+            @foreach ($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->name }}</option>
+            @endforeach
+        </select>
+        <button type="submit" class="btn btn-success">View books</button>
+    </form>
+    
+
     <table class="table table-striped table-bordered">
         <thead class="thead-light">
             <tr>
@@ -12,6 +24,8 @@
                 <th scope="col">PUBLISHED_DATE</th>
                 <th scope="col">DESCRIPTION</th>
                 <th scope="col">PRICE</th>
+                <th scope="col">EDIT</th>
+                <th scope="col">DELETE</th>
             </tr>
         </thead>
 
@@ -25,6 +39,12 @@
                 <td>{{$book->published_date}}</td>
                 <td>{{$book->description}}</td>
                 <td>{{$book->price}}</td>
+                <td><a href="/books/edit/{{$book->id}}" class="btn btn-primary">Edit Book</a></td>
+                <form action="{{route('destroy', ['id' => $book->id])}}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <td><button  class="btn btn-danger" type="submit"  class="form-control">Delete Book</button></td>
+                </form>
             </tr>
             @endforeach
             

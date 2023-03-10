@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -13,12 +14,13 @@ class BookController extends Controller
     public function index()
     {
         $books = Book::paginate(4);
-        return view('index', ['books' => $books]);
+        $categories = Category::all();
+        return view('books.index', compact('books', 'categories'));
     }
 
     public function create()
     {
-        return view('createBook');
+        return view('books.createBook');
     }
 
     public function show($id)
@@ -27,7 +29,7 @@ class BookController extends Controller
         if ($book->isEmpty()) {
             return response()->view('404', [], 404);
         } else {
-            return view('show', ['book' => $book[0]]);
+            return view('books.show', ['book' => $book[0]]);
         }
     }
 
@@ -53,7 +55,7 @@ class BookController extends Controller
             'price' => $request->price
         ]);
 
-        return redirect()->route('index');
+        return redirect()->route('books.index');
     }
     public function edit($id)
     {
@@ -61,7 +63,7 @@ class BookController extends Controller
         if ($book->isEmpty()) {
             return response()->view('404', [], 404);
         } else {
-            return view('edit', ['book' => $book[0]]);
+            return view('books.edit', ['book' => $book[0]]);
         }
     }
     public function update(Request $request)
@@ -84,14 +86,10 @@ class BookController extends Controller
             'price' => $request->price
         ]);
 
-        return redirect()->route('index');
+        return redirect()->route('books.index');
 
     }
 
-    public function delete(){
-        $books = Book::all();
-        return view('delete',["books"=>$books]);  
-    }
     public function destroy($id)
     {  
         $book = DB::table('books')->where('id', $id)->get();
@@ -100,7 +98,14 @@ class BookController extends Controller
             return response()->view('404', [], 404);
         } else {
             $book = DB::table('books')->where('id', $id)->delete();
-            return redirect()->route('index');
+            return redirect()->route('books.index');
         }
+    }
+
+    public function getBooksForCategory(Request $request){
+        $categories = Category::all();
+        $category = Category::find($request->input('category_id'));
+        $books = $category->books()->paginate(4);
+        return view('books.index', compact('books', 'categories'));
     }
 }
