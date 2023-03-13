@@ -22,12 +22,16 @@ Route::prefix('books')->group(function () {
     Route::get('/', [BookController::class,'index'])->name('index');
     Route::post('/getBooks', [BookController::class,'getBooksForCategory'])->name('getBooks');
     Route::get('create', [BookController::class,'create'])->name('create');
+    Route::get('/search',[BookController::class,'searchForm'])->name('searchForm');  
     Route::get('/{id}', [BookController::class,'show'])->name('show');
     Route::post('/', [BookController::class, 'store'])->name('store');
     Route::get('/edit/{id}', [BookController::class, 'edit'])->name('edit');
     Route::put('/update/{id}', [BookController::class, 'update'])->name('update');
     Route::delete('/destroy/{id}', [BookController::class, 'destroy'])->name('destroy');
+    
 });
+
+
 
 Route::prefix('categories')->group(function (){
     Route::get('/', [CategoryController::class,'index'])->name('index');

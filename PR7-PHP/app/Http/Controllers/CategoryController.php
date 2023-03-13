@@ -14,6 +14,12 @@ class CategoryController extends Controller
         return view('categories.index', ['categories'=> $categories] );
     }
 
+    
+    public function create()
+    {
+        return view('categories.createCategory');
+    }
+
 
     public function edit($id)
     {
@@ -24,8 +30,6 @@ class CategoryController extends Controller
         } else {
             return view('categories.edit', ['category' => $category[0]]);
         }
-
-       
     }
     public function update(Request $request)
     {

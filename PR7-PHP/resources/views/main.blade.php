@@ -13,6 +13,7 @@
                     <li><a href="/books/create">Register Book</a></li>
                     <li><a href="/categories">View All Categories</a></li>
                     <li><a href="/categories/create">Register Category</a></li>
+                    <li><a href="{{route('searchForm')}}">Search Book</a></li>
                 </ul>
             </nav>
         </header>

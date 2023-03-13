@@ -108,4 +108,10 @@ class BookController extends Controller
         $books = $category->books()->paginate(4);
         return view('books.index', compact('books', 'categories'));
     }
+
+    public function searchForm()
+    {
+        $categories = Category::all();
+        return view('books.search',['categories'=>$categories]);
+    }
 }
