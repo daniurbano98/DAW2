@@ -27,7 +27,7 @@ Route::prefix('books')->group(function () {
     Route::post('/store', [BookController::class, 'store'])->name('storeBook');
     Route::get('/edit/{id}', [BookController::class, 'edit'])->name('editBook');
     Route::put('/update/{id}', [BookController::class, 'update'])->name('updateBook');
-    Route::delete('/destroy/{id}', [BookController::class, 'destroy'])->name('destroy');
+    Route::delete('/destroy/{id}', [BookController::class, 'destroy'])->name('destroyBook');
     Route::post('',[BookController::class,'resultSearchForm'])->name('resultSearchForm');
     
 });
@@ -40,7 +40,7 @@ Route::prefix('categories')->group(function (){
     Route::post('/store', [CategoryController::class, 'store'])->name('storeCategory');
     Route::get('/edit/{id}', [CategoryController::class, 'edit'])->name('editCategory');
     Route::put('/update/{id}', [CategoryController::class, 'update'])->name('updateCategory');
-    Route::delete('/destroy/{id}', [CategoryController::class, 'destroy'])->name('destroy');
+    Route::delete('/destroy/{id}', [CategoryController::class, 'destroy'])->name('destroyCategory');
 });
 
 

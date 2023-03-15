@@ -29,7 +29,7 @@
                 <td>{{$book->description}}</td>
                 <td>{{$book->price}}</td>
                 <td><a href="/books/edit/{{$book->id}}" class="btn btn-primary">Edit Book</a></td>
-                <form action="{{route('destroy', ['id' => $book->id])}}" method="POST">
+                <form action="{{route('destroyBook', ['id' => $book->id])}}" method="POST">
                     @csrf
                     @method('DELETE')
                     <td><button  class="btn btn-danger" type="submit"  class="form-control">Delete Book</button></td>

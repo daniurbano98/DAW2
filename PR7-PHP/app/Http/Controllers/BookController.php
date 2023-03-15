@@ -71,7 +71,6 @@ class BookController extends Controller
 
     public function edit($id)
     {
-        dd($id);
         $book = DB::table('books')->where('id', $id)->get();
         if ($book->isEmpty()) {
             return response()->view('404', [], 404);
@@ -92,7 +91,6 @@ class BookController extends Controller
         ]);
 
         $affected = DB::table('books')->where('id', $request->id)->update([
-            'isbn' => $request->isbn,
             'author' => $request->author,
             'title' => $request->title,
             'published_date' => $request->published_date,
@@ -109,7 +107,7 @@ class BookController extends Controller
         $book = DB::table('books')->where('id', $id)->get();
 
         if ($book->isEmpty()) {
-            return response()->view('404', [], 404);
+            return response()->view('books.404', [], 404);
         } else {
             $book = DB::table('books')->where('id', $id)->delete();
             return redirect()->route('books.index');
@@ -132,8 +130,7 @@ class BookController extends Controller
 
     public function resultSearchForm(Request $request)
     {
-        $category= Category::find($request->input('category_id'));
-        unset($request["_token"]);      
+        unset($request["_token"]);   
 
         foreach ($request->all() as $key=>$value) {
             if($value == null){
@@ -141,15 +138,9 @@ class BookController extends Controller
             }
         }
 
-        $books = Book::join('book_category', 'books.id', '=', 'book_category.book_id')
-                    ->where($request->input())
-                    ->where('book_category.category_id', $category->id)
-                    ->get();
+        $books = Book::where($request->input())->get();
 
-
-        return view('books.resultSearch',['books'=>$books]);
-        
-
+        return view('books.resultSearch',['books' => $books]);
         
     }
 }
