@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Book;
 use App\Models\Category;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Database\QueryException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+
 
 class BookController extends Controller
 {
@@ -20,7 +22,8 @@ class BookController extends Controller
 
     public function create()
     {
-        return view('books.createBook');
+        $categories = Category::all();
+        return view('books.createBook',['categories'=>$categories]);
     }
 
     public function show($id)
@@ -35,7 +38,10 @@ class BookController extends Controller
 
     public function store(Request $request)
     {
+        $actual_date = Carbon::now();
+        
         $this->validate($request, [
+            'category_id' => 'required',
             'isbn' => 'required|unique:books|regex:/^[^a-zA-Z]*$/|min:13|max:13',
             'author' => 'required|regex:/^[^0-9]*$/|min:3|max:40',
             'title' => 'required|min:2|max:40',
@@ -44,19 +50,24 @@ class BookController extends Controller
             'price' => 'required'
         ]);
 
-
-
         $book = DB::table('books')->insert([
             'isbn' => $request->isbn,
             'author' => $request->author,
             'title' => $request->title,
             'published_date' => $request->published_date,
             'description' => $request->description,
-            'price' => $request->price
+            'price' => $request->price,
+            'created_at'=>$actual_date,
+            'updated_at'=>$actual_date
         ]);
 
+        $book = Book::where('isbn', $request->isbn)->first();
+
+        $book->categories()->attach($request->category_id); //insert en tabla pivote
+        
         return redirect()->route('books.index');
     }
+
     public function edit($id)
     {
         $book = DB::table('books')->where('id', $id)->get();
@@ -68,8 +79,9 @@ class BookController extends Controller
     }
     public function update(Request $request)
     {
+        $actual_date = Carbon::now();
+
         $this->validate($request, [
-            'isbn' => 'required|unique:books|regex:/^[^a-zA-Z]*$/|min:13|max:13',
             'author' => 'required|regex:/^[^0-9]*$/|min:3|max:40',
             'title' => 'required|min:2|max:40',
             'published_date' => 'required|date|before:2023-03-09',
@@ -83,17 +95,17 @@ class BookController extends Controller
             'title' => $request->title,
             'published_date' => $request->published_date,
             'description' => $request->description,
-            'price' => $request->price
+            'price' => $request->price,
+            'updated_at'=>$actual_date
         ]);
 
         return redirect()->route('books.index');
-
     }
 
     public function destroy($id)
-    {  
+    {
         $book = DB::table('books')->where('id', $id)->get();
-      
+
         if ($book->isEmpty()) {
             return response()->view('404', [], 404);
         } else {
@@ -102,7 +114,8 @@ class BookController extends Controller
         }
     }
 
-    public function getBooksForCategory(Request $request){
+    public function getBooksForCategory(Request $request)
+    {
         $categories = Category::all();
         $category = Category::find($request->input('category_id'));
         $books = $category->books()->paginate(4);
@@ -112,6 +125,29 @@ class BookController extends Controller
     public function searchForm()
     {
         $categories = Category::all();
-        return view('books.search',['categories'=>$categories]);
+        return view('books.search', ['categories' => $categories]);
+    }
+
+    public function resultSearchForm(Request $request)
+    {
+        $category= Category::find($request->input('category_id'));
+        unset($request["_token"]);      
+
+        foreach ($request->all() as $key=>$value) {
+            if($value == null){
+                unset($request[$key]);
+            }
+        }
+
+        $books = Book::join('book_category', 'books.id', '=', 'book_category.book_id')
+                    ->where($request->input())
+                    ->where('book_category.category_id', $category->id)
+                    ->get();
+
+
+        return view('books.resultSearch',['books'=>$books]);
+        
+
+        
     }
 }

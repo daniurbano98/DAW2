@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<form class="form-group container" action="{{route('store')}}" method="POST" novalidate>
+<form class="form-group container" action="{{route('storeCategory')}}" method="POST" novalidate>
   @csrf
     <label for="name" class="form-label">Name:</label>
     <input type="text" id="name" name="name"  class="form-control" required>

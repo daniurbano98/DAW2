@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<form class="form-group container" action="{{route('update', ['id' => $book->id])}}" method="POST" novalidate>
+<form class="form-group container" action="{{route('updateBook', ['id' => $book->id])}}" method="POST" novalidate>
   @csrf
   @method('PUT')
     <label for="author" class="form-label">Autor:</label>
@@ -19,13 +19,6 @@
   <input type="text" id="title" name="title" value="{{$book->title}}"  class="form-control" required>
 
   @error('title')
-  <p class="alert alert-danger" role="alert">{{ $message }}</p>
-  @enderror
-
-  <label for="isbn" class="form-label">ISBN:</label>
-  <input type="text" id="isbn" name="isbn" value="{{$book->isbn}}"  class="form-control" required>
-
-  @error('isbn')
   <p class="alert alert-danger" role="alert">{{ $message }}</p>
   @enderror
 
