@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\Book;
 use App\Models\Category;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\QueryException;
@@ -70,6 +71,7 @@ class BookController extends Controller
 
     public function edit($id)
     {
+        dd($id);
         $book = DB::table('books')->where('id', $id)->get();
         if ($book->isEmpty()) {
             return response()->view('404', [], 404);
