@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../css/PlanForm.css";
 
 function PlanForm({ onNext }) {
   const [selectedPlan, setSelectedPlan] = useState("");
@@ -16,10 +17,14 @@ function PlanForm({ onNext }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Selecciona un plan:</h2>
+    <form class="plan-form" onSubmit={handleSubmit}>
+      <h2 class="title">Selecciona el plan ideal para ti</h2>
 
-      <div>
+      <h4>Ve todo lo que quieras.</h4>
+      <h4>Recomendaciones exclusivas para ti.</h4>
+      <h4>Cambia de plan o cancélalo cuando quieras</h4>
+
+      <div class="options">
         <input
           type="radio"
           id="planBasico"
@@ -29,9 +34,7 @@ function PlanForm({ onNext }) {
           onChange={handlePlanSelection}
         />
         <label htmlFor="planBasico">Plan básico - Anuncios</label>
-      </div>
 
-      <div>
         <input
           type="radio"
           id="planEstandar"
@@ -41,9 +44,7 @@ function PlanForm({ onNext }) {
           onChange={handlePlanSelection}
         />
         <label htmlFor="planEstandar">Plan estándar</label>
-      </div>
 
-      <div>
         <input
           type="radio"
           id="planPremium"
@@ -54,7 +55,6 @@ function PlanForm({ onNext }) {
         />
         <label htmlFor="planPremium">Plan premium</label>
       </div>
-
       <button type="submit" disabled={selectedPlan === ""}>
         Siguiente
       </button>
