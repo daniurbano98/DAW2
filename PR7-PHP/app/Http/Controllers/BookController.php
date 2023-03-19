@@ -65,6 +65,7 @@ class BookController extends Controller
         $book = Book::where('isbn', $request->isbn)->first();
 
         $book->categories()->attach($request->category_id); //insert en tabla pivote
+
         
         return redirect()->route('books.index');
     }
