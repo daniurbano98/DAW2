@@ -1,28 +1,40 @@
-let form = document.forms["form"];
+let form = document.getElementById('form');
+let submitBtn = document.getElementById('submitButton');
+let submitMessage=document.getElementById('submitMessage');
+
+form.addEventListener('submit', (validateForm));
+
+
+function validateForm() {
+    if(validCheck && validEmail && validName && validSelect){
+        submitMessage.textContent="Formulario enviado con éxito";
+    }else{
+        submitMessage.textContent="Por favor comprueba que todos los campos cumplan los requisitos";
+    }
+}
+
 let firstInput = form["firstInput"];
 let email = form["emailInput"];
-let checkboxs = form["check"];
-const checkbox1 = document.getElementById("check1");
-const checkbox2 = document.getElementById("check2");
-const checkbox3 = document.getElementById("check3");
+let validEmail=false;
+let validCheck=false;
+let validName=false;
+let validSelect=false;
 
 
 
 firstInput.addEventListener("input", valida_firstInput);
 email.addEventListener("input", valida_email);
-checkbox1.addEventListener("click", valida_checkBox);
-checkbox2.addEventListener("click", valida_checkBox);
-checkbox3.addEventListener("click", valida_checkBox);
+
 
 function valida_firstInput() {
     firstInput.setCustomValidity("");
-    if (!firstInput.checkValidity()) { // incompleix alguna regla html?
-        if (firstInput.validity.patternMismatch) { //incompleix patern?
-        firstInput.setCustomValidity("només entre 3 i 5 lletres") // mostrem missatge personal
-        firstInput.reportValidity(); // mostrem el missatge d’error
+    if (!firstInput.checkValidity()) { 
+        if (firstInput.validity.patternMismatch) { //si incumple el pattern
+        firstInput.setCustomValidity("solo entre 3 i 5 letras") // seteamos mensaje
+        firstInput.reportValidity(); // mosstramos mensaje
         }
     }else{
-        
+        validName=true;
     }
 }
 
@@ -31,26 +43,62 @@ function valida_email() {
     if (!email.checkValidity()) { // incompleix alguna regla html?//incompleix patern?
         email.setCustomValidity("Introduce un formato de email correcto") // mostrem missatge personal
         email.reportValidity(); // mostrem el missatge d’error    
+    }else{
+        validEmail=true;
     }
 }
 
 
+const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+const message = document.getElementById('message');
 
+checkboxes.forEach(checkbox => {
+  checkbox.addEventListener('change', () => {
+    const checkedCount = document.querySelectorAll('input[type="checkbox"]:checked').length;
 
-function valida_checkBox() {
-    
-    let contador = 0;
-    for(var i =0; i < checkboxs.length; i++){
-        if(checkboxs[i].checked == true){
-            contador++;
-            console.log(contador);
-
-            if(contador==2){
-                let div = document.createElement("div");
-                div.innerHTML = "has marcado 2 bro";
-            }
+    if (checkedCount === 2) {
+      message.textContent = 'Se han seleccionado 2 opciones correctamente.';
+      validCheck=true;
+      checkboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+          checkbox.nextElementSibling.style.color = 'green';
+        } else {
+          checkbox.nextElementSibling.style.color = 'black';
         }
-        
-    }  
-    contador = 0;      
-}
+      });
+    } else {
+      message.textContent = 'Por favor, seleccione exactamente 2 opciones.';
+      checkboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+          checkbox.nextElementSibling.style.color = 'red';
+        } else {
+          checkbox.nextElementSibling.style.color = 'black';
+        }
+      });
+    }
+  });
+});
+
+
+
+const select = document.getElementById('select');
+const messageSelect = document.getElementById('messageSelect');
+const originalColor = select.style.backgroundColor;
+
+
+select.addEventListener('change', () => {
+  const selectedValue = select.value;
+
+  if (selectedValue === '2') {
+    messageSelect.textContent = 'Se ha seleccionado la segunda opción correctamente.';
+    select.style.backgroundColor = 'green';
+    validSelect=true;
+    
+  } else {
+    messageSelect.textContent = 'Por favor, seleccione la segunda opción.';
+    select.style.backgroundColor = originalColor;
+  }
+});
+
+
+

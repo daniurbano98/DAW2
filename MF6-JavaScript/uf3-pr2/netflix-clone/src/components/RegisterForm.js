@@ -43,7 +43,6 @@ function RegisterForm({ onNext }) {
     <form onSubmit={handleSubmit}>
       <Header />
       <div className="form-group">
-        <label htmlFor="emailInput">Email</label>
         <input
           placeholder="Dirección de correo"
           type="email"

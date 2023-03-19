@@ -70,8 +70,12 @@ function PasswordForm({ onNext }) {
         {passwordError && <div style={{ color: "red" }}>{passwordError}</div>}
         
         <div class="inline-flex">
+          <div>
           <input type="checkbox" id="checkbox"></input>
+          </div>
+          <div>
           <label for="checkbox">No, no quiero recibir ofertas especiales</label>
+          </div>
         </div>
        
         
