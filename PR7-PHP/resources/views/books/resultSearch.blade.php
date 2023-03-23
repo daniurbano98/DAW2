@@ -1,19 +1,8 @@
 @extends('main')
 
 @section('content')
-    <h1>List of Books</h1>
-    <form method="POST" action="{{route('getBooks')}}">
-        @csrf
-        <label for="category">Category:</label>
-        <select name="category_id" id="category" class="mb-5 mt-3">
-            @foreach ($categories as $category)
-                <option value="{{ $category->id }}">{{ $category->name }}</option>
-            @endforeach
-        </select>
-        <button type="submit" class="btn btn-success">View books</button>
-    </form>
+    <h1>Search Result</h1>
     
-
     <table class="table table-striped table-bordered">
         <thead class="thead-light">
             <tr>
@@ -50,10 +39,6 @@
             
         </tbody> 
     </table>
-    <div class="mt-5">
-        {{$books->links()}}
-    </div>
+    
     
     @endsection
-        
-    

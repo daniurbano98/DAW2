@@ -9,11 +9,11 @@
         <header>
             <nav>
                 <ul>
-                    <li><a href="/books">View All Books</a></li>
-                    <li><a href="/books/create">Register Book</a></li>
-                    <li><a href="/categories">View All Categories</a></li>
-                    <li><a href="/categories/create">Register Category</a></li>
-                    <li><a href="{{route('searchForm')}}">Search Book</a></li>
+                    <li><a href="{{ route('books.index') }}">View All Books</a></li>
+                    <li><a href="{{ route('createBook') }}">Register Book</a></li>
+                    <li><a href="{{ route('categories.index') }}">View All Categories</a></li>
+                    <li><a href="{{ route('createCategory') }}">Register Category</a></li>
+                    <li><a href="{{ route('searchForm') }}">Search Book</a></li>
                 </ul>
             </nav>
         </header>

@@ -20,7 +20,7 @@
                 <td>{{$category->created_at}}</td>
                 <td>{{$category->updated_at}}</td>
                 <td><a href="/categories/edit/{{$category->id}}" class="btn btn-primary">Edit Category</a></td>
-                <form action="{{route('destroy', ['id' => $category->id])}}" method="POST">
+                <form action="{{route('destroyCategory', ['id' => $category->id])}}" method="POST">
                     @csrf
                     @method('DELETE')
                     <td><button  class="btn btn-danger" type="submit"  class="form-control">Delete Category</button></td>

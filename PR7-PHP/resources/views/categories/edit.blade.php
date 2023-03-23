@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-<form class="form-group container" action="{{route('update', ['id' => $category->id])}}" method="POST" novalidate>
+<form class="form-group container" action="{{route('updateCategory', ['id' => $category->id])}}" method="POST" novalidate>
   @csrf
   @method('PUT')
     <label for="name" class="form-label">Name:</label>
