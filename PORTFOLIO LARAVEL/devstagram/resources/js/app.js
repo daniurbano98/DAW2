@@ -13,3 +13,20 @@ const dropzone = new Dropzone('#dropzone',{
     uploadMultiple:false,    
 });
 
+
+dropzone.on('sending',function(file, xhr, formData) {
+
+});
+
+dropzone.on('success', function(file,response){
+
+});
+
+dropzone.on('error', function(file,message){
+    
+});
+
+
+dropzone.on('removedfile', function(file,message){
+    
+});
