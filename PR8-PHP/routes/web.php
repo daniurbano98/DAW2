@@ -28,19 +28,20 @@ Route::post('login',[LoginController::class,'store']);
 Route::get('register',[RegisterController::class,'index'])->name('register');
 Route::post('register',[RegisterController::class,'register']);
 
-//LOGOUT
-Route::post('/logout',[LogoutController::class,'store'])->name('logout');
 
 
 
-
-Route::prefix('events')->group(function () {
-    Route::post('register',[EventController::class,'register'])->name('events.register'); //form para registrar un nuevo asistente al evento
-    Route::get('{user:name}', [EventController::class,'index'])->name('events.index');
-    Route::get('create', [EventController::class,'create'])->name('createEvent');
-    Route::get('/{id}', [EventController::class,'show'])->name('show'); //muestra un evento especifico
-    Route::post('/store', [EventController::class, 'store'])->name('storeEvent');
-    Route::get('/edit/{id}', [EventController::class, 'edit'])->name('editEvent');
-    Route::put('/update/{id}', [EventController::class, 'update'])->name('updateEvent');
-    Route::delete('/destroy/{id}', [EventController::class, 'destroy'])->name('destroyEvent');    
+Route::middleware('auth')->group(function () {
+    //LOGOUT
+    Route::post('logout',[LogoutController::class,'store'])->name('logout');
+     //EVENTS
+    Route::get('/events/{id}', [EventController::class,'show'])->name('show');
+    Route::get('create', [EventController::class,'create'])->name('create');
+    Route::get('{user:name}', [EventController::class,'index'])->name('index');
+    Route::get('/events/{id}/register',[EventController::class,'register'])->name('eventRegister'); //form para registrar un nuevo asistente al evento
+    Route::post('/events', [EventController::class, 'store'])->name('store');
+    Route::post('/events/{id}/attendees',[EventController::class,'storeAttendee'])->name('storeAttendee'); 
+    Route::get('edit/{id}', [EventController::class, 'edit'])->name('editEvent');
+    Route::put('update/{id}', [EventController::class, 'update'])->name('updateEvent');
+    Route::delete('destroy/{id}', [EventController::class, 'destroy'])->name('destroyEvent');    
 });

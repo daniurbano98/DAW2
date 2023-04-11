@@ -9,7 +9,7 @@ class UserEventsAttendee extends Model
 {
     use HasFactory;
 
-    public function events()
+    public function event()
     {
         return $this->belongsTo(Event::class);
     }

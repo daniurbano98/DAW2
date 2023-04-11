@@ -31,15 +31,7 @@ class LoginController extends Controller
             //Vuelve a la pagina anterior con este mensaje: "credenciales incorrectas"
         }
         
-        return redirect()->route('events.index', ['user' => auth()->user()->name]);
+        return redirect()->route('index', ['user' => auth()->user()->name]);
     }
 
-
-
-    public function logout()
-    {
-        auth()->logout();
-        //TODO asignar una ruta para el logout
-        return redirect();
-    }
 }

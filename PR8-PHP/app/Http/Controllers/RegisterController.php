@@ -32,6 +32,6 @@ class RegisterController extends Controller
         ]);
 
 
-        return redirect()->route('events.index',  ['user' => auth()->user()->name]);
+        return redirect()->route('index',  ['user' => auth()->user()->name]);
     }
 }

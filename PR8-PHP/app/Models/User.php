@@ -47,32 +47,5 @@ class User extends Authenticatable
         return $this->hasMany(Event::class);
     }
 
-    public function create_user($name,$email,$password){
-        $user = User::create([
-            'name' => $name,
-            'email' => $email,
-            'password' => bcrypt($password),
-        ]);
-    }
-
-    public function view_user($id){
-        $user = User::find($id);
-    }
-
-    public function update_user($id){
-        //TODO Validar si no existe
-        $user = User::find($id);
-
-        $user->update([
-            'name' => $user->name,
-            'email' => $user->email,
-        ]);
-    }
-
-    public function delete_user($id){
-        //TODO Validar si no existe
-        $user = User::find($id);
-
-        $user->delete();
-    }
+    
 }
