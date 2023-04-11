@@ -11,15 +11,21 @@ class PostController extends Controller
     //
     public function __construct()
     {
-        $this->middleware('auth'); //antes de ejecutarse la vista se ejecutará el middleware para comprobar si esta autenticado
+        $this->middleware('auth')->except(['show', 'index']); //antes de ejecutarse la vista se ejecutará el middleware para comprobar si esta autenticado
                                     //si no lo esta, por defecto, laravel redirige al usuario a una ruta de login
     }
 
     public function index(User $user) 
-    {
-       
-        return view('layouts.dashboards', ['user' => $user]);
+    {   
+        $posts = Post::where('user_id',$user->id)->paginate(20);
+
+        return view('layouts.dashboards', [
+            'user' => $user,
+            'posts' => $posts
+        ]);
     }
+
+    
 
     public function create()
     {
@@ -28,13 +34,24 @@ class PostController extends Controller
 
     public function store(Request $request)
     {
+        
+
         $this->validate($request, [
             'titulo'=> 'required|max:255',
             'descripcion' => 'required',
             'imagen' => 'required'
         ]);
 
-        Post::create([
+        //Una forma de crear un post
+        // Post::create([
+        //     'titulo' => $request->titulo,
+        //     'descripcion' => $request->descripcion,
+        //     'imagen' => $request->imagen,
+        //     'user_id' => auth()->user()->id
+        // ]);
+
+        //Otra forma
+        $request->user()->posts()->create([
             'titulo' => $request->titulo,
             'descripcion' => $request->descripcion,
             'imagen' => $request->imagen,
@@ -42,5 +59,13 @@ class PostController extends Controller
         ]);
 
         return redirect()->route('posts.index', auth()->user()->username);
+    }
+
+    public function show(User $user, Post $post)
+    {
+        return view('posts.show',[
+            'post' => $post,
+            'user' => $user
+        ]);    
     }
 }

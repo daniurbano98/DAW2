@@ -20,7 +20,7 @@ class LoginController extends Controller
         if(!auth()->attempt($request->only('email','password'),$request->remember)){
             //con back puedes volver a la pagina anterior
             //con with puedes guardar datos en una especie de variable de sesion y poder mostarlo por tu vista
-            return back()->with('mensaje', 'credenciales incorrectas');
+            return back()->with('mensaje', 'Credenciales incorrectas. Por favor, vuelve a intentarlo');
             //"Vuelve a la pagina anterior con este mensaje->credenciales incorrectas"
         }
 

@@ -40,7 +40,7 @@
 
                 @guest <!--con esta directiva comprobamos si el user NO esta autenticado y si es asi imprimimos lo siguiente-->
                 <nav class="flex gap-2 items-center">
-                    <a href="#" class="font-bold uppercase text-gray-600 text-sm">Login</a>
+                    <a href="{{ route('login') }}" class="font-bold uppercase text-gray-600 text-sm">Login</a>
                     <a href="{{route('register')}}" class="font-bold uppercase text-gray-600 text-sm">Crear cuenta</a>
                 </nav>
                 @endguest

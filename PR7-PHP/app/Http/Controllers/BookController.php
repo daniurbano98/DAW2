@@ -49,7 +49,7 @@ class BookController extends Controller
             'published_date' => 'required|date|before:2023-03-09',
             'description' => 'required|max:200',
             'price' => 'required'
-        ]);
+        ]);        
 
         $book = DB::table('books')->insert([
             'isbn' => $request->isbn,
