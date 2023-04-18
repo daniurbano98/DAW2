@@ -31,7 +31,8 @@
         </tr>
     </thead>
     <tbody>
-      @if (!empty($atendees))
+     
+      @if (!empty($attendees))
         @foreach ($attendees as $assistant)
         <tr>
             <td>{{ $assistant->name }}</td>

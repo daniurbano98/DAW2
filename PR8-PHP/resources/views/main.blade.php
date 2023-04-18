@@ -36,6 +36,7 @@
         
         <main class="container mx-auto mt-10">
             <h1 class="font-black text-center text-3xl mb-10">@yield('title')</h1>
+            @yield('error')
             @yield('content')
         </main>
 

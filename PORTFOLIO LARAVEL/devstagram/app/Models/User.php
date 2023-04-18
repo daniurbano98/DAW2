@@ -47,4 +47,10 @@ class User extends Authenticatable
     {   //relacion 1:m (un user puede tener muchos posts)
         return $this->hasMany(Post::class); //se traduce como "tiene muchos"
     }
+
+    public function likes()
+    {
+        //relacion 1:m (un user puede dar muchos likes)
+        return $this->hasMany(Like::class);
+    }
 }

@@ -4,11 +4,24 @@
     {{ $event->title }}
 @endsection
 
-@section('content')
-    @include('show')
+@section('error')
+
+    @if (session('error'))
+    <div class="alert alert-danger mt-5">
+        {{ session('error') }}
+    </div>
+    @endif
+    
 @endsection
 
+@section('content')
+    @include('show')
+    
+@endsection
+
+
 @section('form')
+    
     <div class="container md:w-7/12 bg-white p-6 rounded-lg shadow-xl mt-5">
         <form method="POST" action="{{ route('storeAttendee', ['id' => $event->id]) }}" novalidate>
             @csrf
@@ -33,4 +46,5 @@
                 asistente</button>
         </form>
     </div>
+
 @endsection

@@ -53,7 +53,7 @@ class EventController extends Controller
     public function register($id)
     {
         $event = Event::find($id);
-        $users = User::all();
+        $users = User::all();   
         $attendees = $event->attendees; //sacamos los asistentes de la tabla pivote registrados en ese evento
         return view('registerAssistant',['event' => $event,'users' => $users, 'attendees' =>$attendees]);
     }
@@ -69,13 +69,14 @@ class EventController extends Controller
 
     public function storeAttendee($idEvent, Request $request)
     {
-        //TODO comprobar antes de que el user no esté ya registrado
-
         $event = Event::find($idEvent);
         $userId = $request->input('users');
         $user = User::find($userId);
-        
 
+        if ($event->user()->where('id', $user->id)->exists()) {
+            return redirect()->back()->with('error', 'El usuario ya está registrado en el evento.');
+        }
+        
         $userToRegister = new UserEventsAttendee;
         $userToRegister->user()->associate($user); // Establecer la relación con el usuario
         $userToRegister->event()->associate($event); // Establecer la relación con el evento

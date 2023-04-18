@@ -21,4 +21,21 @@ class Post extends Model
         return $this->belongsTo(User::class)->select(['name','username']); //seleccionas los atributos que te interesa
                  //Traduccion: "pertenece a"
     }
+
+    public function comentarios()
+    {
+        return $this->hasMany(Comentario::class);
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    public function checkLike(User $user)
+    {
+        //Le pasamos el user logueado al metodo y comprobamos en la tabla de likes con el metodo 'contains'
+        //si la columna user_id tiene el id del user pasado por parametro
+        return $this->likes->contains('user_id', $user->id);
+    }
 }
