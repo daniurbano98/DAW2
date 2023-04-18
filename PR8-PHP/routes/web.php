@@ -31,7 +31,7 @@ Route::post('register',[RegisterController::class,'register']);
 
 
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth')->group(function () { //le añadimos el middleware para impedir el acceso a las rutas sin loguearse
     //LOGOUT
     Route::post('logout',[LogoutController::class,'store'])->name('logout');
      //EVENTS

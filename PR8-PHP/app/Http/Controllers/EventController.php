@@ -13,7 +13,7 @@ class EventController extends Controller
 
     public function index(User $user)
     {
-        if ($user->id !== auth()->id()) {
+        if ($user->id !== auth()->id()) { //comporbamos que el id que le pasamos por parametro es el mismo del que esta logueado
             return redirect()->route('index', ['user' => auth()->user()->name]);
         }
 
@@ -32,20 +32,20 @@ class EventController extends Controller
 
     public function store(Request $request)
     {
-        $this->validate($request, [
+        $this->validate($request, [ //validamos que cumpla los requisitos
             'title' => 'required|max:30',
             'description' => 'required|max:50',
             'location' => 'required|max:30',
             'date' => 'required'
         ]);
 
-        $event = new Event;
-        $event->title = $request->title;
-        $event->description = $request->description;
-        $event->location = $request->location;
-        $event->date = $request->date;
-        $event->user_id = auth()->user()->id;
-        $event->save();
+        $request->user()->events()->create([ //creamos el evento
+            'title' =>  $request->title,
+            'description' => $request->description,
+            'location' => $request->location,
+            'date' => $request->date,
+            'user_id' => auth()->user()->id
+        ]);
 
         return redirect()->route('index', ['user' => auth()->user()->name]);
     }
@@ -53,7 +53,8 @@ class EventController extends Controller
     public function register($id)
     {
         $event = Event::find($id);
-        $users = User::all();   
+        $idUser = $event->user->id;
+        $users = User::where('id', '<>', $idUser)->get();  // especificamos la condición de que el ID de usuario debe ser diferente del ID especificado en la variable $idUser
         $attendees = $event->attendees; //sacamos los asistentes de la tabla pivote registrados en ese evento
         return view('registerAssistant',['event' => $event,'users' => $users, 'attendees' =>$attendees]);
     }
@@ -65,7 +66,6 @@ class EventController extends Controller
         return view('show', ['event' => $event, 'attendees' =>$attendees]);
     }
 
-    
 
     public function storeAttendee($idEvent, Request $request)
     {
@@ -73,13 +73,13 @@ class EventController extends Controller
         $userId = $request->input('users');
         $user = User::find($userId);
 
-        if ($event->user()->where('id', $user->id)->exists()) {
+        if (    $event->attendees()->where('user_id', $userId)->exists()) { //comprobamos antes del registro de que no lo esté ya
             return redirect()->back()->with('error', 'El usuario ya está registrado en el evento.');
         }
         
         $userToRegister = new UserEventsAttendee;
-        $userToRegister->user()->associate($user); // Establecer la relación con el usuario
-        $userToRegister->event()->associate($event); // Establecer la relación con el evento
+        $userToRegister->user()->associate($user); // Establece la relación con el usuario
+        $userToRegister->event()->associate($event); // Establece la relación con el evento
         $userToRegister->save();
 
         return redirect()->route('index', ['user' => auth()->user()->name]);

@@ -40,13 +40,7 @@
         </tr>
         @endforeach
       
-      @else
-      <tr>
-        <td>No hay asistentes registrados en este evento</td>    
-      </tr>
       @endif
-
-      
         
     </tbody>
 </table>
